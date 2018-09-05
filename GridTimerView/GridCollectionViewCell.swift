@@ -12,23 +12,23 @@ protocol GridCollectionViewCellDelegate: class {
     func gridCollectionViewCell(gridCollectionViewCell: GridCollectionViewCell, didSelect selected: Bool)
 }
 
-public class GridCollectionViewCell: UICollectionViewCell {
+open class GridCollectionViewCell: UICollectionViewCell {
     
     weak var delegate: GridCollectionViewCellDelegate?
     var indexPath: IndexPath?
     
-    override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         isHighlighted = true
         delegate?.gridCollectionViewCell(gridCollectionViewCell: self, didSelect: true)
     }
     
-    override public func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override open func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
         isHighlighted = false
     }
     
-    override public func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override open func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesCancelled(touches, with: event)
         isHighlighted = false
     }

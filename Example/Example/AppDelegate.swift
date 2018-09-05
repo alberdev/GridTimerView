@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  Example
+//  TableTimer
 //
-//  Created by Alberto Aznar de los Ríos on 6/9/18.
+//  Created by Alberto Aznar de los Ríos on 2/9/18.
 //  Copyright © 2018 Alberto Aznar de los Ríos. All rights reserved.
 //
 
@@ -15,7 +15,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        let vc = MainViewController()
+        let nav = UINavigationController(rootViewController: vc)
+        
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.rootViewController = nav
+        self.window?.makeKeyAndVisible()
+        
         return true
     }
 

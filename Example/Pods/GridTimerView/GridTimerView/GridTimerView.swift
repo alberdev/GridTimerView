@@ -4,7 +4,6 @@
 //
 //  Created by Alberto Aznar de los Ríos on 4/9/18.
 //  Copyright © 2018 Alberto Aznar de los Ríos. All rights reserved.
-//
 
 import UIKit
 
@@ -22,7 +21,7 @@ protocol GridTimerViewDelegate: class {
     func gridTimerView(gridTimerView: GridTimerView, didSelectItemAtIndexPath indexPath: IndexPath)
 }
 
-class GridTimerView: UIView {
+public class GridTimerView: UIView {
     
     @IBOutlet private var contentView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -93,7 +92,7 @@ class GridTimerView: UIView {
         commonInit()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
     }
@@ -163,7 +162,7 @@ class GridTimerView: UIView {
 
 extension GridTimerView: UIScrollViewDelegate {
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         ruleView.updateContentOffset(x: scrollView.contentOffset.x)
         
         for cell in collectionView.visibleCells {

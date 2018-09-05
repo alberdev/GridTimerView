@@ -38,14 +38,14 @@ extension Date {
         return Int(component)
     }
     
-    static func today() -> Date {
+    static public func today() -> Date {
         let cal = NSCalendar.current
         let components = cal.dateComponents([.year, .month, .day], from: Date())
         let today = cal.date(from: components)
         return today!
     }
     
-    static func add(days: Int) -> Date {
+    static public func add(days: Int) -> Date {
         return Date.today().addingTimeInterval(days.days)
     }
 }

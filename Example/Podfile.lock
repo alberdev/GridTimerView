@@ -1,5 +1,5 @@
 PODS:
-  - GridTimerView (0.1.1)
+  - GridTimerView (0.1.2)
 
 DEPENDENCIES:
   - GridTimerView
@@ -9,7 +9,7 @@ SPEC REPOS:
     - GridTimerView
 
 SPEC CHECKSUMS:
-  GridTimerView: 9d15d6e55da1ff07180f469cb58184951ad36f0f
+  GridTimerView: ee0c91336c9ec8ecc37ae1088d7a73accb52e117
 
 PODFILE CHECKSUM: 962428892fd992bbe2500e2b9acca9669bc150a2
 

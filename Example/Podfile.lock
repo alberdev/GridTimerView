@@ -1,0 +1,16 @@
+PODS:
+  - GridTimerView (0.1.0)
+
+DEPENDENCIES:
+  - GridTimerView
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - GridTimerView
+
+SPEC CHECKSUMS:
+  GridTimerView: 711010d239f7bb3ac02ed34d00fd9eee1b9c5004
+
+PODFILE CHECKSUM: 1244bb2ed39e7928c43b92cb87bac4525a84f6ff
+
+COCOAPODS: 1.5.3

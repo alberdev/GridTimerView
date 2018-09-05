@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E37D64CF214069B700B184AA /* GridTimerView.h in Headers */ = {isa = PBXBuildFile; fileRef = E37D64CD214069B700B184AA /* GridTimerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E37D64E421406A6B00B184AA /* GridTimerView+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37D64D521406A6900B184AA /* GridTimerView+Delegate.swift */; };
 		E37D64E521406A6B00B184AA /* GridTimerView+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37D64D621406A6A00B184AA /* GridTimerView+DataSource.swift */; };
 		E37D64E621406A6B00B184AA /* UIView+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37D64D821406A6A00B184AA /* UIView+Tools.swift */; };
@@ -26,7 +25,6 @@
 
 /* Begin PBXFileReference section */
 		E37D64CA214069B700B184AA /* GridTimerView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GridTimerView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E37D64CD214069B700B184AA /* GridTimerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GridTimerView.h; sourceTree = "<group>"; };
 		E37D64CE214069B700B184AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E37D64D521406A6900B184AA /* GridTimerView+Delegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GridTimerView+Delegate.swift"; sourceTree = "<group>"; };
 		E37D64D621406A6A00B184AA /* GridTimerView+DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GridTimerView+DataSource.swift"; sourceTree = "<group>"; };
@@ -42,12 +40,6 @@
 		E37D64E121406A6B00B184AA /* GridTimerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridTimerView.swift; sourceTree = "<group>"; };
 		E37D64E221406A6B00B184AA /* CustomCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewLayout.swift; sourceTree = "<group>"; };
 		E37D64E321406A6B00B184AA /* GridTimerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GridTimerView.xib; sourceTree = "<group>"; };
-		E37D64F821408DEC00B184AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E37D64FA21408DEC00B184AA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E37D64FD21408DEC00B184AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E37D64FF21408DED00B184AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E37D650221408DED00B184AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		E37D650421408DED00B184AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +57,6 @@
 			isa = PBXGroup;
 			children = (
 				E37D64CC214069B700B184AA /* GridTimerView */,
-				E37D64F721408DEC00B184AA /* Example */,
 				E37D64CB214069B700B184AA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -91,7 +82,6 @@
 				E37D64D521406A6900B184AA /* GridTimerView+Delegate.swift */,
 				E37D64DD21406A6A00B184AA /* RuleView.swift */,
 				E37D64DE21406A6A00B184AA /* RuleView.xib */,
-				E37D64CD214069B700B184AA /* GridTimerView.h */,
 				E37D64CE214069B700B184AA /* Info.plist */,
 			);
 			path = GridTimerView;
@@ -109,19 +99,6 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		E37D64F721408DEC00B184AA /* Example */ = {
-			isa = PBXGroup;
-			children = (
-				E37D64F821408DEC00B184AA /* AppDelegate.swift */,
-				E37D64FA21408DEC00B184AA /* ViewController.swift */,
-				E37D64FC21408DEC00B184AA /* Main.storyboard */,
-				E37D64FF21408DED00B184AA /* Assets.xcassets */,
-				E37D650121408DED00B184AA /* LaunchScreen.storyboard */,
-				E37D650421408DED00B184AA /* Info.plist */,
-			);
-			path = Example;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -129,7 +106,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E37D64CF214069B700B184AA /* GridTimerView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,25 +197,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		E37D64FC21408DEC00B184AA /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E37D64FD21408DEC00B184AA /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		E37D650121408DED00B184AA /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E37D650221408DED00B184AA /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		E37D64D0214069B700B184AA /* Debug */ = {

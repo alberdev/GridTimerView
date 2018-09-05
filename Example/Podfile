@@ -7,4 +7,5 @@ target 'Example' do
 
   # Pods for Example
   pod 'GridTimerView'
+  
 end

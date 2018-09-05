@@ -22,7 +22,7 @@ protocol GridTimerViewDelegate: class {
     func gridTimerView(gridTimerView: GridTimerView, didSelectItemAtIndexPath indexPath: IndexPath)
 }
 
-public class GridTimerView: UIView {
+class GridTimerView: UIView {
     
     @IBOutlet private var contentView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -93,7 +93,7 @@ public class GridTimerView: UIView {
         commonInit()
     }
     
-    required public init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
     }
@@ -163,7 +163,7 @@ public class GridTimerView: UIView {
 
 extension GridTimerView: UIScrollViewDelegate {
     
-    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         ruleView.updateContentOffset(x: scrollView.contentOffset.x)
         
         for cell in collectionView.visibleCells {

@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
 # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
 s.platform = :ios
-s.ios.deployment_target = '12.0'
+s.ios.deployment_target = '11.4'
 s.name = "GridTimerView"
 s.summary = "GridTimerView shows a schedule with timer controller. Each cell can manage multiple events. Used for listing TV programs shows in a table."
 s.requires_arc = true
@@ -39,11 +39,11 @@ s.framework = "UIKit"
 
 # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
-s.source_files = "RWPickFlavor/**/*.{swift}"
+s.source_files = "GridTimerView/**/*.{swift}"
 
 # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
-s.resources = "RWPickFlavor/**/*.{png,jpeg,jpg,storyboard,xib,xcassets}"
+s.resources = "GridTimerView/**/*.{png,jpeg,jpg,storyboard,xib,xcassets}"
 
 # ――― Swift Version ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 

@@ -42,6 +42,12 @@
 		E37D64E121406A6B00B184AA /* GridTimerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridTimerView.swift; sourceTree = "<group>"; };
 		E37D64E221406A6B00B184AA /* CustomCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewLayout.swift; sourceTree = "<group>"; };
 		E37D64E321406A6B00B184AA /* GridTimerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GridTimerView.xib; sourceTree = "<group>"; };
+		E37D64F821408DEC00B184AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E37D64FA21408DEC00B184AA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E37D64FD21408DEC00B184AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E37D64FF21408DED00B184AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E37D650221408DED00B184AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E37D650421408DED00B184AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				E37D64CC214069B700B184AA /* GridTimerView */,
+				E37D64F721408DEC00B184AA /* Example */,
 				E37D64CB214069B700B184AA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -102,6 +109,19 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		E37D64F721408DEC00B184AA /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				E37D64F821408DEC00B184AA /* AppDelegate.swift */,
+				E37D64FA21408DEC00B184AA /* ViewController.swift */,
+				E37D64FC21408DEC00B184AA /* Main.storyboard */,
+				E37D64FF21408DED00B184AA /* Assets.xcassets */,
+				E37D650121408DED00B184AA /* LaunchScreen.storyboard */,
+				E37D650421408DED00B184AA /* Info.plist */,
+			);
+			path = Example;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -140,6 +160,7 @@
 		E37D64C1214069B700B184AA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Alberto Aznar de los Ríos";
 				TargetAttributes = {
@@ -155,6 +176,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = E37D64C0214069B700B184AA;
 			productRefGroup = E37D64CB214069B700B184AA /* Products */;
@@ -199,6 +221,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E37D64FC21408DEC00B184AA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E37D64FD21408DEC00B184AA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E37D650121408DED00B184AA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E37D650221408DED00B184AA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		E37D64D0214069B700B184AA /* Debug */ = {

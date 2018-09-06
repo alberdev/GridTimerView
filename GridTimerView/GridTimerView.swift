@@ -98,7 +98,11 @@ open class GridTimerView: UIView {
     }
     
     private func commonInit() {
-        Bundle.main.loadNibNamed("GridTimerView", owner: self, options: nil)
+        let bundle = Bundle(for: GridTimerView.self)
+        if let path = bundle.path(forResource: "GridTimerView", ofType: "bundle") {
+            Bundle(path: path)?.loadNibNamed("GridTimerView", owner: self, options: nil)
+        }
+        // Bundle.main.loadNibNamed("GridTimerView", owner: self, options: nil)
         contentView.fixConstraintsInView(self)
         setupCollectionView()
         //setupRefresher()

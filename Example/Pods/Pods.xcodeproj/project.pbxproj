@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -23,6 +23,7 @@
 		C3A0B865984572D7EC128058AD845965 /* GridTimerView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D7CA9ABE80D1F765C53F9D5851766A21 /* GridTimerView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D59E52C7EE15C33776C0DC0F3A04089D /* UIImage+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDC7BDC32145D69D43933BEBC05E091 /* UIImage+Tools.swift */; };
 		E18EB4AF5CC0847002782D7C6AA10ABA /* GridTimerView+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98DBA69B9F5B522A822C29A9279DA6B /* GridTimerView+DataSource.swift */; };
+		E37D65E62140B29A00B184AA /* GridTimerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A81C951272F9A536AD9F04783F8434E5 /* GridTimerView.xib */; };
 		EF8D163D9B0A335B9B7D183D01B6BDD9 /* UICollectionViewCell+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0598CEF8166DE17CB996AFED0A32071 /* UICollectionViewCell+Tools.swift */; };
 		F2B66F7CE6A4E275BCA3AA544AA14549 /* GridTimerView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F9036821D82DB90CB36213D187115D59 /* GridTimerView-dummy.m */; };
 		F6DF73046D51C87B9FD8E0701CEACA60 /* Pods-Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 15D3FE98E9F2D34863BD3F3597A0485A /* Pods-Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -52,14 +53,14 @@
 		4F8BC32BAE787365B99EF4674AB667A1 /* GridCollectionViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GridCollectionViewCell.swift; path = GridTimerView/GridCollectionViewCell.swift; sourceTree = "<group>"; };
 		5B81C04F8E84EAE60AE15C8695031A5F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F8819BE9DC96D97E5DCD68D6A21EADD /* Date+Tools.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Date+Tools.swift"; path = "GridTimerView/Extensions/Date+Tools.swift"; sourceTree = "<group>"; };
-		6B4960CA44A8EA37D4404E24D44CF90E /* Pods_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Example.framework; path = "Pods-Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B4960CA44A8EA37D4404E24D44CF90E /* Pods_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		769793CC3EB9CFFF2B2C088623DADA21 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7DAFD6D4ACCE03D39C183CCF14396C37 /* Int+Tools.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Int+Tools.swift"; path = "GridTimerView/Extensions/Int+Tools.swift"; sourceTree = "<group>"; };
 		81FE7D3CAC11B3DCF022BB1C1151E2BE /* GridTimerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GridTimerView.swift; path = GridTimerView/GridTimerView.swift; sourceTree = "<group>"; };
 		908E902E026C5C22904CF9014A5604AD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		92D7E3C094B012C48F68A5C05A598CB9 /* GridTimerView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GridTimerView-prefix.pch"; sourceTree = "<group>"; };
 		92E2B8B7FDDC4F801A2A7B3741DD5FC6 /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = GridTimerView/Assets.xcassets; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A281C0FEA73611C626DB0DB14FFD8877 /* GridTimerView+Delegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "GridTimerView+Delegate.swift"; path = "GridTimerView/GridTimerView+Delegate.swift"; sourceTree = "<group>"; };
 		A6150F95F44AFBC53234868A411C8B05 /* RuleView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = RuleView.xib; path = GridTimerView/RuleView.xib; sourceTree = "<group>"; };
 		A79AC23D5A157FED70D9C53D844B2319 /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -67,7 +68,7 @@
 		A84DCB678E0C0154EB3FD578EEA1A220 /* CustomCollectionViewLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CustomCollectionViewLayout.swift; path = GridTimerView/CustomCollectionViewLayout.swift; sourceTree = "<group>"; };
 		BC2C02191C153C1554B35DEE8B2D09D4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		D0598CEF8166DE17CB996AFED0A32071 /* UICollectionViewCell+Tools.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UICollectionViewCell+Tools.swift"; path = "GridTimerView/Extensions/UICollectionViewCell+Tools.swift"; sourceTree = "<group>"; };
-		D2880B21C22281E458BD58D22907A6F9 /* GridTimerView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GridTimerView.framework; path = GridTimerView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2880B21C22281E458BD58D22907A6F9 /* GridTimerView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GridTimerView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4088B9C8E32A47208D7F59EBABB42BA /* RuleView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RuleView.swift; path = GridTimerView/RuleView.swift; sourceTree = "<group>"; };
 		D7CA9ABE80D1F765C53F9D5851766A21 /* GridTimerView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GridTimerView-umbrella.h"; sourceTree = "<group>"; };
 		E98DBA69B9F5B522A822C29A9279DA6B /* GridTimerView+DataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "GridTimerView+DataSource.swift"; path = "GridTimerView/GridTimerView+DataSource.swift"; sourceTree = "<group>"; };
@@ -201,7 +202,6 @@
 				E122851AE65AAC25CEF7655A2A8B66FA /* Resources */,
 				86349C039A286A56D9F0E64822C8221D /* Support Files */,
 			);
-			name = GridTimerView;
 			path = GridTimerView;
 			sourceTree = "<group>";
 		};
@@ -306,6 +306,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E37D65E62140B29A00B184AA /* GridTimerView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,11 +439,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-Example/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-Example/Pods-Example.modulemap";
 				OTHER_LDFLAGS = "";
@@ -478,11 +475,7 @@
 				INFOPLIST_FILE = "Target Support Files/GridTimerView/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/GridTimerView/GridTimerView.modulemap";
 				PRODUCT_MODULE_NAME = GridTimerView;
 				PRODUCT_NAME = GridTimerView;
@@ -515,19 +508,14 @@
 				INFOPLIST_FILE = "Target Support Files/GridTimerView/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/GridTimerView/GridTimerView.modulemap";
 				PRODUCT_MODULE_NAME = GridTimerView;
 				PRODUCT_NAME = GridTimerView;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -618,11 +606,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-Example/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-Example/Pods-Example.modulemap";
 				OTHER_LDFLAGS = "";
@@ -632,8 +616,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";

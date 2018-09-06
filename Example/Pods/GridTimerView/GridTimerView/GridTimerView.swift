@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol GridTimerViewDataSource: class {
+public protocol GridTimerViewDataSource: class {
     func numberOfSections(inGridTimerView: GridTimerView) -> Int
     func cellHeaderHeight(inGridTimerView: GridTimerView) -> CGFloat
     func cellItemHeight(inGridTimerView: GridTimerView) -> CGFloat
@@ -16,72 +16,72 @@ protocol GridTimerViewDataSource: class {
     func gridTimerView(gridTimerView: GridTimerView, timeDurationForIndexPath indexPath: IndexPath) -> Double?
 }
 
-protocol GridTimerViewDelegate: class {
+public protocol GridTimerViewDelegate: class {
     func gridTimerView(gridTimerView: GridTimerView, didHighlightItemAtIndexPath indexPath: IndexPath)
     func gridTimerView(gridTimerView: GridTimerView, didSelectItemAtIndexPath indexPath: IndexPath)
 }
 
-public class GridTimerView: UIView {
+open class GridTimerView: UIView {
     
     @IBOutlet private var contentView: UIView!
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak open var collectionView: UICollectionView!
     @IBOutlet weak private var ruleView: RuleView!
     @IBOutlet weak private var timerLineView: UIView!
     
-    weak var dataSource: GridTimerViewDataSource?
-    weak var delegate: GridTimerViewDelegate?
+    weak open var dataSource: GridTimerViewDataSource?
+    weak open var delegate: GridTimerViewDelegate?
     
-    var ruleFont = UIFont.systemFont(ofSize: 10, weight: .semibold) {
+    open var ruleFont = UIFont.systemFont(ofSize: 10, weight: .semibold) {
         didSet {
             ruleView.ruleFont = ruleFont
         }
     }
-    var ruleTextColor = UIColor.lightGray {
+    open var ruleTextColor = UIColor.lightGray {
         didSet {
             ruleView.ruleTextColor = ruleTextColor
         }
     }
-    var ruleDaysFrom = 1 {
+    open var ruleDaysFrom = 1 {
         didSet {
             ruleView.ruleDaysFrom = ruleDaysFrom
         }
     }
-    var ruleDaysTo = 2 {
+    open var ruleDaysTo = 2 {
         didSet {
             ruleView.ruleDaysTo = ruleDaysTo
         }
     }
-    var ruleBackgroundColor = UIColor.darkGray {
+    open var ruleBackgroundColor = UIColor.darkGray {
         didSet {
             ruleView.ruleBackgroundColor = ruleBackgroundColor
         }
     }
-    var ruleColor = UIColor.white {
+    open var ruleColor = UIColor.white {
         didSet {
             ruleView.ruleColor = ruleColor
         }
     }
-    var timerFont = UIFont.systemFont(ofSize: 12, weight: .semibold) {
+    open var timerFont = UIFont.systemFont(ofSize: 12, weight: .semibold) {
         didSet {
             ruleView.timerFont = timerFont
         }
     }
-    var timerColor = UIColor.blue {
+    open var timerColor = UIColor.blue {
         didSet {
             ruleView.timerColor = timerColor
         }
     }
-    var timerTextColor = UIColor.white {
+    open var timerTextColor = UIColor.white {
         didSet {
             ruleView.timerTextColor = timerTextColor
         }
     }
-    var lineColor = UIColor.blue {
+    open var lineColor = UIColor.blue {
         didSet {
             timerLineView.backgroundColor = lineColor
         }
     }
-    var selectedItemColor = UIColor.blue
+    open var selectedItemColor = UIColor.blue
     
     private var refresher: UIRefreshControl?
     private var firstLoad = false
@@ -145,17 +145,17 @@ public class GridTimerView: UIView {
         refresher?.endRefreshing()
     }
     
-    func scrollToDate(date: Date) {
+    open func scrollToDate(date: Date) {
         let offsetY = collectionView.contentOffset.y
         let offsetX = CGFloat(date.timeIntervalSince1970 - Date.add(days: -ruleDaysFrom).timeIntervalSince1970)*96.2/3600 - screenSize.width/2
         collectionView.setContentOffset(CGPoint(x: offsetX, y: offsetY), animated: true)
     }
     
-    func cellSectionForIndexPath(indexPath: IndexPath) -> UICollectionReusableView? {
+    open func cellSectionForIndexPath(indexPath: IndexPath) -> UICollectionReusableView? {
         return collectionView.supplementaryView(forElementKind: UICollectionElementKindSectionHeader, at: IndexPath(item: 0, section: indexPath.section))
     }
     
-    func register<T: UICollectionViewCell>(type: T.Type) {
+    open func register<T: UICollectionViewCell>(type: T.Type) {
         collectionView.register(type.nib, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: type.uniqueIdentifier)
     }
 }

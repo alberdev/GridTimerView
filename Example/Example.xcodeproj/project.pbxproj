@@ -20,8 +20,8 @@
 		E37D65BD21409E6A00B184AA /* UIColor+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37D65AF21409E6A00B184AA /* UIColor+Tools.swift */; };
 		E37D65BE21409E6A00B184AA /* Array+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37D65B021409E6A00B184AA /* Array+Tools.swift */; };
 		E37D65BF21409E6A00B184AA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E37D65B121409E6A00B184AA /* Images.xcassets */; };
-		E37D65C021409E6A00B184AA /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E37D65B321409E6A00B184AA /* MainViewController.xib */; };
 		E37D65C121409E6A00B184AA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37D65B421409E6A00B184AA /* MainViewController.swift */; };
+		E37D65C32140A52200B184AA /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E37D65C22140A52200B184AA /* MainViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,8 +42,8 @@
 		E37D65AF21409E6A00B184AA /* UIColor+Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Tools.swift"; sourceTree = "<group>"; };
 		E37D65B021409E6A00B184AA /* Array+Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Tools.swift"; sourceTree = "<group>"; };
 		E37D65B121409E6A00B184AA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		E37D65B321409E6A00B184AA /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		E37D65B421409E6A00B184AA /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		E37D65C22140A52200B184AA /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,8 +157,8 @@
 		E37D65B221409E6A00B184AA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				E37D65B321409E6A00B184AA /* MainViewController.xib */,
 				E37D65B421409E6A00B184AA /* MainViewController.swift */,
+				E37D65C22140A52200B184AA /* MainViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -227,7 +227,7 @@
 				E37D65BF21409E6A00B184AA /* Images.xcassets in Resources */,
 				E37D65B921409E6A00B184AA /* SectionCollectionViewCell.xib in Resources */,
 				E37D659B214099DF00B184AA /* LaunchScreen.storyboard in Resources */,
-				E37D65C021409E6A00B184AA /* MainViewController.xib in Resources */,
+				E37D65C32140A52200B184AA /* MainViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,7 +435,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -455,7 +455,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.albertoaznar.Example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

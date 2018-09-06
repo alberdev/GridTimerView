@@ -10,14 +10,20 @@ import UIKit
 import GridTimerView
 
 class MainViewController: UIViewController {
-
-    @IBOutlet weak var gridTimerView: GridTimerView!
+    
+    var gridTimerView: GridTimerView?
     
     private var sections = SectionsFactory.generateSections()
     private var firstLoad = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        gridTimerView = GridTimerView()
+        //let bundle = Bundle(for: GridTimerView.self)
+        //let nib = UINib(nibName: "GridTimerView", bundle: bundle)
+        //gridTimerView = bundle.loadNibNamed("GridTimerView", owner: nil, options: nil)?.first as? GridTimerView
+        //view.addSubview(gridTimerView!)
         setupNavigation()
         setupGridTimerView()
     }
@@ -25,13 +31,13 @@ class MainViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if !firstLoad {
-            gridTimerView.scrollToDate(date: Date())
+            gridTimerView?.scrollToDate(date: Date())
             firstLoad = true
         }
     }
     
     @objc func didPressTodayButton(_ sender: UIButton) {
-        gridTimerView.scrollToDate(date: Date())
+        gridTimerView?.scrollToDate(date: Date())
     }
     
     public func itemAt(_ index: Int) -> Section? {
@@ -55,14 +61,14 @@ class MainViewController: UIViewController {
     }
     
     private func setupGridTimerView() {
-        gridTimerView.dataSource = self
-        gridTimerView.delegate = self
-        gridTimerView.ruleColor = Colors.White
-        gridTimerView.ruleBackgroundColor = Colors.Black
-        gridTimerView.timerColor = Colors.Fucsia
-        gridTimerView.lineColor = Colors.Fucsia
-        gridTimerView.selectedItemColor = Colors.Fucsia
-        gridTimerView.register(type: SectionCollectionViewCell.self)
+        gridTimerView?.dataSource = self
+        gridTimerView?.delegate = self
+        gridTimerView?.ruleColor = Colors.White
+        gridTimerView?.ruleBackgroundColor = Colors.Black
+        gridTimerView?.timerColor = Colors.Fucsia
+        gridTimerView?.lineColor = Colors.Fucsia
+        gridTimerView?.selectedItemColor = Colors.Fucsia
+        gridTimerView?.register(type: SectionCollectionViewCell.self)
     }
 }
 

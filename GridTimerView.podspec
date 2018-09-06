@@ -15,7 +15,7 @@ s.ios.deployment_target = '11.4'
 s.name = "GridTimerView"
 s.summary = "GridTimerView shows a schedule with timer controller. Each cell can manage multiple events. Used for listing TV programs shows in a table."
 s.requires_arc = true
-s.version = "0.1.3"
+s.version = "0.1.4"
 
 # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 

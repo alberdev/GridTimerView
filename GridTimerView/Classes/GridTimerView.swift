@@ -99,7 +99,7 @@ open class GridTimerView: UIView {
     }
     
     private func commonInit() {
-        fromNib()
+        _ = fromNib()
 //        let bundle = Bundle(for: GridTimerView.self)
 //        bundle.loadNibNamed("GridTimerView", owner: self, options: nil)
 ////        if let path = bundle.path(forResource: "GridTimerView", ofType: "bundle") {

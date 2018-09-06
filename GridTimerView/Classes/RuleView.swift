@@ -81,7 +81,7 @@ class RuleView: UIView {
     }
     
     private func commonInit() {
-        fromNib()
+        _ = fromNib()
     }
     
     private func setupScroll() {

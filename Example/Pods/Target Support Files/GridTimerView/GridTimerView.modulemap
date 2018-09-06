@@ -1,6 +1,0 @@
-framework module GridTimerView {
-  umbrella header "GridTimerView-umbrella.h"
-
-  export *
-  module * { export * }
-}

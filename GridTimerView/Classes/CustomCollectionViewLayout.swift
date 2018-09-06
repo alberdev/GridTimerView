@@ -1,9 +1,9 @@
 //
 //  CustomCollectionViewLayout.swift
-//  TableTimer
+//  GridTimerView
 //
-//  Created by Alberto Aznar de los Ríos on 5/9/18.
-//  Copyright © 2018 Alberto Aznar de los Ríos. All rights reserved.
+//  Created by Alberto Aznar on 5/9/18.
+//  Copyright © 2018 Alberto Aznar. All rights reserved.
 //
 
 import UIKit

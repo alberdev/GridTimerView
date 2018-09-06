@@ -26,4 +26,4 @@ Alberto Aznar, info@alberdev.com
 
 ## License
 
-GridTimerView is available under the MIT license. See the LICENSE file for more info.
+GridTimerView is available under the MIT liceßnse. See the LICENSE file for more info.

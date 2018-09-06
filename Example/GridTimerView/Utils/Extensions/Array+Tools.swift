@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  GridTimerView
 //
-//  Created by alberdev on 09/05/2018.
-//  Copyright (c) 2018 alberdev. All rights reserved.
+//  Created by Alberto Aznar on 09/05/2018.
+//  Copyright (c) 2018 Alberto Aznar. All rights reserved.
 //
 
 import Foundation

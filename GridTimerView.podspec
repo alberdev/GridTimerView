@@ -1,42 +1,52 @@
 #
-# Be sure to run `pod lib lint GridTimerView.podspec' to ensure this is a
-# valid spec before submitting.
+#  Be sure to run `pod spec lint GridTimerView.podspec' to ensure this is a
+#  valid spec and to remove all comments including this before submitting the spec.
 #
-# Any lines starting with a # are optional, but their use is encouraged
-# To learn more about a Podspec see https://guides.cocoapods.org/syntax/podspec.html
+#  To learn more about Podspec attributes see http://docs.cocoapods.org/specification.html
+#  To see working Podspecs in the CocoaPods repo see https://github.com/CocoaPods/Specs/
 #
 
 Pod::Spec.new do |s|
-  s.name             = 'GridTimerView'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of GridTimerView.'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
-
-  s.description      = <<-DESC
-TODO: Add long description of the pod here.
-                       DESC
-
-  s.homepage         = 'https://github.com/alberdev/GridTimerView'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
-  s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'alberdev' => 'albertokr@gmail.com' }
-  s.source           = { :git => 'https://github.com/alberdev/GridTimerView.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
-
-  s.ios.deployment_target = '8.0'
-
-  s.source_files = 'GridTimerView/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'GridTimerView' => ['GridTimerView/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+    
+    # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
+    
+    s.platform = :ios
+    s.ios.deployment_target = '11.4'
+    s.name = 'GridTimerView'
+    s.summary = 'GridTimerView shows a schedule with timer controller. Each cell can manage multiple events. Used for listing TV programs shows in a table.'
+    s.requires_arc = true
+    s.version = '0.1.5'
+    
+    # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
+    
+    s.license = { :type => 'MIT', :file => 'LICENSE' }
+    
+    # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
+    
+    s.author = { 'Alberto Aznar' => 'info@alberdev.com' }
+    s.homepage = 'https://github.com/alberdev/GridTimerView'
+    
+    # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
+    
+    s.source = { :git => 'https://github.com/alberdev/GridTimerView.git',
+        :tag => '#{s.version}' }
+    
+    # ――― Project Linking ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
+    
+    s.framework = 'UIKit'
+    # s.dependency 'Alamofire', '~> 4.7'
+    # s.dependency 'MBProgressHUD', '~> 1.1.0'
+    
+    # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
+    
+    s.source_files = 'GridTimerView/**/*.{swift}'
+    
+    # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
+    
+    s.resources = 'GridTimerView/**/*.{png,jpeg,jpg,storyboard,xib,xcassets}'
+    
+    # ――― Swift Version ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
+    
+    s.swift_version = '4.2'
+    
 end

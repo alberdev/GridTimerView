@@ -22,7 +22,7 @@ pod 'GridTimerView'
 
 ## Author
 
-alberdev, albertokr@gmail.com
+Alberto Aznar, info@alberdev.com
 
 ## License
 

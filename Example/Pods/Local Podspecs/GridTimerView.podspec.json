@@ -1,0 +1,22 @@
+{
+  "name": "GridTimerView",
+  "version": "0.1.0",
+  "summary": "A short description of GridTimerView.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/alberdev/GridTimerView",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "alberdev": "albertokr@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/alberdev/GridTimerView.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "11.4"
+  },
+  "source_files": "GridTimerView/Classes/**/*"
+}

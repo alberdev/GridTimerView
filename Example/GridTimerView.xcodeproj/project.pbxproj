@@ -8,13 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		1DCBFFA6A93C5C2D54AB3A14 /* Pods_GridTimerView_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BCB2764B9A8B3CC7C24D286 /* Pods_GridTimerView_Example.framework */; };
-		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
-		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
-		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
-		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		E33BD645BAE34DAE30EAA33B /* Pods_GridTimerView_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8648351EDF0A42C6BF1363DF /* Pods_GridTimerView_Tests.framework */; };
+		E37D661421412AFD00B184AA /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E37D660421412AFC00B184AA /* MainViewController.xib */; };
+		E37D661521412AFD00B184AA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37D660521412AFC00B184AA /* MainViewController.swift */; };
+		E37D661621412AFD00B184AA /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37D660821412AFC00B184AA /* Colors.swift */; };
+		E37D661721412AFD00B184AA /* UIColor+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37D660A21412AFC00B184AA /* UIColor+Tools.swift */; };
+		E37D661821412AFD00B184AA /* Array+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37D660B21412AFC00B184AA /* Array+Tools.swift */; };
+		E37D661921412AFD00B184AA /* SectionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E37D660D21412AFD00B184AA /* SectionCollectionViewCell.xib */; };
+		E37D661A21412AFD00B184AA /* SectionCollectionViewCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37D660E21412AFD00B184AA /* SectionCollectionViewCellItem.swift */; };
+		E37D661B21412AFD00B184AA /* SectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37D660F21412AFD00B184AA /* SectionCollectionViewCell.swift */; };
+		E37D661C21412AFD00B184AA /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37D661121412AFD00B184AA /* Item.swift */; };
+		E37D661D21412AFD00B184AA /* SectionsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37D661221412AFD00B184AA /* SectionsFactory.swift */; };
+		E37D661E21412AFD00B184AA /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37D661321412AFD00B184AA /* Section.swift */; };
+		E37D662021412B1500B184AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37D661F21412B1400B184AA /* AppDelegate.swift */; };
+		E37D662221412B3000B184AA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E37D662121412B3000B184AA /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,23 +39,32 @@
 /* Begin PBXFileReference section */
 		0B8F7BF22E15D75DD4C7449A /* Pods-GridTimerView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GridTimerView_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-GridTimerView_Example/Pods-GridTimerView_Example.release.xcconfig"; sourceTree = "<group>"; };
 		0BCB2764B9A8B3CC7C24D286 /* Pods_GridTimerView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GridTimerView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1C8C3D3B723048DB6021E931 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		1C8C3D3B723048DB6021E931 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		5E2829925FBC9DC79A3DA977 /* Pods-GridTimerView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GridTimerView_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GridTimerView_Tests/Pods-GridTimerView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* GridTimerView_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GridTimerView_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* GridTimerView_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GridTimerView_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		637D1E4F46FC8A89B4E43627 /* GridTimerView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = GridTimerView.podspec; path = ../GridTimerView.podspec; sourceTree = "<group>"; };
+		637D1E4F46FC8A89B4E43627 /* GridTimerView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = GridTimerView.podspec; path = ../GridTimerView.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		71FD57ED303E943402CE0713 /* Pods-GridTimerView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GridTimerView_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GridTimerView_Tests/Pods-GridTimerView_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		8648351EDF0A42C6BF1363DF /* Pods_GridTimerView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GridTimerView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C379C2B4C50E0507EC73A29F /* Pods-GridTimerView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GridTimerView_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GridTimerView_Example/Pods-GridTimerView_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		DED5DF3A8BD497E7C3CD9033 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		DED5DF3A8BD497E7C3CD9033 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		E37D660421412AFC00B184AA /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		E37D660521412AFC00B184AA /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		E37D660821412AFC00B184AA /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		E37D660A21412AFC00B184AA /* UIColor+Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Tools.swift"; sourceTree = "<group>"; };
+		E37D660B21412AFC00B184AA /* Array+Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Tools.swift"; sourceTree = "<group>"; };
+		E37D660D21412AFD00B184AA /* SectionCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionCollectionViewCell.xib; sourceTree = "<group>"; };
+		E37D660E21412AFD00B184AA /* SectionCollectionViewCellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionCollectionViewCellItem.swift; sourceTree = "<group>"; };
+		E37D660F21412AFD00B184AA /* SectionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionCollectionViewCell.swift; sourceTree = "<group>"; };
+		E37D661121412AFD00B184AA /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		E37D661221412AFD00B184AA /* SectionsFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionsFactory.swift; sourceTree = "<group>"; };
+		E37D661321412AFD00B184AA /* Section.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
+		E37D661F21412B1400B184AA /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E37D662121412B3000B184AA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,10 +120,12 @@
 		607FACD21AFB9204008FA782 /* Example for GridTimerView */ = {
 			isa = PBXGroup;
 			children = (
-				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				607FACD71AFB9204008FA782 /* ViewController.swift */,
-				607FACD91AFB9204008FA782 /* Main.storyboard */,
-				607FACDC1AFB9204008FA782 /* Images.xcassets */,
+				E37D661F21412B1400B184AA /* AppDelegate.swift */,
+				E37D662121412B3000B184AA /* Images.xcassets */,
+				E37D660C21412AFD00B184AA /* Cells */,
+				E37D660321412AFC00B184AA /* Controllers */,
+				E37D661021412AFD00B184AA /* Models */,
+				E37D660621412AFC00B184AA /* Utils */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 			);
@@ -157,6 +177,61 @@
 				71FD57ED303E943402CE0713 /* Pods-GridTimerView_Tests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		E37D660321412AFC00B184AA /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E37D660421412AFC00B184AA /* MainViewController.xib */,
+				E37D660521412AFC00B184AA /* MainViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E37D660621412AFC00B184AA /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E37D660721412AFC00B184AA /* Constants */,
+				E37D660921412AFC00B184AA /* Extensions */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		E37D660721412AFC00B184AA /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				E37D660821412AFC00B184AA /* Colors.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		E37D660921412AFC00B184AA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E37D660A21412AFC00B184AA /* UIColor+Tools.swift */,
+				E37D660B21412AFC00B184AA /* Array+Tools.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E37D660C21412AFD00B184AA /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E37D660D21412AFD00B184AA /* SectionCollectionViewCell.xib */,
+				E37D660E21412AFD00B184AA /* SectionCollectionViewCellItem.swift */,
+				E37D660F21412AFD00B184AA /* SectionCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		E37D661021412AFD00B184AA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E37D661121412AFD00B184AA /* Item.swift */,
+				E37D661221412AFD00B184AA /* SectionsFactory.swift */,
+				E37D661321412AFD00B184AA /* Section.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,6 +287,7 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = BV4J4GZFL4;
 						LastSwiftMigration = 0900;
 					};
 					607FACE41AFB9204008FA782 = {
@@ -245,9 +321,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
+				E37D661921412AFD00B184AA /* SectionCollectionViewCell.xib in Resources */,
+				E37D662221412B3000B184AA /* Images.xcassets in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
-				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
+				E37D661421412AFD00B184AA /* MainViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,15 +343,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-GridTimerView_Example/Pods-GridTimerView_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GridTimerView/GridTimerView.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GridTimerView.framework",
 			);
@@ -288,15 +361,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-GridTimerView_Tests-checkManifestLockResult.txt",
 			);
@@ -310,15 +379,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-GridTimerView_Example-checkManifestLockResult.txt",
 			);
@@ -334,8 +399,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
-				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				E37D661A21412AFD00B184AA /* SectionCollectionViewCellItem.swift in Sources */,
+				E37D661C21412AFD00B184AA /* Item.swift in Sources */,
+				E37D661521412AFD00B184AA /* MainViewController.swift in Sources */,
+				E37D661721412AFD00B184AA /* UIColor+Tools.swift in Sources */,
+				E37D661E21412AFD00B184AA /* Section.swift in Sources */,
+				E37D661D21412AFD00B184AA /* SectionsFactory.swift in Sources */,
+				E37D661621412AFD00B184AA /* Colors.swift in Sources */,
+				E37D661B21412AFD00B184AA /* SectionCollectionViewCell.swift in Sources */,
+				E37D662021412B1500B184AA /* AppDelegate.swift in Sources */,
+				E37D661821412AFD00B184AA /* Array+Tools.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,14 +431,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		607FACD91AFB9204008FA782 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				607FACDA1AFB9204008FA782 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		607FACDE1AFB9204008FA782 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -422,7 +487,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -468,7 +533,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -481,6 +546,7 @@
 			baseConfigurationReference = C379C2B4C50E0507EC73A29F /* Pods-GridTimerView_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = BV4J4GZFL4;
 				INFOPLIST_FILE = GridTimerView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -496,6 +562,7 @@
 			baseConfigurationReference = 0B8F7BF22E15D75DD4C7449A /* Pods-GridTimerView_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = BV4J4GZFL4;
 				INFOPLIST_FILE = GridTimerView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;

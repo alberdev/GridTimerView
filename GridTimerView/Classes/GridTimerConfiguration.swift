@@ -8,6 +8,7 @@
 import Foundation
 
 public struct GridTimerConfiguration {
+    
     public var ruleFont = UIFont.systemFont(ofSize: 10, weight: .semibold)
     public var ruleTextColor = UIColor.lightGray
     public var ruleDaysFrom = 1
@@ -20,4 +21,6 @@ public struct GridTimerConfiguration {
     public var lineColor = UIColor.blue
     public var selectedItemColor = UIColor.blue
     public var unselectedItemColor = UIColor.lightGray
+    
+    public init() {}
 }

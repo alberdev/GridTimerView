@@ -11,11 +11,11 @@ import UIKit
 extension GridTimerView: UICollectionViewDataSource {
     
     public func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return dataSource?.numberOfCells(inGridTimerView: self) ?? 0
+        return dataSource?.numberOfRows(inGridTimerView: self) ?? 0
     }
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSource?.gridTimerView(gridTimerView: self, numberOfEventsInCellIndex: section) ?? 0
+        return dataSource?.gridTimerView(gridTimerView: self, numberOfItemsAtRowIndex: section) ?? 0
     }
     
     public func collectionView(_ collectionView: UICollectionView,
@@ -35,7 +35,7 @@ extension GridTimerView: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        let cell = dataSource.gridTimerView(gridTimerView: self, cellForEventIndex: indexPath.item, inCellIndex: indexPath.section)
+        let cell = dataSource.gridTimerView(gridTimerView: self, viewForItemIndex: indexPath.item, inRowIndex: indexPath.section)
         cell?.indexPath = indexPath
         cell?.delegate = self
         
@@ -46,14 +46,14 @@ extension GridTimerView: UICollectionViewDataSource {
 extension GridTimerView: CustomCollectionViewLayoutDataSource {
     
     func timeDurationForIndexPath(indexPath: IndexPath) -> Double? {
-        return dataSource?.gridTimerView(gridTimerView: self, timeDurationForEventIndex: indexPath.item, inCellIndex: indexPath.section)
+        return dataSource?.gridTimerView(gridTimerView: self, timeDurationForItemIndex: indexPath.item, inRowIndex: indexPath.section)
     }
     
     func cellHeaderHeight() -> CGFloat? {
-        return dataSource?.heightForCell(inGridTimerView: self)
+        return dataSource?.heightForRow(inGridTimerView: self)
     }
     
     func cellItemHeight() -> CGFloat? {
-        return dataSource?.heightForEvent(inGridTimerView: self)
+        return dataSource?.heightForTimelineRow(inGridTimerView: self)
     }
 }

@@ -62,40 +62,39 @@ class MainViewController: UIViewController {
 }
 
 extension MainViewController: GridTimerViewDataSource {
-    
-    func numberOfCells(inGridTimerView: GridTimerView) -> Int {
+    func numberOfRows(inGridTimerView gridTimerView: GridTimerView) -> Int {
         return channels.count
     }
     
-    func heightForCell(inGridTimerView: GridTimerView) -> CGFloat {
+    func heightForRow(inGridTimerView gridTimerView: GridTimerView) -> CGFloat {
         return 66.0
     }
     
-    func heightForEvent(inGridTimerView: GridTimerView) -> CGFloat {
+    func heightForTimelineRow(inGridTimerView gridTimerView: GridTimerView) -> CGFloat {
         return 8.0
     }
     
-    func gridTimerView(gridTimerView: GridTimerView, numberOfEventsInCellIndex cellIndex: Int) -> Int {
-        return channelAt(cellIndex)?.events.count ?? 0
+    func gridTimerView(gridTimerView: GridTimerView, numberOfItemsAtRowIndex rowIndex: Int) -> Int {
+        return channelAt(rowIndex)?.events.count ?? 0
     }
     
-    func gridTimerView(gridTimerView: GridTimerView, timeDurationForEventIndex eventIndex: Int, inCellIndex cellIndex: Int) -> Double? {
+    func gridTimerView(gridTimerView: GridTimerView, timeDurationForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> Double? {
         
         guard
-            let event = eventAt(IndexPath(item: eventIndex, section: cellIndex)),
+            let event = eventAt(IndexPath(item: itemIndex, section: rowIndex)),
             let endTime = event.endTime?.timeIntervalSince1970,
             let initTime = event.initTime?.timeIntervalSince1970
             else { return 0 }
         return Double(endTime - initTime)
     }
     
-    func gridTimerView(gridTimerView: GridTimerView, cellForEventIndex eventIndex: Int, inCellIndex cellIndex: Int) -> GridViewCell? {
+    func gridTimerView(gridTimerView: GridTimerView, viewForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> GridViewCell? {
         
-        let sectionData = channels[cellIndex]
-        let cell = gridTimerView.dequeReusableCell(withType: ChannelCollectionViewCell.self, forCellIndex: cellIndex)
+        let sectionData = channels[rowIndex]
+        let cell = gridTimerView.dequeReusableCell(withType: ChannelCollectionViewCell.self, forRowIndex: rowIndex)
         cell?.source = ChannelCollectionViewCellItem(
-            title: sectionData.events[eventIndex].title,
-            subtitle: sectionData.events[eventIndex].subtitle,
+            title: sectionData.events[itemIndex].title,
+            subtitle: sectionData.events[itemIndex].subtitle,
             image: sectionData.channelImage)
         
         return cell == nil ? ChannelCollectionViewCell() : cell!
@@ -104,27 +103,27 @@ extension MainViewController: GridTimerViewDataSource {
 
 extension MainViewController: GridTimerViewDelegate {
     
-    func gridTimerView(gridTimerView: GridTimerView, didHighlightAtEventIndex eventIndex: Int, inCellIndex cellIndex: Int) {
+    func gridTimerView(gridTimerView: GridTimerView, didHighlightAtItemIndex itemIndex: Int, inRowIndex rowIndex: Int) {
         
-        let sectionData = channels[cellIndex]
-        let sectionCell = gridTimerView.cellForIndex(cellIndex: cellIndex) as? ChannelCollectionViewCell
+        let sectionData = channels[rowIndex]
+        let sectionCell = gridTimerView.cellForRowIndex(rowIndex: rowIndex) as? ChannelCollectionViewCell
         
         var source = ChannelCollectionViewCellItem()
-        source.title = sectionData.events[eventIndex].title
-        source.subtitle = sectionData.events[eventIndex].subtitle
+        source.title = sectionData.events[itemIndex].title
+        source.subtitle = sectionData.events[itemIndex].subtitle
         source.image = sectionData.channelImage
         sectionCell?.source = source
     }
     
-    func gridTimerView(gridTimerView: GridTimerView, didSelectCellAtIndex cellIndex: Int) {
+    func gridTimerView(gridTimerView: GridTimerView, didSelectRowAtIndex rowIndex: Int) {
         
-        let sectionCell = gridTimerView.cellForIndex(cellIndex: cellIndex) as? ChannelCollectionViewCell
+        let sectionCell = gridTimerView.cellForRowIndex(rowIndex: rowIndex) as? ChannelCollectionViewCell
         let vc = DetailViewController()
         vc.source = DetailViewSource(title: sectionCell?.source?.title, subtitle: sectionCell?.source?.subtitle)
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    func gridTimerView(gridTimerView: GridTimerView, didPullToRefresh loading: Bool) {
+    func didPullToRefresh(inGridTimerView gridTimerView: GridTimerView) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             gridTimerView.endRefresh()
         }

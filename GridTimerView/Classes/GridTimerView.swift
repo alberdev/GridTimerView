@@ -96,7 +96,7 @@ open class GridTimerView: UIView {
         UIView.animate(withDuration: 0.3) {
             self.collectionView.contentInset = self.loadingInset
         }
-        delegate?.gridTimerView(gridTimerView: self, didPullToRefresh: true)
+        delegate?.didPullToRefresh(inGridTimerView: self)
     }
 }
 
@@ -108,16 +108,16 @@ extension GridTimerView {
         collectionView.setContentOffset(CGPoint(x: offsetX, y: offsetY), animated: true)
     }
     
-    open func cellForIndex(cellIndex: Int) -> GridViewCell? {
-        return collectionView.supplementaryView(forElementKind: UICollectionElementKindSectionHeader, at: IndexPath(item: 0, section: cellIndex)) as? GridViewCell
+    open func cellForRowIndex(rowIndex: Int) -> GridViewCell? {
+        return collectionView.supplementaryView(forElementKind: UICollectionElementKindSectionHeader, at: IndexPath(item: 0, section: rowIndex)) as? GridViewCell
     }
     
     open func register<T: UICollectionViewCell>(type: T.Type) {
         collectionView.register(type.nib, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: type.uniqueIdentifier)
     }
     
-    open func dequeReusableCell<T: UICollectionViewCell>(withType type: T.Type, forCellIndex cellIndex: Int) -> T? {
-        return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: type.uniqueIdentifier, for: IndexPath(item: 0, section: cellIndex)) as? T
+    open func dequeReusableCell<T: UICollectionViewCell>(withType type: T.Type, forRowIndex rowIndex: Int) -> T? {
+        return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: type.uniqueIdentifier, for: IndexPath(item: 0, section: rowIndex)) as? T
     }
     
     open func endRefresh() {

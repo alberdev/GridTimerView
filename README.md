@@ -123,42 +123,42 @@ gridTimerView.configuration = configuration
 
 Is needed to show your own cells with events in collection table.
 
-`numberOfSections` returns number of cells in the table (no events)
+`numberOfRows ` returns number of cells in the table (no events)
 
 ```swift
-func numberOfCells(inGridTimerView: GridTimerView) -> Int {
+func numberOfRows(inGridTimerView gridTimerView: GridTimerView) -> Int {
     return channels.count
 }
 ```
 
-`cellHeaderHeight ` returns height of custom cell in the table (no events)
+`heightForRow ` returns height of custom cell in the table (no events)
 
 ```swift
-func heightForCell(inGridTimerView: GridTimerView) -> CGFloat {
+func heightForRow(inGridTimerView gridTimerView: GridTimerView) -> CGFloat {
     return 66.0
 }
 ```
 
-`cellItemHeight ` returns height of highlighted events
+`heightForTimelineRow ` returns height of highlighted events
 
 ```swift
-func heightForEvent(inGridTimerView: GridTimerView) -> CGFloat {
+func heightForTimelineRow(inGridTimerView gridTimerView: GridTimerView) -> CGFloat {
     return 8.0
 }
 ```
 
-`numberOfItemsInSection ` returns number of events in cell
+`numberOfItemsAtRowIndex ` returns number of events in cell
 
 ```swift
-func gridTimerView(gridTimerView: GridTimerView, numberOfEventsInCellIndex cellIndex: Int) -> Int {
+func gridTimerView(gridTimerView: GridTimerView, numberOfItemsAtRowIndex rowIndex: Int) -> Int {
     return channelAt(cellIndex)?.events.count ?? 0
 }
 ```
 
-`cellForIndexPath ` returns custom cell view (no event)
+`viewForItemIndex ` returns custom cell view (no event)
 
 ```swift
-func gridTimerView(gridTimerView: GridTimerView, cellForEventIndex eventIndex: Int, inCellIndex cellIndex: Int) -> GridViewCell? {
+func gridTimerView(gridTimerView: GridTimerView, viewForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> GridViewCell? {
         
     let sectionData = channels[cellIndex]
     let cell = gridTimerView.dequeReusableCell(withType: ChannelCollectionViewCell.self, forCellIndex: cellIndex)
@@ -171,10 +171,10 @@ func gridTimerView(gridTimerView: GridTimerView, cellForEventIndex eventIndex: I
 }
 ```
 
-`timeDurationForIndexPath ` returns event duration
+`timeDurationForItemIndex ` returns event duration
 
 ```swift
-func gridTimerView(gridTimerView: GridTimerView, timeDurationForEventIndex eventIndex: Int, inCellIndex cellIndex: Int) -> Double? {
+func gridTimerView(gridTimerView: GridTimerView, timeDurationForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> Double? {
         
     guard
         let event = eventAt(IndexPath(item: eventIndex, section: cellIndex)),
@@ -187,42 +187,22 @@ func gridTimerView(gridTimerView: GridTimerView, timeDurationForEventIndex event
 
 ### Delegates
 
-`didHighlightItemAtIndexPath ` is called when event is highlighted
+`didHighlightAtItemIndex ` is called when event is highlighted
 
 ```swift
-func gridTimerView(gridTimerView: GridTimerView, didHighlightAtEventIndex eventIndex: Int, inCellIndex cellIndex: Int) {
-        
-    let sectionData = channels[cellIndex]
-    let sectionCell = gridTimerView.cellForIndex(cellIndex: cellIndex) as? ChannelCollectionViewCell
-    
-    var source = ChannelCollectionViewCellItem()
-    source.title = sectionData.events[eventIndex].title
-    source.subtitle = sectionData.events[eventIndex].subtitle
-    source.image = sectionData.channelImage
-    sectionCell?.source = source
-}
+func gridTimerView(gridTimerView: GridTimerView, didHighlightAtItemIndex itemIndex: Int, inRowIndex rowIndex: Int)
 ```
 
-`didSelectItemAtIndexPath ` is called when cell is selected
+`didSelectRowAtIndex ` is called when cell is selected
 
 ```swift
-func gridTimerView(gridTimerView: GridTimerView, didSelectCellAtIndex cellIndex: Int) {
-        
-    let sectionCell = gridTimerView.cellForIndex(cellIndex: cellIndex) as? ChannelCollectionViewCell
-    let vc = DetailViewController()
-    vc.source = DetailViewSource(title: sectionCell?.source?.title, subtitle: sectionCell?.source?.subtitle)
-    navigationController?.pushViewController(vc, animated: true)
-}
+func gridTimerView(gridTimerView: GridTimerView, didSelectRowAtIndex rowIndex: Int) 
 ```
 
 `didPullToRefresh` is called when you refresh the table
 
 ```swift
-func gridTimerView(gridTimerView: GridTimerView, didPullToRefresh loading: Bool) {
-    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-        gridTimerView.endRefresh()
-    }
-}
+func didPullToRefresh(inGridTimerView gridTimerView: GridTimerView)
 ```
 
 ### Extra
@@ -236,7 +216,7 @@ gridTimerView.scrollToDate(date: Date())
 With this method you can obtain cell by index
 
 ```swift
-gridTimerView.cellForIndex(cellIndex: cellIndex)
+gridTimerView.cellForRowIndex(rowIndex: rowIndex)
 ```
 
 Register your own cell is needed for reuse in table
@@ -248,7 +228,7 @@ gridTimerView.register(type: ChannelCollectionViewCell.self)
 Deque reusable custom cell
 
 ```swift
-gridTimerView.dequeReusableCell(withType: ChannelCollectionViewCell.self, forCellIndex: cellIndex)
+gridTimerView.dequeReusableCell(withType: ChannelCollectionViewCell.self, forRowIndex: rowIndex)
 ```
 
 End refreshing table

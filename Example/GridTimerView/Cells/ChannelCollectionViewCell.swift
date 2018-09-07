@@ -9,14 +9,14 @@
 import UIKit
 import GridTimerView
 
-class SectionCollectionViewCell: GridCollectionViewCell {
+class ChannelCollectionViewCell: GridViewCell {
 
-    @IBOutlet weak var sectionImageView: UIImageView!
+    @IBOutlet weak var channelImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var cellContentView: UIView!
     
-    var source: SectionCollectionViewCellItem? {
+    var source: ChannelCollectionViewCellItem? {
         didSet {
             fill(source: source)
         }
@@ -34,15 +34,15 @@ class SectionCollectionViewCell: GridCollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        sectionImageView.layer.cornerRadius = 5
+        channelImageView.layer.cornerRadius = 5
     }
     
     // ---------------------------------------------------------
     // Private
     // ---------------------------------------------------------
 
-    private func fill(source: SectionCollectionViewCellItem?) {
-        sectionImageView.image = source?.image
+    private func fill(source: ChannelCollectionViewCellItem?) {
+        channelImageView.image = source?.image
         titleLabel.text = source?.title
         subtitleLabel.text = source?.subtitle
     }

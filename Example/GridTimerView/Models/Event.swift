@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Item {
+struct Event {
     var initTime: Date?
     var endTime: Date?
     var title = ""

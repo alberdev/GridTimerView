@@ -5,7 +5,7 @@
   },
   "summary": "GridTimerView shows a schedule with timer controller. Each cell can manage multiple events. Used for listing TV programs shows in a table.",
   "requires_arc": true,
-  "version": "0.1.6",
+  "version": "0.1.7",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -16,7 +16,7 @@
   "homepage": "https://github.com/alberdev/GridTimerView",
   "source": {
     "git": "https://github.com/alberdev/GridTimerView.git",
-    "tag": "0.1.6"
+    "tag": "0.1.7"
   },
   "frameworks": "UIKit",
   "source_files": "GridTimerView/**/*.{swift}",

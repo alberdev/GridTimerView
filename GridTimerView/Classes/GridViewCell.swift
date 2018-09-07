@@ -8,19 +8,19 @@
 
 import UIKit
 
-protocol GridCollectionViewCellDelegate: class {
-    func gridCollectionViewCell(gridCollectionViewCell: GridCollectionViewCell, didSelect selected: Bool)
+protocol GridViewCellDelegate: class {
+    func gridViewCell(gridViewCell: GridViewCell, didSelect selected: Bool)
 }
 
-open class GridCollectionViewCell: UICollectionViewCell {
+open class GridViewCell: UICollectionViewCell {
     
-    weak var delegate: GridCollectionViewCellDelegate?
+    weak var delegate: GridViewCellDelegate?
     var indexPath: IndexPath?
     
     override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         isHighlighted = true
-        delegate?.gridCollectionViewCell(gridCollectionViewCell: self, didSelect: true)
+        delegate?.gridViewCell(gridViewCell: self, didSelect: true)
     }
     
     override open func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {

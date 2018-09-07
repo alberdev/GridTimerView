@@ -13,7 +13,7 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var gridTimerView: GridTimerView!
     
-    private var sections = SectionsFactory.generateSections()
+    public var channels = ChannelFactory.generateChannels()
     private var firstLoad = false
     
     override func viewDidLoad() {
@@ -32,14 +32,6 @@ class MainViewController: UIViewController {
     
     @objc func didPressTodayButton(_ sender: UIButton) {
         gridTimerView?.scrollToDate(date: Date())
-    }
-    
-    public func itemAt(_ index: Int) -> Section? {
-        return self.sections.element(at: index)
-    }
-    
-    public func itemAt(_ indexPath: IndexPath) -> Item? {
-        return self.itemAt(indexPath.section)?.items.element(at: indexPath.row)
     }
     
     private func setupNavigation() {
@@ -63,73 +55,78 @@ class MainViewController: UIViewController {
         configuration.lineColor = Colors.Fucsia
         configuration.selectedItemColor = Colors.Fucsia
         gridTimerView.configuration = configuration
-        gridTimerView?.register(type: SectionCollectionViewCell.self)
-        gridTimerView?.dataSource = self
-        gridTimerView?.delegate = self
+        gridTimerView.register(type: ChannelCollectionViewCell.self)
+        gridTimerView.dataSource = self
+        gridTimerView.delegate = self
     }
 }
 
 extension MainViewController: GridTimerViewDataSource {
     
-    func numberOfSections(inGridTimerView: GridTimerView) -> Int {
-        return sections.count
+    func numberOfCells(inGridTimerView: GridTimerView) -> Int {
+        return channels.count
     }
     
-    func cellHeaderHeight(inGridTimerView: GridTimerView) -> CGFloat {
+    func heightForCell(inGridTimerView: GridTimerView) -> CGFloat {
         return 66.0
     }
     
-    func cellItemHeight(inGridTimerView: GridTimerView) -> CGFloat {
+    func heightForEvent(inGridTimerView: GridTimerView) -> CGFloat {
         return 8.0
     }
     
-    func gridTimerView(gridTimerView: GridTimerView, numberOfItemsInSection section: Int) -> Int {
-        return self.itemAt(section)?.items.count ?? 0
+    func gridTimerView(gridTimerView: GridTimerView, numberOfEventsInCellIndex cellIndex: Int) -> Int {
+        return channelAt(cellIndex)?.events.count ?? 0
     }
     
-    func gridTimerView(gridTimerView: GridTimerView, collectionView: UICollectionView, cellForIndexPath indexPath: IndexPath) -> UICollectionViewCell {
+    func gridTimerView(gridTimerView: GridTimerView, timeDurationForEventIndex eventIndex: Int, inCellIndex cellIndex: Int) -> Double? {
         
-        let sectionData = sections[indexPath.section]
-        let cell = SectionCollectionViewCell.reuse(
-            collectionView,
-            indexPath: indexPath,
-            kind: UICollectionElementKindSectionHeader) as? SectionCollectionViewCell
-        
-        cell?.source = SectionCollectionViewCellItem(
-            title: sectionData.items[indexPath.item].title,
-            subtitle: sectionData.items[indexPath.item].subtitle,
-            image: sectionData.channelImage)
-        
-        return cell == nil ? SectionCollectionViewCell() : cell!
-    }
-    
-    func gridTimerView(gridTimerView: GridTimerView, timeDurationForIndexPath indexPath: IndexPath) -> Double? {
         guard
-            let item = itemAt(indexPath),
-            let endTime = item.endTime?.timeIntervalSince1970,
-            let initTime = item.initTime?.timeIntervalSince1970
+            let event = eventAt(IndexPath(item: eventIndex, section: cellIndex)),
+            let endTime = event.endTime?.timeIntervalSince1970,
+            let initTime = event.initTime?.timeIntervalSince1970
             else { return 0 }
         return Double(endTime - initTime)
+    }
+    
+    func gridTimerView(gridTimerView: GridTimerView, cellForEventIndex eventIndex: Int, inCellIndex cellIndex: Int) -> GridViewCell? {
+        
+        let sectionData = channels[cellIndex]
+        let cell = gridTimerView.dequeReusableCell(withType: ChannelCollectionViewCell.self, forCellIndex: cellIndex)
+        cell?.source = ChannelCollectionViewCellItem(
+            title: sectionData.events[eventIndex].title,
+            subtitle: sectionData.events[eventIndex].subtitle,
+            image: sectionData.channelImage)
+        
+        return cell == nil ? ChannelCollectionViewCell() : cell!
     }
 }
 
 extension MainViewController: GridTimerViewDelegate {
     
-    func gridTimerView(gridTimerView: GridTimerView, didHighlightItemAtIndexPath indexPath: IndexPath) {
-        let sectionData = sections[indexPath.section]
-        let sectionCell = gridTimerView.cellSectionForIndexPath(indexPath: indexPath) as? SectionCollectionViewCell
+    func gridTimerView(gridTimerView: GridTimerView, didHighlightAtEventIndex eventIndex: Int, inCellIndex cellIndex: Int) {
         
-        var source = SectionCollectionViewCellItem()
-        source.title = sectionData.items[indexPath.item].title
-        source.subtitle = sectionData.items[indexPath.item].subtitle
+        let sectionData = channels[cellIndex]
+        let sectionCell = gridTimerView.cellForIndex(cellIndex: cellIndex) as? ChannelCollectionViewCell
+        
+        var source = ChannelCollectionViewCellItem()
+        source.title = sectionData.events[eventIndex].title
+        source.subtitle = sectionData.events[eventIndex].subtitle
         source.image = sectionData.channelImage
         sectionCell?.source = source
     }
     
-    func gridTimerView(gridTimerView: GridTimerView, didSelectItemAtIndexPath indexPath: IndexPath) {
-        let sectionCell = gridTimerView.cellSectionForIndexPath(indexPath: indexPath) as? SectionCollectionViewCell
+    func gridTimerView(gridTimerView: GridTimerView, didSelectCellAtIndex cellIndex: Int) {
+        
+        let sectionCell = gridTimerView.cellForIndex(cellIndex: cellIndex) as? ChannelCollectionViewCell
         let vc = DetailViewController()
         vc.source = DetailViewSource(title: sectionCell?.source?.title, subtitle: sectionCell?.source?.subtitle)
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func gridTimerView(gridTimerView: GridTimerView, didPullToRefresh loading: Bool) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            gridTimerView.endRefresh()
+        }
     }
 }

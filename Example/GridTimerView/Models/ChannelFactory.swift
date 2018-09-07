@@ -8,11 +8,11 @@
 
 import UIKit
 
-struct SectionsFactory {
+struct ChannelFactory {
     
-    static func generateSections() -> [Section] {
+    static func generateChannels() -> [Channel] {
         
-        let channels = [
+        let channelsImages = [
             UIImage(named: "Channel Fox"),
             UIImage(named: "Channel Amc"),
             UIImage(named: "Channel Axn"),
@@ -108,28 +108,28 @@ struct SectionsFactory {
             ]
         ]
         
-        var sections = [Section]()
+        var channels = [Channel]()
         for i in 0 ..< 10 {
             
-            var items = [Item]()
+            var events = [Event]()
             var date = Date.add(days: -1)
             for _ in 0 ..< 100 {
-                let randomItem = randomShows[i][Int(arc4random_uniform(6))]
+                let randomEvent = randomShows[i][Int(arc4random_uniform(6))]
                 let endDate = date.addingTimeInterval(TimeInterval(arc4random_uniform(100)))
-                var item = Item()
-                item.initTime = date
-                item.endTime = endDate
-                item.title = randomItem.0
-                item.subtitle = randomItem.1
-                items.append(item)
+                var event = Event()
+                event.initTime = date
+                event.endTime = endDate
+                event.title = randomEvent.0
+                event.subtitle = randomEvent.1
+                events.append(event)
                 date = endDate
             }
             
-            var section = Section()
-            section.items = items
-            section.channelImage = channels[i]
-            sections.append(section)
+            var channel = Channel()
+            channel.events = events
+            channel.channelImage = channelsImages[i]
+            channels.append(channel)
         }
-        return sections
+        return channels
     }
 }

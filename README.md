@@ -45,7 +45,7 @@ Once you've installed this pod, you can follow next steps. It's really simple:
 
 ### UIView in your xib / storyboard
 
-Add a `UIView` in the xib you want to place GridTimerView. Then you have to input the class name in the view, you can change this in the identity inspector of the interface builder. Remember to input `GridTimerView`in both (Class & Module)
+Add a `UIView` in the xib where you want to place GridTimerView. Then you have to input the class name in the view, you can change this in the identity inspector of the interface builder. Remember to input `GridTimerView` in both (Class & Module)
 
 <img src="https://raw.githubusercontent.com/alberdev/GridTimerView/master/Images/screenshot_1.png" alt="Screenshot 1" style="margin: auto" />
 
@@ -54,6 +54,21 @@ Then, connect the IBOutlet in your UIViewController
 ```swift
 @IBOutlet weak var gridTimerView: GridTimerView!
 ```
+
+Register your own cell
+
+```swift
+gridTimerView.register(type: ChannelCollectionViewCell.self)
+```
+
+Finally implement delegate and datasource methods
+
+```swift
+gridTimerView.dataSource = self
+gridTimerView.delegate = self
+```
+
+
 ### Configuration
 
 You can setup `GridTimerView`with your own parameters.
@@ -98,6 +113,12 @@ configuration.selectedItemColor = UIColor.blue
 configuration.unselectedItemColor = UIColor.lightGray
 ```
 
+Assign configuration to `GridTimerView`
+
+```swift
+gridTimerView.configuration = configuration
+```
+
 ### DataSource
 
 Is needed to show your own cells with events in collection table.
@@ -105,64 +126,60 @@ Is needed to show your own cells with events in collection table.
 `numberOfSections` returns number of cells in the table (no events)
 
 ```swift
-func numberOfSections(inGridTimerView: GridTimerView) -> Int {
-	return sections.count
+func numberOfCells(inGridTimerView: GridTimerView) -> Int {
+    return channels.count
 }
 ```
 
 `cellHeaderHeight ` returns height of custom cell in the table (no events)
 
 ```swift
-func cellHeaderHeight(inGridTimerView: GridTimerView) -> CGFloat {
-	return 66.0
+func heightForCell(inGridTimerView: GridTimerView) -> CGFloat {
+    return 66.0
 }
 ```
 
 `cellItemHeight ` returns height of highlighted events
 
 ```swift
-func cellItemHeight(inGridTimerView: GridTimerView) -> CGFloat {
-	return 8.0
+func heightForEvent(inGridTimerView: GridTimerView) -> CGFloat {
+    return 8.0
 }
 ```
 
 `numberOfItemsInSection ` returns number of events in cell
 
 ```swift
-func gridTimerView(gridTimerView: GridTimerView, numberOfItemsInSection section: Int) -> Int {
-	return self.itemAt(section)?.items.count ?? 0
+func gridTimerView(gridTimerView: GridTimerView, numberOfEventsInCellIndex cellIndex: Int) -> Int {
+    return channelAt(cellIndex)?.events.count ?? 0
 }
 ```
 
 `cellForIndexPath ` returns custom cell view (no event)
 
 ```swift
-func gridTimerView(gridTimerView: GridTimerView, collectionView: UICollectionView, cellForIndexPath indexPath: IndexPath) -> UICollectionViewCell {
+func gridTimerView(gridTimerView: GridTimerView, cellForEventIndex eventIndex: Int, inCellIndex cellIndex: Int) -> GridViewCell? {
         
-    let sectionData = sections[indexPath.section]
-    let cell = SectionCollectionViewCell.reuse(
-        collectionView,
-        indexPath: indexPath,
-        kind: UICollectionElementKindSectionHeader) as? SectionCollectionViewCell
+    let sectionData = channels[cellIndex]
+    let cell = gridTimerView.dequeReusableCell(withType: ChannelCollectionViewCell.self, forCellIndex: cellIndex)
+    cell?.source = ChannelCollectionViewCellItem(
+        title: sectionData.events[eventIndex].title,
+        subtitle: sectionData.events[eventIndex].subtitle,
+        image: sectionData.channelImage)
     
-    cell?.source = SectionCollectionViewCellItem(
-        title: sectionData.items[indexPath.item].title,
-        subtitle: sectionData.items[indexPath.item].subtitle,
-        image: UIImage(named: "Placeholder"))
-    
-    return cell == nil ? SectionCollectionViewCell() : cell!
+    return cell == nil ? ChannelCollectionViewCell() : cell!
 }
 ```
 
 `timeDurationForIndexPath ` returns event duration
 
 ```swift
-func gridTimerView(gridTimerView: GridTimerView, timeDurationForIndexPath indexPath: IndexPath) -> Double? {
-    
+func gridTimerView(gridTimerView: GridTimerView, timeDurationForEventIndex eventIndex: Int, inCellIndex cellIndex: Int) -> Double? {
+        
     guard
-        let item = itemAt(indexPath),
-        let endTime = item.endTime?.timeIntervalSince1970,
-        let initTime = item.initTime?.timeIntervalSince1970
+        let event = eventAt(IndexPath(item: eventIndex, section: cellIndex)),
+        let endTime = event.endTime?.timeIntervalSince1970,
+        let initTime = event.initTime?.timeIntervalSince1970
         else { return 0 }
     return Double(endTime - initTime)
 }
@@ -173,15 +190,15 @@ func gridTimerView(gridTimerView: GridTimerView, timeDurationForIndexPath indexP
 `didHighlightItemAtIndexPath ` is called when event is highlighted
 
 ```swift
-func gridTimerView(gridTimerView: GridTimerView, didHighlightItemAtIndexPath indexPath: IndexPath) {
+func gridTimerView(gridTimerView: GridTimerView, didHighlightAtEventIndex eventIndex: Int, inCellIndex cellIndex: Int) {
+        
+    let sectionData = channels[cellIndex]
+    let sectionCell = gridTimerView.cellForIndex(cellIndex: cellIndex) as? ChannelCollectionViewCell
     
-    let sectionData = sections[indexPath.section]
-    let sectionCell = gridTimerView.cellSectionForIndexPath(indexPath: indexPath) as? SectionCollectionViewCell
-    
-    var source = SectionCollectionViewCellItem()
-    source.title = sectionData.items[indexPath.item].title
-    source.subtitle = sectionData.items[indexPath.item].subtitle
-    source.image = UIImage(named: "Placeholder")
+    var source = ChannelCollectionViewCellItem()
+    source.title = sectionData.events[eventIndex].title
+    source.subtitle = sectionData.events[eventIndex].subtitle
+    source.image = sectionData.channelImage
     sectionCell?.source = source
 }
 ```
@@ -189,8 +206,22 @@ func gridTimerView(gridTimerView: GridTimerView, didHighlightItemAtIndexPath ind
 `didSelectItemAtIndexPath ` is called when cell is selected
 
 ```swift
-func gridTimerView(gridTimerView: GridTimerView, didSelectItemAtIndexPath indexPath: IndexPath) {
-    print("Did select cell at index path: \(indexPath)")
+func gridTimerView(gridTimerView: GridTimerView, didSelectCellAtIndex cellIndex: Int) {
+        
+    let sectionCell = gridTimerView.cellForIndex(cellIndex: cellIndex) as? ChannelCollectionViewCell
+    let vc = DetailViewController()
+    vc.source = DetailViewSource(title: sectionCell?.source?.title, subtitle: sectionCell?.source?.subtitle)
+    navigationController?.pushViewController(vc, animated: true)
+}
+```
+
+`didPullToRefresh` is called when you refresh the table
+
+```swift
+func gridTimerView(gridTimerView: GridTimerView, didPullToRefresh loading: Bool) {
+    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        gridTimerView.endRefresh()
+    }
 }
 ```
 
@@ -202,12 +233,29 @@ Do you want to scroll the timer to single date programatically?
 gridTimerView.scrollToDate(date: Date())
 ```
 
-With this method you can obtain cell by `IndexPath`
+With this method you can obtain cell by index
 
 ```swift
-gridTimerView.cellSectionForIndexPath(indexPath: indexPath)
+gridTimerView.cellForIndex(cellIndex: cellIndex)
 ```
 
+Register your own cell is needed for reuse in table
+
+```swift
+gridTimerView.register(type: ChannelCollectionViewCell.self)
+```
+
+Deque reusable custom cell
+
+```swift
+gridTimerView.dequeReusableCell(withType: ChannelCollectionViewCell.self, forCellIndex: cellIndex)
+```
+
+End refreshing table
+
+```swift
+gridTimerView.endRefresh()
+```
 
 
 ## Installation

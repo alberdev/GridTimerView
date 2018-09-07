@@ -7,26 +7,13 @@
 
 import UIKit
 
-public protocol GridTimerViewDataSource: class {
-    func numberOfSections(inGridTimerView: GridTimerView) -> Int
-    func cellHeaderHeight(inGridTimerView: GridTimerView) -> CGFloat
-    func cellItemHeight(inGridTimerView: GridTimerView) -> CGFloat
-    func gridTimerView(gridTimerView: GridTimerView, numberOfItemsInSection section: Int) -> Int
-    func gridTimerView(gridTimerView: GridTimerView, collectionView: UICollectionView, cellForIndexPath indexPath: IndexPath) -> UICollectionViewCell
-    func gridTimerView(gridTimerView: GridTimerView, timeDurationForIndexPath indexPath: IndexPath) -> Double?
-}
-
-public protocol GridTimerViewDelegate: class {
-    func gridTimerView(gridTimerView: GridTimerView, didHighlightItemAtIndexPath indexPath: IndexPath)
-    func gridTimerView(gridTimerView: GridTimerView, didSelectItemAtIndexPath indexPath: IndexPath)
-}
-
 open class GridTimerView: UIView {
     
     @IBOutlet private var contentView: UIView!
-    @IBOutlet weak open var collectionView: UICollectionView!
-    @IBOutlet weak private var ruleView: RuleView!
-    @IBOutlet weak private var timerLineView: UIView!
+    @IBOutlet weak public var collectionView: UICollectionView!
+    @IBOutlet weak public var ruleView: RuleView!
+    @IBOutlet weak public var timerLineView: UIView!
+    @IBOutlet weak public var backScrollView: UIScrollView!
     
     weak open var dataSource: GridTimerViewDataSource?
     weak open var delegate: GridTimerViewDelegate?
@@ -46,9 +33,10 @@ open class GridTimerView: UIView {
         }
     }
     
-    private var refresher: UIRefreshControl?
-    private var firstLoad = false
+    public var refresher: UIRefreshControl?
     private let screenSize = UIScreen.main.bounds.size
+    private let initialInset = UIEdgeInsets(top: 45, left: 0, bottom: 0, right: 0)
+    private let loadingInset = UIEdgeInsets(top: 100, left: 0, bottom: 0, right: 0)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -63,7 +51,7 @@ open class GridTimerView: UIView {
     private func commonInit() {
         _ = fromNib()
         setupCollectionView()
-        //setupRefresher()
+        setupRefresher()
         setupRuleView()
         setupLineView()
     }
@@ -77,16 +65,9 @@ open class GridTimerView: UIView {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.alwaysBounceVertical = true
-        collectionView.contentInset = UIEdgeInsets(top: 45, left: 0, bottom: 0, right: 0)
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "ItemCell")
-    }
-    
-    private func setupRefresher() {
-        refresher = UIRefreshControl()
-        refresher?.tintColor = UIColor.lightGray
-        refresher?.addTarget(self, action: #selector(loadData), for: .valueChanged)
-        refresher?.backgroundColor = .white
-        collectionView.addSubview(refresher!)
+        collectionView.contentInset = initialInset
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "EventCell")
+        collectionView.register(GridViewCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: GridViewCell.uniqueIdentifier)
     }
     
     private func setupRuleView() {
@@ -103,9 +84,23 @@ open class GridTimerView: UIView {
         timerLineView.backgroundColor = configuration.lineColor
     }
     
-    @objc private func loadData() {
-        refresher?.endRefreshing()
+    private func setupRefresher() {
+        refresher = UIRefreshControl()
+        refresher?.tintColor = UIColor.lightGray
+        refresher?.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
+        refresher?.backgroundColor = .clear
+        backScrollView.addSubview(refresher!)
     }
+    
+    @objc private func didPullToRefresh() {
+        UIView.animate(withDuration: 0.3) {
+            self.collectionView.contentInset = self.loadingInset
+        }
+        delegate?.gridTimerView(gridTimerView: self, didPullToRefresh: true)
+    }
+}
+
+extension GridTimerView {
     
     open func scrollToDate(date: Date) {
         let offsetY = collectionView.contentOffset.y
@@ -113,57 +108,23 @@ open class GridTimerView: UIView {
         collectionView.setContentOffset(CGPoint(x: offsetX, y: offsetY), animated: true)
     }
     
-    open func cellSectionForIndexPath(indexPath: IndexPath) -> UICollectionReusableView? {
-        return collectionView.supplementaryView(forElementKind: UICollectionElementKindSectionHeader, at: IndexPath(item: 0, section: indexPath.section))
+    open func cellForIndex(cellIndex: Int) -> GridViewCell? {
+        return collectionView.supplementaryView(forElementKind: UICollectionElementKindSectionHeader, at: IndexPath(item: 0, section: cellIndex)) as? GridViewCell
     }
     
     open func register<T: UICollectionViewCell>(type: T.Type) {
         collectionView.register(type.nib, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: type.uniqueIdentifier)
     }
-}
-
-extension GridTimerView: UIScrollViewDelegate {
     
-    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        ruleView.updateContentOffset(x: scrollView.contentOffset.x)
-        
-        for cell in collectionView.visibleCells {
-            
-            let initPoint = cell.frame.origin.x
-            let endPoint = cell.frame.origin.x + cell.frame.size.width
-            let timerLinePoint = convert(timerLineView.frame.origin, to: collectionView)
-            if initPoint-1 < timerLinePoint.x && endPoint+1 >= timerLinePoint.x {
-                cell.backgroundColor = configuration.selectedItemColor
-                if let indexPath = collectionView.indexPath(for: cell) {
-                    delegate?.gridTimerView(gridTimerView: self, didHighlightItemAtIndexPath: indexPath)
-                }
-            } else {
-                cell.backgroundColor = configuration.unselectedItemColor
-            }
+    open func dequeReusableCell<T: UICollectionViewCell>(withType type: T.Type, forCellIndex cellIndex: Int) -> T? {
+        return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: type.uniqueIdentifier, for: IndexPath(item: 0, section: cellIndex)) as? T
+    }
+    
+    open func endRefresh() {
+        UIView.animate(withDuration: 0.3) {
+            self.collectionView.contentInset = self.initialInset
         }
     }
 }
 
-extension GridTimerView: CustomCollectionViewLayoutDataSource {
-    
-    func timeDurationForIndexPath(indexPath: IndexPath) -> Double? {
-        return dataSource?.gridTimerView(gridTimerView: self, timeDurationForIndexPath: indexPath)
-    }
-    
-    func cellHeaderHeight() -> CGFloat? {
-        return dataSource?.cellHeaderHeight(inGridTimerView: self)
-    }
-    
-    func cellItemHeight() -> CGFloat? {
-        return dataSource?.cellItemHeight(inGridTimerView: self)
-    }
-}
 
-extension GridTimerView: GridCollectionViewCellDelegate {
-    
-    func gridCollectionViewCell(gridCollectionViewCell: GridCollectionViewCell, didSelect selected: Bool) {
-        if let indexPath = gridCollectionViewCell.indexPath {
-            delegate?.gridTimerView(gridTimerView: self, didSelectItemAtIndexPath: indexPath)
-        }
-    }
-}

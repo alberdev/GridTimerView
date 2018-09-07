@@ -10,8 +10,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GridTimerView" customModule="TableTimer" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GridTimerView" customModule="GridTimerView" customModuleProvider="target">
             <connections>
+                <outlet property="backScrollView" destination="1b2-Gq-NX7" id="h2b-49-hsQ"/>
                 <outlet property="collectionView" destination="Axv-Mf-D87" id="3Ya-WP-EvS"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="XBc-M4-TGw"/>
                 <outlet property="ruleView" destination="9OQ-sj-ore" id="qcV-Ka-1gk"/>
@@ -23,10 +24,14 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Axv-Mf-D87">
-                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1b2-Gq-NX7">
+                    <rect key="frame" x="0.0" y="42" width="375" height="625"/>
                     <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
-                    <collectionViewLayout key="collectionViewLayout" id="djp-mn-lvb" customClass="CustomCollectionViewLayout" customModule="TableTimer" customModuleProvider="target"/>
+                </scrollView>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Axv-Mf-D87">
+                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <collectionViewLayout key="collectionViewLayout" id="djp-mn-lvb" customClass="CustomCollectionViewLayout" customModule="GridTimerView" customModuleProvider="target"/>
                 </collectionView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2WB-3g-5Tc">
                     <rect key="frame" x="187" y="0.0" width="1" height="667"/>
@@ -35,7 +40,7 @@
                         <constraint firstAttribute="width" constant="1" id="Zo4-4v-EWN"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9OQ-sj-ore" customClass="RuleView" customModule="TableTimer" customModuleProvider="target">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9OQ-sj-ore" customClass="RuleView" customModule="GridTimerView" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="20" width="375" height="45"/>
                     <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -47,13 +52,17 @@
             <constraints>
                 <constraint firstItem="Axv-Mf-D87" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="3XG-gz-xdf"/>
                 <constraint firstAttribute="bottom" secondItem="2WB-3g-5Tc" secondAttribute="bottom" id="7rQ-E0-DIV"/>
+                <constraint firstItem="1b2-Gq-NX7" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="E5x-Pu-mrK"/>
                 <constraint firstItem="2WB-3g-5Tc" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="HVy-yn-d3a"/>
                 <constraint firstItem="9OQ-sj-ore" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="OA8-v9-cWf"/>
                 <constraint firstItem="9OQ-sj-ore" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" id="Rq4-Ar-EDd"/>
                 <constraint firstItem="2WB-3g-5Tc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="SuZ-pZ-ZxV"/>
+                <constraint firstItem="1b2-Gq-NX7" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="22" id="Wmb-TQ-qSg"/>
                 <constraint firstItem="9OQ-sj-ore" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="g8g-Tb-nyN"/>
                 <constraint firstItem="Axv-Mf-D87" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="gww-r5-h2B"/>
+                <constraint firstItem="1b2-Gq-NX7" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="kMP-j0-HvI"/>
                 <constraint firstItem="Axv-Mf-D87" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="npZ-XG-uac"/>
+                <constraint firstItem="1b2-Gq-NX7" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="rZ5-fT-tma"/>
                 <constraint firstItem="Axv-Mf-D87" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="soI-Xj-cFz"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

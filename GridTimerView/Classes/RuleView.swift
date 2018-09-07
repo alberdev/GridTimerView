@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RuleView: UIView {
+public class RuleView: UIView {
     
     @IBOutlet private var contentView: UIView!
     @IBOutlet weak private var scrollView: UIScrollView!
@@ -73,7 +73,7 @@ class RuleView: UIView {
         setupCurrentTimeLabel()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
         setupScroll()

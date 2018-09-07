@@ -1,5 +1,5 @@
 PODS:
-  - GridTimerView (0.1.6)
+  - GridTimerView (0.1.7)
 
 DEPENDENCIES:
   - GridTimerView (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  GridTimerView: 115b1d23cb46f973afd08c0d0c6e80f86f213b49
+  GridTimerView: de82111c4fbdabeeb078c850f461fe8d5900d165
 
 PODFILE CHECKSUM: 726095825b5b8d655e2a7b7b341cfa300d7e7b5d
 

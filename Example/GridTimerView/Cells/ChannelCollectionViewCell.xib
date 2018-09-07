@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="SectionCollectionViewCell" customModule="TableTimer" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ChannelCollectionViewCell" customModule="GridTimerView_Example" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="367" height="66"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -83,7 +83,7 @@
             <size key="customSize" width="367" height="70"/>
             <connections>
                 <outlet property="cellContentView" destination="Ghe-Qw-bhP" id="H8p-cz-whe"/>
-                <outlet property="sectionImageView" destination="fH3-Ks-UhI" id="JjD-4C-rZg"/>
+                <outlet property="channelImageView" destination="fH3-Ks-UhI" id="O7h-Nu-8p3"/>
                 <outlet property="subtitleLabel" destination="pfj-HJ-x8a" id="Tbp-3A-l4I"/>
                 <outlet property="titleLabel" destination="Uft-hp-vHF" id="GXk-R4-7HQ"/>
             </connections>

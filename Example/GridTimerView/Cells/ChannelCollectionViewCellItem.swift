@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct SectionCollectionViewCellItem {
+struct ChannelCollectionViewCellItem {
     var title = ""
     var subtitle = ""
     var image: UIImage?

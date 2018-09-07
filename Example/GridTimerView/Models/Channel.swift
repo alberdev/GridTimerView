@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct Section {
-    var items = [Item]()
+struct Channel {
+    var events = [Event]()
     var channelImage = UIImage(named: "Placeholder")
 }

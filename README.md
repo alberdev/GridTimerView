@@ -8,17 +8,22 @@
 ![Swift](https://img.shields.io/badge/%20in-swift%204.0-orange.svg?style=flat&colorB=ED3269)
 ![CocoaPods](https://img.shields.io/cocoapods/dt/GridTimerView.svg?style=flat&colorB=aaaaaa)
 
-<img src="https://raw.githubusercontent.com/alberdev/GridTimerView/master/Images/video_1.gif" alt="Video" align="right" style="margin-left: 50px;" />
 
 ## Table of Contents
 
+<img src="https://raw.githubusercontent.com/alberdev/GridTimerView/master/Images/video_1.gif" alt="Video" align="right" style="margin-top: 20px; margin-left: 50px;" />
+
 - [Description](#description)
+- [Example](#example)
 - [Usage](#usage)
-  - [Basic](#basic)
-  - [Advanced](#advanced)
+  - [UIView in your xib / storyboard](#uiviewinyourxib/storyboard)
   - [Configuration](#configuration)
-  - [ImageFetcher](#imagefetcher)
+  - [DataSource](#datasource)
+  - [Delegates](#delegates)
+  - [Extra](#extra)
 - [Installation](#installation)
+- [Author](#author)
+- [License](#license)
 
 ## Description
 
@@ -26,9 +31,8 @@ With `GridTimerView` you can show a schedule with timer controller. Each cell ca
 
 - [x] Show multiple events for each cell
 - [x] Totally customizable
-- [x] Fluid scroll
-- [x] ``Go to date`` functionality
-- [x] All in a simple view
+- [x] Smooth scrolling experience
+- [x] Easy usage
 - [x] Supports iOS, developed in Swift 4
 
 ## Example

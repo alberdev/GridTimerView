@@ -55,7 +55,7 @@ Then, connect the IBOutlet in your UIViewController
 @IBOutlet weak var gridTimerView: GridTimerView!
 ```
 
-Register your own cell
+Make your own custom cell subclassing `GridViewCell` and register to use it
 
 ```swift
 gridTimerView.register(type: ChannelCollectionViewCell.self)

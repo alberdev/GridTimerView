@@ -6,8 +6,9 @@
 //  Copyright © 2018 Alberto Aznar. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct Section {
     var items = [Item]()
+    var channelImage = UIImage(named: "Placeholder")
 }

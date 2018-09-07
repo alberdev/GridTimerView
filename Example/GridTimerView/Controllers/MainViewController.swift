@@ -55,14 +55,17 @@ class MainViewController: UIViewController {
     }
     
     private func setupGridTimerView() {
+        
+        var configuration = GridTimerConfiguration()
+        configuration.ruleColor = Colors.White
+        configuration.ruleBackgroundColor = Colors.Black
+        configuration.timerColor = Colors.Fucsia
+        configuration.lineColor = Colors.Fucsia
+        configuration.selectedItemColor = Colors.Fucsia
+        gridTimerView.configuration = configuration
+        gridTimerView?.register(type: SectionCollectionViewCell.self)
         gridTimerView?.dataSource = self
         gridTimerView?.delegate = self
-        gridTimerView?.ruleColor = Colors.White
-        gridTimerView?.ruleBackgroundColor = Colors.Black
-        gridTimerView?.timerColor = Colors.Fucsia
-        gridTimerView?.lineColor = Colors.Fucsia
-        gridTimerView?.selectedItemColor = Colors.Fucsia
-        gridTimerView?.register(type: SectionCollectionViewCell.self)
     }
 }
 
@@ -95,7 +98,7 @@ extension MainViewController: GridTimerViewDataSource {
         cell?.source = SectionCollectionViewCellItem(
             title: sectionData.items[indexPath.item].title,
             subtitle: sectionData.items[indexPath.item].subtitle,
-            image: UIImage(named: "Placeholder"))
+            image: sectionData.channelImage)
         
         return cell == nil ? SectionCollectionViewCell() : cell!
     }
@@ -119,11 +122,14 @@ extension MainViewController: GridTimerViewDelegate {
         var source = SectionCollectionViewCellItem()
         source.title = sectionData.items[indexPath.item].title
         source.subtitle = sectionData.items[indexPath.item].subtitle
-        source.image = UIImage(named: "Placeholder")
+        source.image = sectionData.channelImage
         sectionCell?.source = source
     }
     
     func gridTimerView(gridTimerView: GridTimerView, didSelectItemAtIndexPath indexPath: IndexPath) {
-        print("Did select cell at index path: \(indexPath)")
+        let sectionCell = gridTimerView.cellSectionForIndexPath(indexPath: indexPath) as? SectionCollectionViewCell
+        let vc = DetailViewController()
+        vc.source = DetailViewSource(title: sectionCell?.source?.title, subtitle: sectionCell?.source?.subtitle)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

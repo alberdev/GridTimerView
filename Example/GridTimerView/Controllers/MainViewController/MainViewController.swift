@@ -62,6 +62,7 @@ class MainViewController: UIViewController {
 }
 
 extension MainViewController: GridTimerViewDataSource {
+    
     func numberOfRows(inGridTimerView gridTimerView: GridTimerView) -> Int {
         return channels.count
     }
@@ -88,10 +89,10 @@ extension MainViewController: GridTimerViewDataSource {
         return Double(endTime - initTime)
     }
     
-    func gridTimerView(gridTimerView: GridTimerView, viewForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> GridViewCell? {
+    func gridTimerView(gridTimerView: GridTimerView, viewForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> GridItemView? {
         
         let sectionData = channels[rowIndex]
-        let cell = gridTimerView.dequeReusableCell(withType: ChannelCollectionViewCell.self, forRowIndex: rowIndex)
+        let cell = gridTimerView.dequeReusableView(withType: ChannelCollectionViewCell.self, forRowIndex: rowIndex)
         cell?.source = ChannelCollectionViewCellItem(
             title: sectionData.events[itemIndex].title,
             subtitle: sectionData.events[itemIndex].subtitle,
@@ -106,7 +107,7 @@ extension MainViewController: GridTimerViewDelegate {
     func gridTimerView(gridTimerView: GridTimerView, didHighlightAtItemIndex itemIndex: Int, inRowIndex rowIndex: Int) {
         
         let sectionData = channels[rowIndex]
-        let sectionCell = gridTimerView.cellForRowIndex(rowIndex: rowIndex) as? ChannelCollectionViewCell
+        let sectionCell = gridTimerView.viewForRowIndex(rowIndex: rowIndex) as? ChannelCollectionViewCell
         
         var source = ChannelCollectionViewCellItem()
         source.title = sectionData.events[itemIndex].title
@@ -117,7 +118,7 @@ extension MainViewController: GridTimerViewDelegate {
     
     func gridTimerView(gridTimerView: GridTimerView, didSelectRowAtIndex rowIndex: Int) {
         
-        let sectionCell = gridTimerView.cellForRowIndex(rowIndex: rowIndex) as? ChannelCollectionViewCell
+        let sectionCell = gridTimerView.viewForRowIndex(rowIndex: rowIndex) as? ChannelCollectionViewCell
         let vc = DetailViewController()
         vc.source = DetailViewSource(title: sectionCell?.source?.title, subtitle: sectionCell?.source?.subtitle)
         navigationController?.pushViewController(vc, animated: true)

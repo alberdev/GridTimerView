@@ -22,4 +22,5 @@ enum Colors
     static let Black = UIColor(hex: "2B2F3A")
     static let Fucsia = UIColor(hex: "ED3269")
     static let White = UIColor(hex: "F7F8FA")
+    static let White2 = UIColor(hex: "EEEEEE")
 }

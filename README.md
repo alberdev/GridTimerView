@@ -216,19 +216,19 @@ gridTimerView.scrollToDate(date: Date())
 With this method you can obtain row by index
 
 ```swift
-gridTimerView.cellForRowIndex(rowIndex: rowIndex)
+gridTimerView.viewForRowIndex(rowIndex: rowIndex)
 ```
 
-Register your own row is needed for reuse in table
+Register your own view for row is needed for reuse in table
 
 ```swift
 gridTimerView.register(type: ChannelCollectionViewCell.self)
 ```
 
-Deque reusable custom row
+Deque reusable custom view
 
 ```swift
-gridTimerView.dequeReusableCell(withType: ChannelCollectionViewCell.self, forRowIndex: rowIndex)
+gridTimerView.dequeReusableView(withType: ChannelCollectionViewCell.self, forRowIndex: rowIndex)
 ```
 
 End refreshing table

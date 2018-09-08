@@ -33,9 +33,16 @@ extension GridTimerView: UICollectionViewDelegateFlowLayout {
 
 extension GridTimerView: UIScrollViewDelegate {
     
+    public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        firstScroll = true
+    }
+    
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         backScrollView.setContentOffset(CGPoint(x: 0, y: scrollView.contentOffset.y), animated: false)
-        if let isRefreshing = refresher?.isRefreshing, scrollView.contentOffset.y < -120 && !isRefreshing {
+        if
+            let isRefreshing = refresher?.isRefreshing,
+            scrollView.contentOffset.y < scrollRefreshLimitY,
+            !isRefreshing && firstScroll {
             refresher?.beginRefreshing()
             refresher?.sendActions(for: .valueChanged)
         } else if scrollView.contentOffset.y > -50 {
@@ -61,10 +68,10 @@ extension GridTimerView: UIScrollViewDelegate {
     }
 }
 
-extension GridTimerView: GridViewCellDelegate {
+extension GridTimerView: GridItemViewDelegate {
     
-    func gridViewCell(gridViewCell: GridViewCell, didSelect selected: Bool) {
-        if let indexPath = gridViewCell.indexPath {
+    func gridItemView(gridItemView: GridItemView, didSelect selected: Bool) {
+        if let indexPath = gridItemView.indexPath {
             delegate?.gridTimerView(gridTimerView: self, didSelectRowAtIndex: indexPath.section)
         }
     }

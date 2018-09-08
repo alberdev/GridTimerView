@@ -50,7 +50,7 @@ public protocol GridTimerViewDataSource: class {
      - parameter itemIndex: item index
      - parameter rowIndex: row index
      */
-    func gridTimerView(gridTimerView: GridTimerView, viewForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> GridViewCell?
+    func gridTimerView(gridTimerView: GridTimerView, viewForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> GridItemView?
     
     /**
      ------------------------------------------------------------------------------------------
@@ -96,6 +96,15 @@ public protocol GridTimerViewDelegate: class {
      - parameter rowIndex: row index
      */
     func gridTimerView(gridTimerView: GridTimerView, didSelectRowAtIndex rowIndex: Int)
+    
+    /**
+     ------------------------------------------------------------------------------------------
+     Is called when row is selected
+     ------------------------------------------------------------------------------------------
+     - parameter gridTimerView: gridTimerView is using
+     - parameter rowIndex: row index
+     */
+    func didPullToRefresh(inGridTimerView gridTimerView: GridTimerView)
 }
 
 public extension GridTimerViewDelegate {
@@ -125,7 +134,7 @@ public protocol GridTimerViewInterface {
      ------------------------------------------------------------------------------------------
      - parameter rowIndex: row index
      */
-    func cellForRowIndex(rowIndex: Int) -> GridViewCell?
+    func viewForRowIndex(rowIndex: Int) -> GridItemView?
     
     /**
      ------------------------------------------------------------------------------------------
@@ -142,7 +151,7 @@ public protocol GridTimerViewInterface {
      - parameter type: class name you want to register
      - parameter rowIndex: row index
      */
-    func dequeReusableCell<T: UICollectionViewCell>(withType type: T.Type, forRowIndex rowIndex: Int) -> T?
+    func dequeReusableView<T: UICollectionViewCell>(withType type: T.Type, forRowIndex rowIndex: Int) -> T?
     
     /**
      ------------------------------------------------------------------------------------------

@@ -9,7 +9,7 @@
 import UIKit
 import GridTimerView
 
-class ChannelCollectionViewCell: GridViewCell {
+class ChannelCollectionViewCell: GridItemView {
 
     @IBOutlet weak var channelImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -25,7 +25,7 @@ class ChannelCollectionViewCell: GridViewCell {
     override var isHighlighted: Bool {
         didSet {
             if isHighlighted {
-                cellContentView.backgroundColor = Colors.White
+                cellContentView.backgroundColor = Colors.White2
             } else {
                 cellContentView.backgroundColor = .white
             }

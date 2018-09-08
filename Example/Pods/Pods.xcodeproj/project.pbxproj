@@ -24,7 +24,7 @@
 		565191579FDE22C491C7BE346080B507 /* GridTimerView+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB60B4CF0904CE9AF876E8548AA68529 /* GridTimerView+Delegate.swift */; };
 		6035743106666BF24A621296D3BAF066 /* UIView+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BF3E8EB65E3C53E3EB7E8C11A5249C /* UIView+Tools.swift */; };
 		6549E8789C9FCC7A9003350803DB54BD /* RuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D310CB8AF260AB4311B00658A775AC9 /* RuleView.swift */; };
-		73C51D31E5DD14B235C1FF39E340C7B1 /* GridViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D812E45988DA410605B0F9B70EBACC2 /* GridViewCell.swift */; };
+		73C51D31E5DD14B235C1FF39E340C7B1 /* GridItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D812E45988DA410605B0F9B70EBACC2 /* GridItemView.swift */; };
 		8B40C554063AE92AC2528C6B6B1064E2 /* Pods-GridTimerView_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0022B644D516AD33C465C3C378F660F3 /* Pods-GridTimerView_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8EDCA737DDFBF698EF6DCCC9B92E7473 /* UIImage+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5122A7D3E3CEF2BBC30495E03469FA2C /* UIImage+Tools.swift */; };
 		9DE6882CBFDDD3E0E982AA238AA238EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE6198FE6D82C2ED32EA960AC2BF37D1 /* Assets.xcassets */; };
@@ -55,7 +55,7 @@
 /* Begin PBXFileReference section */
 		0022B644D516AD33C465C3C378F660F3 /* Pods-GridTimerView_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-GridTimerView_Tests-umbrella.h"; sourceTree = "<group>"; };
 		034221960FBCB03F46CA328D7113549B /* Pods-GridTimerView_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-GridTimerView_Example-umbrella.h"; sourceTree = "<group>"; };
-		0A3C27E81E49CA8FDA2AED0027D16276 /* Pods_GridTimerView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_GridTimerView_Tests.framework; path = "Pods-GridTimerView_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A3C27E81E49CA8FDA2AED0027D16276 /* Pods_GridTimerView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GridTimerView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		16857CCC208F3AB2CF39F07B6DAD5339 /* Pods-GridTimerView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GridTimerView_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		1B0E524328D146BF02C7FD6C7E5E8DDD /* GridTimerView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GridTimerView-dummy.m"; sourceTree = "<group>"; };
 		221C4923628B43E9C73A6A34014ED301 /* Pods-GridTimerView_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-GridTimerView_Example.modulemap"; sourceTree = "<group>"; };
@@ -71,23 +71,23 @@
 		4B13B4F6BFF7633B5D5BFA4D9B47FDFA /* GridTimerView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GridTimerView.xcconfig; sourceTree = "<group>"; };
 		4E1BF3AD90D0C35E871BC74EEFC1A2D2 /* RuleView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = RuleView.xib; sourceTree = "<group>"; };
 		5122A7D3E3CEF2BBC30495E03469FA2C /* UIImage+Tools.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIImage+Tools.swift"; sourceTree = "<group>"; };
-		519AFAF68ABB1781285E69271D862586 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		519AFAF68ABB1781285E69271D862586 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		5E2B66753C74980EE409FA2ED3C97E54 /* GridTimerView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GridTimerView-umbrella.h"; sourceTree = "<group>"; };
 		64A3017FC207D60D3722538DDA19A452 /* Pods-GridTimerView_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-GridTimerView_Example-frameworks.sh"; sourceTree = "<group>"; };
-		65187F3C1FD69DB1DF5DF3A20B6660B7 /* GridTimerView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GridTimerView.framework; path = GridTimerView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		65187F3C1FD69DB1DF5DF3A20B6660B7 /* GridTimerView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GridTimerView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6ADB74056899E9245D812BE6A225EB13 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B7326B227B3E612665C30A416FCC9F1 /* CustomCollectionViewLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CustomCollectionViewLayout.swift; path = GridTimerView/Classes/CustomCollectionViewLayout.swift; sourceTree = "<group>"; };
 		6C36BBA04578BC984CC6597DD2C92BA5 /* Pods-GridTimerView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GridTimerView_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		7662E80F892290BD62A16211C7600F53 /* GridTimerView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = GridTimerView.xib; sourceTree = "<group>"; };
 		7B0E70526EC471E6E0C7B280B13D9B38 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7D77E3C10C7F459DC80E94AB52149325 /* GridTimerView.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = GridTimerView.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		7D77E3C10C7F459DC80E94AB52149325 /* GridTimerView.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = GridTimerView.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		80D019095E22932A77DB399507CA3138 /* GridTimerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GridTimerView.swift; path = GridTimerView/Classes/GridTimerView.swift; sourceTree = "<group>"; };
-		878C2685D0F335591BEB701402FA290F /* Pods_GridTimerView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_GridTimerView_Example.framework; path = "Pods-GridTimerView_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		878C2685D0F335591BEB701402FA290F /* Pods_GridTimerView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GridTimerView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BEFEFA54A6016D37C6DEFF4730EDE96 /* Pods-GridTimerView_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-GridTimerView_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		8D812E45988DA410605B0F9B70EBACC2 /* GridViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GridViewCell.swift; path = GridTimerView/Classes/GridViewCell.swift; sourceTree = "<group>"; };
+		8D812E45988DA410605B0F9B70EBACC2 /* GridItemView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GridItemView.swift; path = GridTimerView/Classes/GridItemView.swift; sourceTree = "<group>"; };
 		8DB0A56C5E0DB6766C625DC74B3BCDE1 /* GridTimerView+DataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "GridTimerView+DataSource.swift"; path = "GridTimerView/Classes/GridTimerView+DataSource.swift"; sourceTree = "<group>"; };
 		908E902E026C5C22904CF9014A5604AD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		977CD92B6D9B8A00F6128921B66D98AE /* Pods-GridTimerView_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-GridTimerView_Tests-resources.sh"; sourceTree = "<group>"; };
 		A1B8AA0FAD05BE6D81F59A6669D0764C /* GridTimerView+Protocols.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "GridTimerView+Protocols.swift"; path = "GridTimerView/Classes/GridTimerView+Protocols.swift"; sourceTree = "<group>"; };
 		B0B88614B140AA85ADFFCA4C36BD836D /* GridTimerConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GridTimerConfiguration.swift; path = GridTimerView/Classes/GridTimerConfiguration.swift; sourceTree = "<group>"; };
@@ -98,7 +98,7 @@
 		BE97875D53015893734F801D647F16B6 /* Pods-GridTimerView_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-GridTimerView_Example-dummy.m"; sourceTree = "<group>"; };
 		C6BF3E8EB65E3C53E3EB7E8C11A5249C /* UIView+Tools.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+Tools.swift"; sourceTree = "<group>"; };
 		D244E17FFF5FC5C9F45CA5CBE3937CD4 /* Pods-GridTimerView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GridTimerView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		D638A1152DB7AF7A6A5BCDCD89A99A36 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		D638A1152DB7AF7A6A5BCDCD89A99A36 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DE6198FE6D82C2ED32EA960AC2BF37D1 /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E93274910861AD189384B0C7B32A09A9 /* Pods-GridTimerView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GridTimerView_Example.release.xcconfig"; sourceTree = "<group>"; };
 		F323F2BFA26B97DFDCBD270DFB4F257F /* Pods-GridTimerView_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-GridTimerView_Tests-dummy.m"; sourceTree = "<group>"; };
@@ -189,7 +189,7 @@
 				8DB0A56C5E0DB6766C625DC74B3BCDE1 /* GridTimerView+DataSource.swift */,
 				BB60B4CF0904CE9AF876E8548AA68529 /* GridTimerView+Delegate.swift */,
 				A1B8AA0FAD05BE6D81F59A6669D0764C /* GridTimerView+Protocols.swift */,
-				8D812E45988DA410605B0F9B70EBACC2 /* GridViewCell.swift */,
+				8D812E45988DA410605B0F9B70EBACC2 /* GridItemView.swift */,
 				2D310CB8AF260AB4311B00658A775AC9 /* RuleView.swift */,
 				51B54671A44FEB2FFC1A8373D77AEE59 /* Extensions */,
 				6388C92573C9E7D5DE723FD820508CE8 /* Pod */,
@@ -481,7 +481,7 @@
 				255F55C5C5C511B86983B73158FF1C4F /* GridTimerView+Protocols.swift in Sources */,
 				15369D826ACF4AD4F597417EB374F535 /* GridTimerView-dummy.m in Sources */,
 				51B4E90A5CA914774982C4A4816B557D /* GridTimerView.swift in Sources */,
-				73C51D31E5DD14B235C1FF39E340C7B1 /* GridViewCell.swift in Sources */,
+				73C51D31E5DD14B235C1FF39E340C7B1 /* GridItemView.swift in Sources */,
 				20777AB4734CC473A98A987B48974DAC /* Int+Tools.swift in Sources */,
 				6549E8789C9FCC7A9003350803DB54BD /* RuleView.swift in Sources */,
 				0DE6A9CD61FB7899AFF635DA81239A9C /* UICollectionViewCell+Tools.swift in Sources */,
@@ -558,7 +558,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -618,7 +618,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/GridTimerView/GridTimerView-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/GridTimerView/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/GridTimerView/GridTimerView.modulemap";
 				PRODUCT_MODULE_NAME = GridTimerView;
@@ -626,8 +626,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -699,8 +698,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -725,7 +723,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/GridTimerView/GridTimerView-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/GridTimerView/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/GridTimerView/GridTimerView.modulemap";
 				PRODUCT_MODULE_NAME = GridTimerView;
@@ -794,7 +792,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;

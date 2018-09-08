@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
 # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
 s.platform = :ios
-s.ios.deployment_target = '11.4'
+s.ios.deployment_target = '10'
 s.name = "GridTimerView"
 s.summary = "GridTimerView shows a schedule with timer controller. Each cell can manage multiple events. Used for listing TV programs shows in a table."
 s.requires_arc = true

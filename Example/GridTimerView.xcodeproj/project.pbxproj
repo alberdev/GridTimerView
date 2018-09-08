@@ -9,11 +9,9 @@
 /* Begin PBXBuildFile section */
 		1DCBFFA6A93C5C2D54AB3A14 /* Pods_GridTimerView_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BCB2764B9A8B3CC7C24D286 /* Pods_GridTimerView_Example.framework */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		E31BC00A2141FDF800E213BE /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31BC0082141FDF800E213BE /* DetailViewController.swift */; };
 		E31BC00B2141FDF800E213BE /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E31BC0092141FDF800E213BE /* DetailViewController.xib */; };
 		E31BC00D2142015900E213BE /* DetailViewSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31BC00C2142015900E213BE /* DetailViewSource.swift */; };
-		E33BD645BAE34DAE30EAA33B /* Pods_GridTimerView_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8648351EDF0A42C6BF1363DF /* Pods_GridTimerView_Tests.framework */; };
 		E37D661421412AFD00B184AA /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E37D660421412AFC00B184AA /* MainViewController.xib */; };
 		E37D661521412AFD00B184AA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37D660521412AFC00B184AA /* MainViewController.swift */; };
 		E37D661621412AFD00B184AA /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37D660821412AFC00B184AA /* Colors.swift */; };
@@ -31,16 +29,6 @@
 		E39D576E21428E61007C35B2 /* MainViewController+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39D576D21428E61007C35B2 /* MainViewController+Tools.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		607FACE61AFB9204008FA782 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 607FACC81AFB9204008FA782 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 607FACCF1AFB9204008FA782;
-			remoteInfo = GridTimerView;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		0B8F7BF22E15D75DD4C7449A /* Pods-GridTimerView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GridTimerView_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-GridTimerView_Example/Pods-GridTimerView_Example.release.xcconfig"; sourceTree = "<group>"; };
 		0BCB2764B9A8B3CC7C24D286 /* Pods_GridTimerView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GridTimerView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,9 +37,6 @@
 		607FACD01AFB9204008FA782 /* GridTimerView_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GridTimerView_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		607FACE51AFB9204008FA782 /* GridTimerView_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GridTimerView_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		637D1E4F46FC8A89B4E43627 /* GridTimerView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = GridTimerView.podspec; path = ../GridTimerView.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		71FD57ED303E943402CE0713 /* Pods-GridTimerView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GridTimerView_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GridTimerView_Tests/Pods-GridTimerView_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		8648351EDF0A42C6BF1363DF /* Pods_GridTimerView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GridTimerView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,14 +71,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		607FACE21AFB9204008FA782 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E33BD645BAE34DAE30EAA33B /* Pods_GridTimerView_Tests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -111,7 +88,6 @@
 			children = (
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for GridTimerView */,
-				607FACE81AFB9204008FA782 /* Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
 				B00118E4ED0F9ED0368DEE1E /* Pods */,
 				0053BB2C265215A8DDAB4ABF /* Frameworks */,
@@ -122,7 +98,6 @@
 			isa = PBXGroup;
 			children = (
 				607FACD01AFB9204008FA782 /* GridTimerView_Example.app */,
-				607FACE51AFB9204008FA782 /* GridTimerView_Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -130,13 +105,12 @@
 		607FACD21AFB9204008FA782 /* Example for GridTimerView */ = {
 			isa = PBXGroup;
 			children = (
+				E37811572143C6B5006B009D /* Resources */,
 				E37D661F21412B1400B184AA /* AppDelegate.swift */,
 				E37D660C21412AFD00B184AA /* Cells */,
 				E37D660321412AFC00B184AA /* Controllers */,
 				E37D661021412AFD00B184AA /* Models */,
 				E37D660621412AFC00B184AA /* Utils */,
-				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
-				E37D662121412B3000B184AA /* Images.xcassets */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 			);
 			name = "Example for GridTimerView";
@@ -147,23 +121,6 @@
 			isa = PBXGroup;
 			children = (
 				607FACD41AFB9204008FA782 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		607FACE81AFB9204008FA782 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				607FACEB1AFB9204008FA782 /* Tests.swift */,
-				607FACE91AFB9204008FA782 /* Supporting Files */,
-			);
-			path = Tests;
-			sourceTree = "<group>";
-		};
-		607FACE91AFB9204008FA782 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				607FACEA1AFB9204008FA782 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -189,15 +146,40 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		E37D660321412AFC00B184AA /* Controllers */ = {
+		E37811552143C68B006B009D /* MainViewController */ = {
 			isa = PBXGroup;
 			children = (
 				E37D660521412AFC00B184AA /* MainViewController.swift */,
 				E39D576D21428E61007C35B2 /* MainViewController+Tools.swift */,
 				E37D660421412AFC00B184AA /* MainViewController.xib */,
+			);
+			path = MainViewController;
+			sourceTree = "<group>";
+		};
+		E37811562143C69A006B009D /* DetailViewController */ = {
+			isa = PBXGroup;
+			children = (
 				E31BC0082141FDF800E213BE /* DetailViewController.swift */,
 				E31BC00C2142015900E213BE /* DetailViewSource.swift */,
 				E31BC0092141FDF800E213BE /* DetailViewController.xib */,
+			);
+			path = DetailViewController;
+			sourceTree = "<group>";
+		};
+		E37811572143C6B5006B009D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
+				E37D662121412B3000B184AA /* Images.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		E37D660321412AFC00B184AA /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E37811562143C69A006B009D /* DetailViewController */,
+				E37811552143C68B006B009D /* MainViewController */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -279,25 +261,6 @@
 			productReference = 607FACD01AFB9204008FA782 /* GridTimerView_Example.app */;
 			productType = "com.apple.product-type.application";
 		};
-		607FACE41AFB9204008FA782 /* GridTimerView_Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "GridTimerView_Tests" */;
-			buildPhases = (
-				4BE687A97585470B8A3C4732 /* [CP] Check Pods Manifest.lock */,
-				607FACE11AFB9204008FA782 /* Sources */,
-				607FACE21AFB9204008FA782 /* Frameworks */,
-				607FACE31AFB9204008FA782 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				607FACE71AFB9204008FA782 /* PBXTargetDependency */,
-			);
-			name = GridTimerView_Tests;
-			productName = Tests;
-			productReference = 607FACE51AFB9204008FA782 /* GridTimerView_Tests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -312,11 +275,6 @@
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = BV4J4GZFL4;
 						LastSwiftMigration = 0900;
-					};
-					607FACE41AFB9204008FA782 = {
-						CreatedOnToolsVersion = 6.3.1;
-						LastSwiftMigration = 0900;
-						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
 				};
 			};
@@ -334,7 +292,6 @@
 			projectRoot = "";
 			targets = (
 				607FACCF1AFB9204008FA782 /* GridTimerView_Example */,
-				607FACE41AFB9204008FA782 /* GridTimerView_Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -349,13 +306,6 @@
 				E31BC00B2141FDF800E213BE /* DetailViewController.xib in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				E37D661421412AFD00B184AA /* MainViewController.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		607FACE31AFB9204008FA782 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,24 +328,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GridTimerView_Example/Pods-GridTimerView_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4BE687A97585470B8A3C4732 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-GridTimerView_Tests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		AD5366989F502A9DBC8CE81E /* [CP] Check Pods Manifest.lock */ = {
@@ -440,23 +372,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		607FACE11AFB9204008FA782 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		607FACE71AFB9204008FA782 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 607FACCF1AFB9204008FA782 /* GridTimerView_Example */;
-			targetProxy = 607FACE61AFB9204008FA782 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		607FACDE1AFB9204008FA782 /* LaunchScreen.xib */ = {
@@ -601,46 +517,6 @@
 			};
 			name = Release;
 		};
-		607FACF31AFB9204008FA782 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5E2829925FBC9DC79A3DA977 /* Pods-GridTimerView_Tests.debug.xcconfig */;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GridTimerView_Example.app/GridTimerView_Example";
-			};
-			name = Debug;
-		};
-		607FACF41AFB9204008FA782 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 71FD57ED303E943402CE0713 /* Pods-GridTimerView_Tests.release.xcconfig */;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GridTimerView_Example.app/GridTimerView_Example";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -658,15 +534,6 @@
 			buildConfigurations = (
 				607FACF01AFB9204008FA782 /* Debug */,
 				607FACF11AFB9204008FA782 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "GridTimerView_Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				607FACF31AFB9204008FA782 /* Debug */,
-				607FACF41AFB9204008FA782 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

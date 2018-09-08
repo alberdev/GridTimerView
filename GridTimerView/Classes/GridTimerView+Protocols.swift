@@ -55,7 +55,7 @@ public protocol GridTimerViewDataSource: class {
      - parameter rowIndex: row index
      - returns: row view
      */
-    func gridTimerView(gridTimerView: GridTimerView, setupView: GridItemView, forItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> GridItemView?
+    func gridTimerView(gridTimerView: GridTimerView, setupView itemView: GridItemView, forItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> GridItemView
     
     /**
      ------------------------------------------------------------------------------------------
@@ -66,7 +66,7 @@ public protocol GridTimerViewDataSource: class {
      - parameter rowIndex: row index
      - returns: time duration
      */
-    func gridTimerView(gridTimerView: GridTimerView, timeDurationForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> Double?
+    func gridTimerView(gridTimerView: GridTimerView, timeDurationForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> Int
 }
 
 public extension GridTimerViewDataSource {
@@ -153,15 +153,6 @@ public protocol GridTimerViewInterface {
      - parameter type: class name you want to register
      */
     func register<T: UICollectionViewCell>(type: T.Type)
-    
-    /**
-     ------------------------------------------------------------------------------------------
-     Deque reusable custom row
-     ------------------------------------------------------------------------------------------
-     - parameter type: class name you want to register
-     - parameter rowIndex: row index
-     */
-//    func dequeReusableView<T: UICollectionViewCell>(withType type: T.Type, forRowIndex rowIndex: Int) -> T?
     
     /**
      ------------------------------------------------------------------------------------------

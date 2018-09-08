@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CustomCollectionViewLayoutDataSource: class {
-    func timeDurationForIndexPath(indexPath: IndexPath) -> Double?
+    func timeDurationForIndexPath(indexPath: IndexPath) -> Int?
     func cellHeaderHeight() -> CGFloat?
     func cellItemHeight() -> CGFloat?
 }

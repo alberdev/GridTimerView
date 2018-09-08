@@ -37,22 +37,19 @@ extension GridTimerView: UICollectionViewDataSource {
             let customCellType = customCellType,
             let reusableCell = dequeReusableView(withType: customCellType.self, forRowIndex: indexPath.section)
             else {
-                fatalError("Custom item view register is needed! See example: gridTimerView.register(type: YouCustomItemView.self)\n\n")
-//                let reusableCell = dequeReusableView(withType: GridItemView.self, forRowIndex: indexPath.section)
-//                return reusableCell == nil ? UICollectionViewCell() : reusableCell!
+                fatalError("Custom item view register is needed! Register your custom item view once GridTimerView is initializated\n")
         }
         
         let cell = dataSource.gridTimerView(gridTimerView: self, setupView: reusableCell, forItemIndex: indexPath.item, inRowIndex: indexPath.section)
-        cell?.indexPath = indexPath
-        cell?.delegate = self
-        
-        return cell == nil ? UICollectionViewCell() : cell!
+        cell.indexPath = indexPath
+        cell.delegate = self
+        return cell
     }
 }
 
 extension GridTimerView: CustomCollectionViewLayoutDataSource {
     
-    func timeDurationForIndexPath(indexPath: IndexPath) -> Double? {
+    func timeDurationForIndexPath(indexPath: IndexPath) -> Int? {
         return dataSource?.gridTimerView(gridTimerView: self, timeDurationForItemIndex: indexPath.item, inRowIndex: indexPath.section)
     }
     

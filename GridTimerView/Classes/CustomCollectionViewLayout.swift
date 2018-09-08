@@ -9,7 +9,8 @@
 import UIKit
 
 protocol CustomCollectionViewLayoutDataSource: class {
-    func timeDurationForIndexPath(indexPath: IndexPath) -> Int?
+    func initDateForIndexPath(indexPath: IndexPath) -> Date?
+    func endDateForIndexPath(indexPath: IndexPath) -> Date?
     func cellHeaderHeight() -> CGFloat?
     func cellItemHeight() -> CGFloat?
 }
@@ -20,6 +21,7 @@ class CustomCollectionViewLayout: UICollectionViewFlowLayout {
     
     var cellItemHeight: CGFloat = 8.0
     var cellHeaderHeight: CGFloat = 66.0
+    var ruleDaysFrom = 1
     
     private var cellItemsAttributes = Dictionary<IndexPath, UICollectionViewLayoutAttributes>()
     private var cellHeadersAttributes = Dictionary<IndexPath, UICollectionViewLayoutAttributes>()
@@ -43,7 +45,7 @@ class CustomCollectionViewLayout: UICollectionViewFlowLayout {
         let numberOfSections = collectionView.numberOfSections
         let contentWidth: Double = ruleWidth*24*2
         let contentHeight: Double = Double(numberOfSections) * Double(cellHeaderHeight + cellItemHeight)
-        var xPos: CGFloat = 0
+        //var xPos: CGFloat = 0
         var yPos: CGFloat = 0
         
         contentSize = CGSize(width: contentWidth, height: contentHeight)
@@ -60,12 +62,12 @@ class CustomCollectionViewLayout: UICollectionViewFlowLayout {
             for i in 0 ..< numberOfItems {
                 
                 let itemIndexPath = IndexPath(item: i, section: s)
-                let itemAttributes = self.itemAttributes(forIndexPath: itemIndexPath, position: CGPoint(x: xPos, y: yPos))
+                let itemAttributes = self.itemAttributes(forIndexPath: itemIndexPath, yPosition: yPos)
                 cellItemsAttributes[itemIndexPath] = itemAttributes
                 
-                xPos += itemAttributes?.frame.width ?? 0 + 2
+                // xPos += itemAttributes?.frame.width ?? 0 + 2
             }
-            xPos = 0
+            // xPos = 0
             yPos += cellHeaderHeight + cellItemHeight
         }
     }
@@ -109,23 +111,25 @@ class CustomCollectionViewLayout: UICollectionViewFlowLayout {
         return attributes
     }
     
-    private func itemAttributes(forIndexPath indexPath: IndexPath, position: CGPoint) -> UICollectionViewLayoutAttributes? {
+    private func itemAttributes(forIndexPath indexPath: IndexPath, yPosition: CGFloat) -> UICollectionViewLayoutAttributes? {
         
-        guard let cellTimeDuration = dataSource?.timeDurationForIndexPath(indexPath: indexPath) else { return nil }
+        guard
+            let initDate = dataSource?.initDateForIndexPath(indexPath: indexPath),
+            let endDate = dataSource?.endDateForIndexPath(indexPath: indexPath)
+            else { return nil }
+        
+        let initTime = initDate.timeIntervalSince1970
+        let endTime = endDate.timeIntervalSince1970
+        let cellTimeDuration = Int(endTime - initTime)
         let cellItemWidth = CGFloat(cellTimeDuration)
         let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-        attributes.frame = CGRect(x: position.x, y: position.y, width: cellItemWidth, height: cellItemHeight)
+        attributes.frame = CGRect(x: xPosition(byInitDate: initDate), y: yPosition, width: cellItemWidth, height: cellItemHeight)
         return attributes
     }
     
-//    private func updateVisibleHeadersPosition() {
-//        
-//        guard let headers = collectionView?.visibleSupplementaryViews(ofKind: UICollectionElementKindSectionHeader) else { return }
-//        for header in headers {
-//            if let headerIndexPath = collectionView?.indexPath(for: header as! UICollectionViewCell) {
-//                let headerAttributes = self.headerAttributes(forIndexPath: headerIndexPath, position: CGPoint(x: 0.0, y: header.frame.origin.y))
-//                cellHeadersAttributes[headerIndexPath] = headerAttributes
-//            }
-//        }
-//    }
+    private func xPosition(byInitDate initDate: Date) -> CGFloat {
+        let ruleInitialDate = Date.add(days: -ruleDaysFrom).timeIntervalSince1970
+        let eventInitialDate = initDate.timeIntervalSince1970
+        return CGFloat(eventInitialDate - ruleInitialDate)
+    }
 }

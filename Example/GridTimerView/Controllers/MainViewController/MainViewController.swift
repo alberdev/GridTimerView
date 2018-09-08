@@ -55,7 +55,7 @@ class MainViewController: UIViewController {
         configuration.lineColor = Colors.Fucsia
         configuration.selectedItemColor = Colors.Fucsia
         gridTimerView.configuration = configuration
-//        gridTimerView.register(type: ChannelCollectionViewCell.self)
+        gridTimerView.register(type: ChannelCollectionViewCell.self)
         gridTimerView.dataSource = self
         gridTimerView.delegate = self
     }
@@ -79,16 +79,6 @@ extension MainViewController: GridTimerViewDataSource {
         return channelAt(rowIndex)?.events.count ?? 0
     }
     
-    func gridTimerView(gridTimerView: GridTimerView, timeDurationForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> Int {
-        
-        guard
-            let event = eventAt(IndexPath(item: itemIndex, section: rowIndex)),
-            let endTime = event.endTime?.timeIntervalSince1970,
-            let initTime = event.initTime?.timeIntervalSince1970
-            else { return 0 }
-        return Int(endTime - initTime)
-    }
-    
     func gridTimerView(gridTimerView: GridTimerView, setupView itemView: GridItemView, forItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> GridItemView {
         
         let sectionData = channels[rowIndex]
@@ -99,6 +89,16 @@ extension MainViewController: GridTimerViewDataSource {
             image: sectionData.channelImage)
         
         return cell
+    }
+    
+    func gridTimerView(gridTimerView: GridTimerView, initTimeForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> Date {
+        let event = eventAt(IndexPath(item: itemIndex, section: rowIndex))
+        return event?.initTime ?? Date()
+    }
+    
+    func gridTimerView(gridTimerView: GridTimerView, endTimeForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> Date {
+        let event = eventAt(IndexPath(item: itemIndex, section: rowIndex))
+        return event?.endTime ?? Date()
     }
 }
 

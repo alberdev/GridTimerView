@@ -54,6 +54,10 @@ open class GridTimerView: UIView {
             ruleView.timerColor = configuration.timerColor
             ruleView.timerTextColor = configuration.timerTextColor
             timerLineView.backgroundColor = configuration.lineColor
+            
+            if let collectionViewLayout = collectionView.collectionViewLayout as? CustomCollectionViewLayout {
+                collectionViewLayout.ruleDaysFrom = configuration.ruleDaysFrom
+            }
         }
     }
     

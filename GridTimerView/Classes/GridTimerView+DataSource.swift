@@ -49,8 +49,12 @@ extension GridTimerView: UICollectionViewDataSource {
 
 extension GridTimerView: CustomCollectionViewLayoutDataSource {
     
-    func timeDurationForIndexPath(indexPath: IndexPath) -> Int? {
-        return dataSource?.gridTimerView(gridTimerView: self, timeDurationForItemIndex: indexPath.item, inRowIndex: indexPath.section)
+    func initDateForIndexPath(indexPath: IndexPath) -> Date? {
+        return dataSource?.gridTimerView(gridTimerView: self, initTimeForItemIndex: indexPath.item, inRowIndex: indexPath.section)
+    }
+    
+    func endDateForIndexPath(indexPath: IndexPath) -> Date? {
+        return dataSource?.gridTimerView(gridTimerView: self, endTimeForItemIndex: indexPath.item, inRowIndex: indexPath.section)
     }
     
     func cellHeaderHeight() -> CGFloat? {

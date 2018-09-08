@@ -59,14 +59,25 @@ public protocol GridTimerViewDataSource: class {
     
     /**
      ------------------------------------------------------------------------------------------
-     Returns event duration
+     Returns initial event date
      ------------------------------------------------------------------------------------------
      - parameter gridTimerView: current gridTimerView
      - parameter itemIndex: item index
      - parameter rowIndex: row index
-     - returns: time duration
+     - returns: initial date
      */
-    func gridTimerView(gridTimerView: GridTimerView, timeDurationForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> Int
+    func gridTimerView(gridTimerView: GridTimerView, endTimeForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> Date
+    
+    /**
+     ------------------------------------------------------------------------------------------
+     Returns end event date
+     ------------------------------------------------------------------------------------------
+     - parameter gridTimerView: current gridTimerView
+     - parameter itemIndex: item index
+     - parameter rowIndex: row index
+     - returns: end date
+     */
+    func gridTimerView(gridTimerView: GridTimerView, initTimeForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> Date
 }
 
 public extension GridTimerViewDataSource {

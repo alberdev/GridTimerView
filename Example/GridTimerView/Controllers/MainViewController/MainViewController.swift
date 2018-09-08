@@ -89,16 +89,16 @@ extension MainViewController: GridTimerViewDataSource {
         return Double(endTime - initTime)
     }
     
-    func gridTimerView(gridTimerView: GridTimerView, viewForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> GridItemView? {
+    func gridTimerView(gridTimerView: GridTimerView, setupView: GridItemView, forItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> GridItemView? {
         
         let sectionData = channels[rowIndex]
-        let cell = gridTimerView.dequeReusableView(withType: ChannelCollectionViewCell.self, forRowIndex: rowIndex)
+        let cell = setupView as? ChannelCollectionViewCell
         cell?.source = ChannelCollectionViewCellItem(
             title: sectionData.events[itemIndex].title,
             subtitle: sectionData.events[itemIndex].subtitle,
             image: sectionData.channelImage)
         
-        return cell == nil ? ChannelCollectionViewCell() : cell!
+        return cell
     }
 }
 

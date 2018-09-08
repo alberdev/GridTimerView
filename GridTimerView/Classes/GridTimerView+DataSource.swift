@@ -31,11 +31,18 @@ extension GridTimerView: UICollectionViewDataSource {
                                viewForSupplementaryElementOfKind kind: String,
                                at indexPath: IndexPath) -> UICollectionReusableView {
         
-        guard let dataSource = dataSource, kind == UICollectionElementKindSectionHeader else {
-            return UICollectionViewCell()
+        guard
+            let dataSource = dataSource,
+            kind == UICollectionElementKindSectionHeader,
+            let customCellType = customCellType,
+            let reusableCell = dequeReusableView(withType: customCellType.self, forRowIndex: indexPath.section)
+            else {
+                fatalError("Custom item view register is needed! See example: gridTimerView.register(type: YouCustomItemView.self)\n\n")
+//                let reusableCell = dequeReusableView(withType: GridItemView.self, forRowIndex: indexPath.section)
+//                return reusableCell == nil ? UICollectionViewCell() : reusableCell!
         }
         
-        let cell = dataSource.gridTimerView(gridTimerView: self, viewForItemIndex: indexPath.item, inRowIndex: indexPath.section)
+        let cell = dataSource.gridTimerView(gridTimerView: self, setupView: reusableCell, forItemIndex: indexPath.item, inRowIndex: indexPath.section)
         cell?.indexPath = indexPath
         cell?.delegate = self
         

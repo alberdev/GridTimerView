@@ -18,6 +18,7 @@ open class GridTimerView: UIView {
     public var refresher: UIRefreshControl?
     public var firstScroll = false
     public let scrollRefreshLimitY: CGFloat = -120
+    public var customCellType: GridItemView.Type?
     private let screenSize = UIScreen.main.bounds.size
     private let initialInset = UIEdgeInsets(top: 45, left: 0, bottom: 0, right: 0)
     private let loadingInset = UIEdgeInsets(top: 100, left: 0, bottom: 0, right: 0)
@@ -85,7 +86,7 @@ open class GridTimerView: UIView {
         collectionView.alwaysBounceVertical = true
         collectionView.contentInset = initialInset
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "EventCell")
-        //collectionView.register(GridItemView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: GridItemView.uniqueIdentifier)
+        collectionView.register(GridItemView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: GridItemView.uniqueIdentifier)
     }
     
     private func setupRuleView() {
@@ -116,6 +117,10 @@ open class GridTimerView: UIView {
         }
         delegate?.didPullToRefresh(inGridTimerView: self)
     }
+    
+    public func dequeReusableView<T: UICollectionViewCell>(withType type: T.Type, forRowIndex rowIndex: Int) -> T? {
+        return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: type.uniqueIdentifier, for: IndexPath(item: 0, section: rowIndex)) as? T
+    }
 }
 
 extension GridTimerView: GridTimerViewInterface {
@@ -132,10 +137,7 @@ extension GridTimerView: GridTimerViewInterface {
     
     open func register<T: UICollectionViewCell>(type: T.Type) {
         collectionView.register(type.nib, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: type.uniqueIdentifier)
-    }
-    
-    open func dequeReusableView<T: UICollectionViewCell>(withType type: T.Type, forRowIndex rowIndex: Int) -> T? {
-        return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: type.uniqueIdentifier, for: IndexPath(item: 0, section: rowIndex)) as? T
+        customCellType = type as? GridItemView.Type
     }
     
     open func endRefresh() {

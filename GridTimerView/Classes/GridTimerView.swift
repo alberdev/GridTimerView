@@ -15,8 +15,29 @@ open class GridTimerView: UIView {
     @IBOutlet weak public var timerLineView: UIView!
     @IBOutlet weak public var backScrollView: UIScrollView!
     
+    public var refresher: UIRefreshControl?
+    private let screenSize = UIScreen.main.bounds.size
+    private let initialInset = UIEdgeInsets(top: 45, left: 0, bottom: 0, right: 0)
+    private let loadingInset = UIEdgeInsets(top: 100, left: 0, bottom: 0, right: 0)
+    
+    
+    /////////////////////////////////////////////////////////////////////////////
+    /// The object that provides the data for the collection view
+    /// - Note: The data source must adopt the `GridTimerViewDataSource` protocol.
+    
     weak open var dataSource: GridTimerViewDataSource?
+    
+    /////////////////////////////////////////////////////////////////////////////
+    /// The object that acts as the delegate of the gridtimer view. The delegate
+    /// object is responsible for managing selection behavior and interactions with
+    /// individual items.
+    /// - Note: The delegate must adopt the `GridTimerViewDelegate` protocol.
+
     weak open var delegate: GridTimerViewDelegate?
+    
+    /////////////////////////////////////////////////////////////////////////////
+    /// Object that configure `GridTimerView` view. You can setup `GridTimerView` with
+    /// your own parameters. See also `GridTimerConfiguration` implementation.
     
     open var configuration = GridTimerConfiguration() {
         didSet {
@@ -32,11 +53,6 @@ open class GridTimerView: UIView {
             timerLineView.backgroundColor = configuration.lineColor
         }
     }
-    
-    public var refresher: UIRefreshControl?
-    private let screenSize = UIScreen.main.bounds.size
-    private let initialInset = UIEdgeInsets(top: 45, left: 0, bottom: 0, right: 0)
-    private let loadingInset = UIEdgeInsets(top: 100, left: 0, bottom: 0, right: 0)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -61,7 +77,7 @@ open class GridTimerView: UIView {
         if let collectionViewLayout = collectionView.collectionViewLayout as? CustomCollectionViewLayout {
             collectionViewLayout.dataSource = self
         }
-        
+
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.alwaysBounceVertical = true
@@ -100,7 +116,7 @@ open class GridTimerView: UIView {
     }
 }
 
-extension GridTimerView {
+extension GridTimerView: GridTimerViewInterface {
     
     open func scrollToDate(date: Date) {
         let offsetY = collectionView.contentOffset.y

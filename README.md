@@ -11,8 +11,6 @@
 
 ## Table of Contents
 
-<img src="https://raw.githubusercontent.com/alberdev/GridTimerView/master/Images/video_1.gif" alt="Video" align="right" style="margin-top: 20px; margin-left: 50px;" />
-
 - [Description](#description)
 - [Example](#example)
 - [Usage](#usage)
@@ -27,7 +25,7 @@
 
 ## Description
 
-With `GridTimerView` you can show a schedule with timer controller. Each cell can manage multiple events with diferent durations. It's perfect for listing TV programs shows in a simulated table. And the good news is that you can customise most of these features with your own fonts, colors, sizes... and many more.
+With `GridTimerView` you can show a schedule with timer controller. Each cell can manage multiple events with different durations. It's perfect for listing TV programs shows in a simulated table. And the good news is that you can customise most of these features with your own fonts, colors, sizes... and many more.
 
 - [x] Show multiple events for each cell
 - [x] Totally customizable
@@ -38,6 +36,8 @@ With `GridTimerView` you can show a schedule with timer controller. Each cell ca
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
+
+<center><img src="https://raw.githubusercontent.com/alberdev/GridTimerView/master/Images/video_1.gif" alt="Video" style="margin-top: 20px;" /></center>
 
 ## Usage
 
@@ -123,7 +123,7 @@ gridTimerView.configuration = configuration
 
 Is needed to show your own cells with events in collection table.
 
-`numberOfRows ` returns number of cells in the table (no events)
+`numberOfRows ` returns number of rows in the table (no events)
 
 ```swift
 func numberOfRows(inGridTimerView gridTimerView: GridTimerView) -> Int {
@@ -131,7 +131,7 @@ func numberOfRows(inGridTimerView gridTimerView: GridTimerView) -> Int {
 }
 ```
 
-`heightForRow ` returns height of custom cell in the table (no events)
+`heightForRow ` returns height of custom row in the table (no events)
 
 ```swift
 func heightForRow(inGridTimerView gridTimerView: GridTimerView) -> CGFloat {
@@ -139,7 +139,7 @@ func heightForRow(inGridTimerView gridTimerView: GridTimerView) -> CGFloat {
 }
 ```
 
-`heightForTimelineRow ` returns height of highlighted events
+`heightForTimelineRow ` returns height of highlighted items
 
 ```swift
 func heightForTimelineRow(inGridTimerView gridTimerView: GridTimerView) -> CGFloat {
@@ -147,7 +147,7 @@ func heightForTimelineRow(inGridTimerView gridTimerView: GridTimerView) -> CGFlo
 }
 ```
 
-`numberOfItemsAtRowIndex ` returns number of events in cell
+`numberOfItemsAtRowIndex ` returns number of items in row
 
 ```swift
 func gridTimerView(gridTimerView: GridTimerView, numberOfItemsAtRowIndex rowIndex: Int) -> Int {
@@ -155,7 +155,7 @@ func gridTimerView(gridTimerView: GridTimerView, numberOfItemsAtRowIndex rowInde
 }
 ```
 
-`viewForItemIndex ` returns custom cell view (no event)
+`viewForItemIndex ` returns custom row view (no event)
 
 ```swift
 func gridTimerView(gridTimerView: GridTimerView, viewForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> GridViewCell? {
@@ -187,13 +187,13 @@ func gridTimerView(gridTimerView: GridTimerView, timeDurationForItemIndex itemIn
 
 ### Delegates
 
-`didHighlightAtItemIndex ` is called when event is highlighted
+`didHighlightAtItemIndex ` is called when item is highlighted
 
 ```swift
 func gridTimerView(gridTimerView: GridTimerView, didHighlightAtItemIndex itemIndex: Int, inRowIndex rowIndex: Int)
 ```
 
-`didSelectRowAtIndex ` is called when cell is selected
+`didSelectRowAtIndex ` is called when row is selected
 
 ```swift
 func gridTimerView(gridTimerView: GridTimerView, didSelectRowAtIndex rowIndex: Int) 
@@ -213,19 +213,19 @@ Do you want to scroll the timer to single date programatically?
 gridTimerView.scrollToDate(date: Date())
 ```
 
-With this method you can obtain cell by index
+With this method you can obtain row by index
 
 ```swift
 gridTimerView.cellForRowIndex(rowIndex: rowIndex)
 ```
 
-Register your own cell is needed for reuse in table
+Register your own row is needed for reuse in table
 
 ```swift
 gridTimerView.register(type: ChannelCollectionViewCell.self)
 ```
 
-Deque reusable custom cell
+Deque reusable custom row
 
 ```swift
 gridTimerView.dequeReusableCell(withType: ChannelCollectionViewCell.self, forRowIndex: rowIndex)

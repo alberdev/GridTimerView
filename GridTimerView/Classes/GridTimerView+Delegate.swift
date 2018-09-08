@@ -34,7 +34,6 @@ extension GridTimerView: UICollectionViewDelegateFlowLayout {
 extension GridTimerView: UIScrollViewDelegate {
     
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print(scrollView.contentOffset.y)
         backScrollView.setContentOffset(CGPoint(x: 0, y: scrollView.contentOffset.y), animated: false)
         if let isRefreshing = refresher?.isRefreshing, scrollView.contentOffset.y < -120 && !isRefreshing {
             refresher?.beginRefreshing()

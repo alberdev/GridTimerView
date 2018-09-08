@@ -127,39 +127,30 @@ Is needed to show your own cells with events in collection table.
 
 ```swift
 func numberOfRows(inGridTimerView gridTimerView: GridTimerView) -> Int {
-    return channels.count
+	// Needed for displaying rows
+    // Returns number of rows in the table 
 }
-```
 
-`heightForRow ` returns height of custom row in the table (no events)
-
-```swift
 func heightForRow(inGridTimerView gridTimerView: GridTimerView) -> CGFloat {
-    return 66.0
+	// Needed for displaying rows
+    // Returns height of custom row in the table
 }
-```
 
-`heightForTimelineRow ` returns height of highlighted items
-
-```swift
 func heightForTimelineRow(inGridTimerView gridTimerView: GridTimerView) -> CGFloat {
-    return 8.0
+	// Needed for displaying items in the timeline row
+    // Returns height of highlighted items
 }
-```
 
-`numberOfItemsAtRowIndex ` returns number of items in row
-
-```swift
 func gridTimerView(gridTimerView: GridTimerView, numberOfItemsAtRowIndex rowIndex: Int) -> Int {
-    return channelAt(cellIndex)?.events.count ?? 0
+	// Needed for displaying items in the timeline row
+    // Returns number of items in row
 }
-```
 
-`viewForItemIndex ` returns custom row view (no event)
-
-```swift
 func gridTimerView(gridTimerView: GridTimerView, viewForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> GridViewCell? {
-        
+	// Needed for drawing your custom row with item index and row index
+    // Returns custom row view
+    // See also next example:
+           
     let sectionData = channels[cellIndex]
     let cell = gridTimerView.dequeReusableCell(withType: ChannelCollectionViewCell.self, forCellIndex: cellIndex)
     cell?.source = ChannelCollectionViewCellItem(
@@ -169,13 +160,12 @@ func gridTimerView(gridTimerView: GridTimerView, viewForItemIndex itemIndex: Int
     
     return cell == nil ? ChannelCollectionViewCell() : cell!
 }
-```
 
-`timeDurationForItemIndex ` returns event duration
-
-```swift
 func gridTimerView(gridTimerView: GridTimerView, timeDurationForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> Double? {
-        
+	// Needed for drawing item width in the timeline row
+    // Returns event duration
+    // See also next example:
+            
     guard
         let event = eventAt(IndexPath(item: eventIndex, section: cellIndex)),
         let endTime = event.endTime?.timeIntervalSince1970,
@@ -187,54 +177,55 @@ func gridTimerView(gridTimerView: GridTimerView, timeDurationForItemIndex itemIn
 
 ### Delegates
 
-`didHighlightAtItemIndex ` is called when item is highlighted
+In order to add more functionality in your app, you must implement te `GridTimerViewDelegate`` and set delegate to your view controller instance.
 
 ```swift
-func gridTimerView(gridTimerView: GridTimerView, didHighlightAtItemIndex itemIndex: Int, inRowIndex rowIndex: Int)
-```
+func gridTimerView(gridTimerView: GridTimerView, didHighlightAtItemIndex itemIndex: Int, inRowIndex rowIndex: Int) {
+	// Called when item is highlighted
+    // Returns the item index and row index
+}
 
-`didSelectRowAtIndex ` is called when row is selected
+func gridTimerView(gridTimerView: GridTimerView, didSelectRowAtIndex rowIndex: Int) {
+	// Called when row is selected
+    // Returns the row index
+}
 
-```swift
-func gridTimerView(gridTimerView: GridTimerView, didSelectRowAtIndex rowIndex: Int) 
-```
-
-`didPullToRefresh` is called when you refresh the table
-
-```swift
-func didPullToRefresh(inGridTimerView gridTimerView: GridTimerView)
+func didPullToRefresh(inGridTimerView gridTimerView: GridTimerView) {
+	// Called when you refresh the table
+    // Returns the grid view
+}
 ```
 
 ### Extra
 
-Do you want to scroll the timer to single date programatically?
+You can also use next methods for scrolling timer, registering and reuse your custom view row or end refreshing table when new data has loaded.
 
 ```swift
-gridTimerView.scrollToDate(date: Date())
-```
+func scrollToDate(date: Date) {
+	// Scroll the timer to single date programatically
+    // Date to scroll is needed
+}
 
-With this method you can obtain row by index
+func viewForRowIndex(rowIndex: Int) -> GridItemView? {
+	// Obtain your custom view
+    // Row index is needed
+}
 
-```swift
-gridTimerView.viewForRowIndex(rowIndex: rowIndex)
-```
+func register<T: UICollectionViewCell>(type: T.Type) {
+	// Register your own view for row is needed for reuse in table
+    // Only class name is needed 
+    // Example: gridTimerView.register(type: ChannelRowView.self)
+}
 
-Register your own view for row is needed for reuse in table
+func dequeReusableView<T: UICollectionViewCell>(withType type: T.Type, forRowIndex rowIndex: Int) -> T? {
+	// Deque reusable custom view
+    // Class name & row index are needed
+    // Example: gridTimerView.dequeReusableView(withType: ChannelRowView.self, forRowIndex: rowIndex)
+}
 
-```swift
-gridTimerView.register(type: ChannelCollectionViewCell.self)
-```
-
-Deque reusable custom view
-
-```swift
-gridTimerView.dequeReusableView(withType: ChannelCollectionViewCell.self, forRowIndex: rowIndex)
-```
-
-End refreshing table
-
-```swift
-gridTimerView.endRefresh()
+func endRefresh() {
+	// End refreshing table. Used when finish loading data
+}
 ```
 
 

@@ -14,6 +14,7 @@ public protocol GridTimerViewDataSource: class {
      Returns number of rows in the table (no events)
      ------------------------------------------------------------------------------------------
      - parameter gridTimerView: current gridTimerView
+     - returns: number of rows
      */
     func numberOfRows(inGridTimerView gridTimerView: GridTimerView) -> Int
     
@@ -22,6 +23,7 @@ public protocol GridTimerViewDataSource: class {
      Returns height of custom row in the table (no events)
      ------------------------------------------------------------------------------------------
      - parameter gridTimerView: current gridTimerView
+     - returns: height of custom row
      */
     func heightForRow(inGridTimerView gridTimerView: GridTimerView) -> CGFloat
     
@@ -30,6 +32,7 @@ public protocol GridTimerViewDataSource: class {
      Returns height of highlighted items
      ------------------------------------------------------------------------------------------
      - parameter gridTimerView: current gridTimerView
+     - returns: height of highlighted items
      */
     func heightForTimelineRow(inGridTimerView gridTimerView: GridTimerView) -> CGFloat
     
@@ -39,6 +42,7 @@ public protocol GridTimerViewDataSource: class {
      ------------------------------------------------------------------------------------------
      - parameter gridTimerView: current gridTimerView
      - parameter rowIndex: row index
+     - returns: number of items in row
      */
     func gridTimerView(gridTimerView: GridTimerView, numberOfItemsAtRowIndex rowIndex: Int) -> Int
     
@@ -49,6 +53,7 @@ public protocol GridTimerViewDataSource: class {
      - parameter gridTimerView: current gridTimerView
      - parameter itemIndex: item index
      - parameter rowIndex: row index
+     - returns: row view
      */
     func gridTimerView(gridTimerView: GridTimerView, viewForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> GridItemView?
     
@@ -59,6 +64,7 @@ public protocol GridTimerViewDataSource: class {
      - parameter gridTimerView: current gridTimerView
      - parameter itemIndex: item index
      - parameter rowIndex: row index
+     - returns: time duration
      */
     func gridTimerView(gridTimerView: GridTimerView, timeDurationForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> Double?
 }

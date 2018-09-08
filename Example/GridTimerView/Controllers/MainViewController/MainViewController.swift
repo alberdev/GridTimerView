@@ -55,7 +55,7 @@ class MainViewController: UIViewController {
         configuration.lineColor = Colors.Fucsia
         configuration.selectedItemColor = Colors.Fucsia
         gridTimerView.configuration = configuration
-        gridTimerView.register(type: ChannelCollectionViewCell.self)
+        gridTimerView.register(type: ChannelItemView.self)
         gridTimerView.dataSource = self
         gridTimerView.delegate = self
     }
@@ -82,8 +82,8 @@ extension MainViewController: GridTimerViewDataSource {
     func gridTimerView(gridTimerView: GridTimerView, setupView itemView: GridItemView, forItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> GridItemView {
         
         let sectionData = channels[rowIndex]
-        let cell = itemView as! ChannelCollectionViewCell
-        cell.source = ChannelCollectionViewCellItem(
+        let cell = itemView as! ChannelItemView
+        cell.source = ChannelItemViewSource(
             title: sectionData.events[itemIndex].title,
             subtitle: sectionData.events[itemIndex].subtitle,
             image: sectionData.channelImage)
@@ -107,9 +107,9 @@ extension MainViewController: GridTimerViewDelegate {
     func gridTimerView(gridTimerView: GridTimerView, didHighlightAtItemIndex itemIndex: Int, inRowIndex rowIndex: Int) {
         
         let sectionData = channels[rowIndex]
-        let sectionCell = gridTimerView.viewForRowIndex(rowIndex: rowIndex) as? ChannelCollectionViewCell
+        let sectionCell = gridTimerView.viewForRowIndex(rowIndex: rowIndex) as? ChannelItemView
         
-        var source = ChannelCollectionViewCellItem()
+        var source = ChannelItemViewSource()
         source.title = sectionData.events[itemIndex].title
         source.subtitle = sectionData.events[itemIndex].subtitle
         source.image = sectionData.channelImage
@@ -118,7 +118,7 @@ extension MainViewController: GridTimerViewDelegate {
     
     func gridTimerView(gridTimerView: GridTimerView, didSelectRowAtIndex rowIndex: Int) {
         
-        let sectionCell = gridTimerView.viewForRowIndex(rowIndex: rowIndex) as? ChannelCollectionViewCell
+        let sectionCell = gridTimerView.viewForRowIndex(rowIndex: rowIndex) as? ChannelItemView
         let vc = DetailViewController()
         vc.source = DetailViewSource(title: sectionCell?.source?.title, subtitle: sectionCell?.source?.subtitle)
         navigationController?.pushViewController(vc, animated: true)

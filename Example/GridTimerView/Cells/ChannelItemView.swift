@@ -9,14 +9,14 @@
 import UIKit
 import GridTimerView
 
-class ChannelCollectionViewCell: GridItemView {
+class ChannelItemView: GridItemView {
 
     @IBOutlet weak var channelImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var cellContentView: UIView!
     
-    var source: ChannelCollectionViewCellItem? {
+    var source: ChannelItemViewSource? {
         didSet {
             fill(source: source)
         }
@@ -41,7 +41,7 @@ class ChannelCollectionViewCell: GridItemView {
     // Private
     // ---------------------------------------------------------
 
-    private func fill(source: ChannelCollectionViewCellItem?) {
+    private func fill(source: ChannelItemViewSource?) {
         channelImageView.image = source?.image
         titleLabel.text = source?.title
         subtitleLabel.text = source?.subtitle

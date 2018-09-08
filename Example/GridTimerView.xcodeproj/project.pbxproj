@@ -17,9 +17,9 @@
 		E37D661621412AFD00B184AA /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37D660821412AFC00B184AA /* Colors.swift */; };
 		E37D661721412AFD00B184AA /* UIColor+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37D660A21412AFC00B184AA /* UIColor+Tools.swift */; };
 		E37D661821412AFD00B184AA /* Array+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37D660B21412AFC00B184AA /* Array+Tools.swift */; };
-		E37D661921412AFD00B184AA /* ChannelCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E37D660D21412AFD00B184AA /* ChannelCollectionViewCell.xib */; };
-		E37D661A21412AFD00B184AA /* ChannelCollectionViewCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37D660E21412AFD00B184AA /* ChannelCollectionViewCellItem.swift */; };
-		E37D661B21412AFD00B184AA /* ChannelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37D660F21412AFD00B184AA /* ChannelCollectionViewCell.swift */; };
+		E37D661921412AFD00B184AA /* ChannelItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E37D660D21412AFD00B184AA /* ChannelItemView.xib */; };
+		E37D661A21412AFD00B184AA /* ChannelItemViewSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37D660E21412AFD00B184AA /* ChannelItemViewSource.swift */; };
+		E37D661B21412AFD00B184AA /* ChannelItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37D660F21412AFD00B184AA /* ChannelItemView.swift */; };
 		E37D661C21412AFD00B184AA /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37D661121412AFD00B184AA /* Event.swift */; };
 		E37D661D21412AFD00B184AA /* ChannelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37D661221412AFD00B184AA /* ChannelFactory.swift */; };
 		E37D661E21412AFD00B184AA /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37D661321412AFD00B184AA /* Channel.swift */; };
@@ -50,9 +50,9 @@
 		E37D660821412AFC00B184AA /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		E37D660A21412AFC00B184AA /* UIColor+Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Tools.swift"; sourceTree = "<group>"; };
 		E37D660B21412AFC00B184AA /* Array+Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Tools.swift"; sourceTree = "<group>"; };
-		E37D660D21412AFD00B184AA /* ChannelCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChannelCollectionViewCell.xib; sourceTree = "<group>"; };
-		E37D660E21412AFD00B184AA /* ChannelCollectionViewCellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelCollectionViewCellItem.swift; sourceTree = "<group>"; };
-		E37D660F21412AFD00B184AA /* ChannelCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelCollectionViewCell.swift; sourceTree = "<group>"; };
+		E37D660D21412AFD00B184AA /* ChannelItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChannelItemView.xib; sourceTree = "<group>"; };
+		E37D660E21412AFD00B184AA /* ChannelItemViewSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelItemViewSource.swift; sourceTree = "<group>"; };
+		E37D660F21412AFD00B184AA /* ChannelItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelItemView.swift; sourceTree = "<group>"; };
 		E37D661121412AFD00B184AA /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		E37D661221412AFD00B184AA /* ChannelFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelFactory.swift; sourceTree = "<group>"; };
 		E37D661321412AFD00B184AA /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
@@ -214,9 +214,9 @@
 		E37D660C21412AFD00B184AA /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				E37D660D21412AFD00B184AA /* ChannelCollectionViewCell.xib */,
-				E37D660E21412AFD00B184AA /* ChannelCollectionViewCellItem.swift */,
-				E37D660F21412AFD00B184AA /* ChannelCollectionViewCell.swift */,
+				E37D660D21412AFD00B184AA /* ChannelItemView.xib */,
+				E37D660E21412AFD00B184AA /* ChannelItemViewSource.swift */,
+				E37D660F21412AFD00B184AA /* ChannelItemView.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -301,7 +301,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E37D661921412AFD00B184AA /* ChannelCollectionViewCell.xib in Resources */,
+				E37D661921412AFD00B184AA /* ChannelItemView.xib in Resources */,
 				E37D662221412B3000B184AA /* Images.xcassets in Resources */,
 				E31BC00B2141FDF800E213BE /* DetailViewController.xib in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
@@ -356,7 +356,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E31BC00A2141FDF800E213BE /* DetailViewController.swift in Sources */,
-				E37D661A21412AFD00B184AA /* ChannelCollectionViewCellItem.swift in Sources */,
+				E37D661A21412AFD00B184AA /* ChannelItemViewSource.swift in Sources */,
 				E37D661C21412AFD00B184AA /* Event.swift in Sources */,
 				E37D661521412AFD00B184AA /* MainViewController.swift in Sources */,
 				E31BC00D2142015900E213BE /* DetailViewSource.swift in Sources */,
@@ -366,7 +366,7 @@
 				E37D661D21412AFD00B184AA /* ChannelFactory.swift in Sources */,
 				E39D576E21428E61007C35B2 /* MainViewController+Tools.swift in Sources */,
 				E37D661621412AFD00B184AA /* Colors.swift in Sources */,
-				E37D661B21412AFD00B184AA /* ChannelCollectionViewCell.swift in Sources */,
+				E37D661B21412AFD00B184AA /* ChannelItemView.swift in Sources */,
 				E37D662021412B1500B184AA /* AppDelegate.swift in Sources */,
 				E37D661821412AFD00B184AA /* Array+Tools.swift in Sources */,
 			);

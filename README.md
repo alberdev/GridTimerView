@@ -41,6 +41,8 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Usage
 
+It is important to know that this pod is composed of rows. Each row has a set of events with start time and end time of type date. You must create a custom view to show in each row.
+ 
 Once you've installed this pod, you can follow next steps. It's really simple:
 
 ### UIView in your xib / storyboard
@@ -55,23 +57,26 @@ Then, connect the IBOutlet in your UIViewController
 @IBOutlet weak var gridTimerView: GridTimerView!
 ```
 
-Make your own custom cell subclassing `GridViewCell` and register to use it
+### Make your custom item row (required)
+
+Make your own custom item subclassing `GridItemView` and register to use it
 
 ```swift
-gridTimerView.register(type: ChannelCollectionViewCell.self)
+gridTimerView.register(type: ChannelItemView.self)
 ```
 
-Finally implement delegate and datasource methods
+### Implement datasource and delegate
+
+The first way to customize this `GridTimerView` is implementing delegate and datasource methods. These methods handle the most common use cases.
 
 ```swift
 gridTimerView.dataSource = self
 gridTimerView.delegate = self
 ```
 
-
 ### Configuration
 
-You can setup `GridTimerView`with your own parameters.
+You can setup `GridTimerView`with your own parameters. See default values:
  
 ```swift
 var configuration = GridTimerConfiguration()
@@ -113,7 +118,7 @@ configuration.selectedItemColor = UIColor.blue
 configuration.unselectedItemColor = UIColor.lightGray
 ```
 
-Assign configuration to `GridTimerView`
+Is important to finally assign configuration to `GridTimerView`
 
 ```swift
 gridTimerView.configuration = configuration
@@ -149,21 +154,16 @@ func gridTimerView(gridTimerView: GridTimerView, viewForItemIndex itemIndex: Int
     return cell == nil ? ChannelCollectionViewCell() : cell!
 }
 
-// Needed for drawing item width in the timeline row
-func gridTimerView(gridTimerView: GridTimerView, timeDurationForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> Double? {
-        
-    guard
-        let event = eventAt(IndexPath(item: eventIndex, section: cellIndex)),
-        let endTime = event.endTime?.timeIntervalSince1970,
-        let initTime = event.initTime?.timeIntervalSince1970
-        else { return 0 }
-    return Double(endTime - initTime)
-}
+// Needed for drawing item in the timeline row
+func gridTimerView(gridTimerView: GridTimerView, initTimeForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> Date
+
+// Needed for drawing item in the timeline row
+func gridTimerView(gridTimerView: GridTimerView, endTimeForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> Date
 ```
 
 ### Delegates
 
-In order to add more functionality in your app, you must implement te `GridTimerViewDelegate`` and set delegate to your view controller instance.
+In order to add more functionality in your app, you must implement te `GridTimerViewDelegate` and set delegate to your view controller instance.
 
 ```swift
 // Called when item is highlighted. 

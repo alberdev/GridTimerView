@@ -58,7 +58,11 @@ extension GridTimerView: UIScrollViewDelegate {
             let timerLinePoint = convert(timerLineView.frame.origin, to: collectionView)
             if initPoint-1 < timerLinePoint.x && endPoint+1 >= timerLinePoint.x {
                 cell.backgroundColor = configuration.selectedItemColor
-                if let indexPath = collectionView.indexPath(for: cell) {
+                if
+                    let indexPath = collectionView.indexPath(for: cell),
+                    let header = viewForRowIndex(rowIndex: indexPath.section) {
+                    
+                    let _ = dataSource?.gridTimerView(gridTimerView: self, setupView: header, forItemIndex: indexPath.item, inRowIndex: indexPath.section)
                     delegate?.gridTimerView(gridTimerView: self, didHighlightAtItemIndex: indexPath.item, inRowIndex: indexPath.section)
                 }
             } else {

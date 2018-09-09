@@ -106,14 +106,6 @@ extension MainViewController: GridTimerViewDelegate {
     
     func gridTimerView(gridTimerView: GridTimerView, didHighlightAtItemIndex itemIndex: Int, inRowIndex rowIndex: Int) {
         
-        let sectionData = channels[rowIndex]
-        let sectionCell = gridTimerView.viewForRowIndex(rowIndex: rowIndex) as? ChannelItemView
-        
-        var source = ChannelItemViewSource()
-        source.title = sectionData.events[itemIndex].title
-        source.subtitle = sectionData.events[itemIndex].subtitle
-        source.image = sectionData.channelImage
-        sectionCell?.source = source
     }
     
     func gridTimerView(gridTimerView: GridTimerView, didSelectRowAtIndex rowIndex: Int) {

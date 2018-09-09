@@ -11,10 +11,9 @@ import UIKit
 public class RuleView: UIView {
     
     @IBOutlet private var contentView: UIView!
-    @IBOutlet weak private var scrollView: UIScrollView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     private var currentTimeLabel: UILabel?
-    private let ruleWidth: CGFloat = 96.05
     private let ruleTimeInterval: TimeInterval = 60*60 // 60 min
     private let screenSize = UIScreen.main.bounds.size
     
@@ -96,7 +95,7 @@ public class RuleView: UIView {
         backgroundColor = ruleBackgroundColor
         
         var initialDate = Date.add(days: -ruleDaysFrom).timeIntervalSince1970
-        for i in 0 ..< 24*ruleDaysTo {
+        for i in 0 ..< 24 * (ruleDaysFrom + ruleDaysTo) + 1 {
             let timeXPos = CGFloat(i)*ruleWidth 
             let timeLabel = UILabel(frame: CGRect(x: timeXPos - 25, y: 7, width: 50, height: 40))
             timeLabel.font = ruleFont

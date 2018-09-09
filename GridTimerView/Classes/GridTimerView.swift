@@ -16,6 +16,7 @@ open class GridTimerView: UIView {
     @IBOutlet weak public var backScrollView: UIScrollView!
     
     public var refresher: UIRefreshControl?
+    private var currentTimeLine: UIView?
     public var firstScroll = false
     public let scrollRefreshLimitY: CGFloat = -120
     public var customCellType: GridItemView.Type?
@@ -53,11 +54,19 @@ open class GridTimerView: UIView {
             ruleView.timerFont = configuration.timerFont
             ruleView.timerColor = configuration.timerColor
             ruleView.timerTextColor = configuration.timerTextColor
+            timeLineColor = configuration.timeLineColor
             timerLineView.backgroundColor = configuration.lineColor
             
             if let collectionViewLayout = collectionView.collectionViewLayout as? CustomCollectionViewLayout {
                 collectionViewLayout.ruleDaysFrom = configuration.ruleDaysFrom
+                collectionViewLayout.ruleDaysTo = configuration.ruleDaysTo
             }
+        }
+    }
+    
+    var timeLineColor = UIColor.green {
+        didSet {
+            currentTimeLine?.backgroundColor = timeLineColor
         }
     }
     
@@ -77,6 +86,7 @@ open class GridTimerView: UIView {
         setupRefresher()
         setupRuleView()
         setupLineView()
+        setupCurrentTimeLine()
     }
     
     private func setupCollectionView() {
@@ -105,6 +115,13 @@ open class GridTimerView: UIView {
     
     private func setupLineView() {
         timerLineView.backgroundColor = configuration.lineColor
+    }
+    
+    private func setupCurrentTimeLine() {
+        let xPos = xPosition(byDate: Date(), fromInitDate: Date.add(days: -configuration.ruleDaysFrom))
+        currentTimeLine = UIView(frame: CGRect(x: xPos, y: 0, width: 1, height: collectionView.contentSize.height))
+        currentTimeLine?.backgroundColor = timeLineColor
+        collectionView.addSubview(currentTimeLine!)
     }
     
     private func setupRefresher() {

@@ -37,7 +37,7 @@ With `GridTimerView` you can show a schedule with timer controller. Each cell ca
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-<center><img src="https://raw.githubusercontent.com/alberdev/GridTimerView/master/Images/video_1.gif" alt="Video" style="margin-top: 20px;" /></center>
+![Photos](https://raw.githubusercontent.com/alberdev/GridTimerView/master/Images/video_1.gif)
 
 ## Usage
 
@@ -108,8 +108,11 @@ configuration.timerColor = UIColor.blue
 // Text color used in current time
 configuration.timerTextColor = UIColor.white
 
-// Line color in the middle of the view
-configuration.lineColor = UIColor.blue
+// Selected date line color
+public var lineColor = UIColor.blue
+    
+// Current date line color
+public var timeLineColor = UIColor.blue
 
 // Selected highlight color on event
 configuration.selectedItemColor = UIColor.blue
@@ -155,7 +158,7 @@ func gridTimerView(gridTimerView: GridTimerView, viewForItemIndex itemIndex: Int
 }
 
 // Needed for drawing item in the timeline row
-func gridTimerView(gridTimerView: GridTimerView, initTimeForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> Date
+func gridTimerView(gridTimerView: GridTimerView, startTimeForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> Date
 
 // Needed for drawing item in the timeline row
 func gridTimerView(gridTimerView: GridTimerView, endTimeForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> Date

@@ -36,8 +36,11 @@ public struct GridTimerConfiguration {
     /// Text color used in current time
     public var timerTextColor = UIColor.white
     
-    /// Line color in the middle of the view
+    /// Selected date line color
     public var lineColor = UIColor.blue
+    
+    /// Current date line color
+    public var timeLineColor = UIColor.blue
     
     /// Selected highlight color on event
     public var selectedItemColor = UIColor.blue

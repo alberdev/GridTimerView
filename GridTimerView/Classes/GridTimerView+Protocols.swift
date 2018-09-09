@@ -77,7 +77,7 @@ public protocol GridTimerViewDataSource: class {
      - parameter rowIndex: row index
      - returns: end date
      */
-    func gridTimerView(gridTimerView: GridTimerView, initTimeForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> Date
+    func gridTimerView(gridTimerView: GridTimerView, startTimeForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> Date
 }
 
 public extension GridTimerViewDataSource {

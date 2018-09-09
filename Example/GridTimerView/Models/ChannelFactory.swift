@@ -115,7 +115,7 @@ struct ChannelFactory {
             var date = Date.add(days: -1)
             for _ in 0 ..< 100 {
                 let randomEvent = randomShows[i][Int(arc4random_uniform(6))]
-                let endDate = date.addingTimeInterval(TimeInterval(arc4random_uniform(100)))
+                let endDate = date.addingTimeInterval(TimeInterval(arc4random_uniform(60*120)))
                 var event = Event()
                 event.initTime = date
                 event.endTime = endDate

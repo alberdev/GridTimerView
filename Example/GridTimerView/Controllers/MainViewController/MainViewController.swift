@@ -91,7 +91,7 @@ extension MainViewController: GridTimerViewDataSource {
         return cell
     }
     
-    func gridTimerView(gridTimerView: GridTimerView, initTimeForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> Date {
+    func gridTimerView(gridTimerView: GridTimerView, startTimeForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> Date {
         let event = eventAt(IndexPath(item: itemIndex, section: rowIndex))
         return event?.initTime ?? Date()
     }

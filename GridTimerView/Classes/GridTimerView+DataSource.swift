@@ -50,7 +50,7 @@ extension GridTimerView: UICollectionViewDataSource {
 extension GridTimerView: CustomCollectionViewLayoutDataSource {
     
     func initDateForIndexPath(indexPath: IndexPath) -> Date? {
-        return dataSource?.gridTimerView(gridTimerView: self, initTimeForItemIndex: indexPath.item, inRowIndex: indexPath.section)
+        return dataSource?.gridTimerView(gridTimerView: self, startTimeForItemIndex: indexPath.item, inRowIndex: indexPath.section)
     }
     
     func endDateForIndexPath(indexPath: IndexPath) -> Date? {

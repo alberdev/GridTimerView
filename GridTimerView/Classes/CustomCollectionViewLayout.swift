@@ -22,10 +22,10 @@ class CustomCollectionViewLayout: UICollectionViewFlowLayout {
     var cellItemHeight: CGFloat = 8.0
     var cellHeaderHeight: CGFloat = 66.0
     var ruleDaysFrom = 1
+    var ruleDaysTo = 2
     
     private var cellItemsAttributes = Dictionary<IndexPath, UICollectionViewLayoutAttributes>()
     private var cellHeadersAttributes = Dictionary<IndexPath, UICollectionViewLayoutAttributes>()
-    private var ruleWidth = 96.05
     private var contentSize = CGSize(width: 0, height: 0)
     private var screenSize = UIScreen.main.bounds.size
     private var firstLoad = false
@@ -43,9 +43,8 @@ class CustomCollectionViewLayout: UICollectionViewFlowLayout {
         cellHeaderHeight = dataSource?.cellHeaderHeight() ?? cellHeaderHeight
         
         let numberOfSections = collectionView.numberOfSections
-        let contentWidth: Double = ruleWidth*24*2
+        let contentWidth: Double = Double(ruleWidth) * 24 * Double(ruleDaysTo + ruleDaysFrom)
         let contentHeight: Double = Double(numberOfSections) * Double(cellHeaderHeight + cellItemHeight)
-        //var xPos: CGFloat = 0
         var yPos: CGFloat = 0
         
         contentSize = CGSize(width: contentWidth, height: contentHeight)
@@ -64,10 +63,7 @@ class CustomCollectionViewLayout: UICollectionViewFlowLayout {
                 let itemIndexPath = IndexPath(item: i, section: s)
                 let itemAttributes = self.itemAttributes(forIndexPath: itemIndexPath, yPosition: yPos)
                 cellItemsAttributes[itemIndexPath] = itemAttributes
-                
-                // xPos += itemAttributes?.frame.width ?? 0 + 2
             }
-            // xPos = 0
             yPos += cellHeaderHeight + cellItemHeight
         }
     }
@@ -121,15 +117,10 @@ class CustomCollectionViewLayout: UICollectionViewFlowLayout {
         let initTime = initDate.timeIntervalSince1970
         let endTime = endDate.timeIntervalSince1970
         let cellTimeDuration = Int(endTime - initTime)
-        let cellItemWidth = CGFloat(cellTimeDuration)
+        let cellItemWidth = floatForTime(seconds: cellTimeDuration)
         let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-        attributes.frame = CGRect(x: xPosition(byInitDate: initDate), y: yPosition, width: cellItemWidth, height: cellItemHeight)
+        let xPos = xPosition(byDate: initDate, fromInitDate: Date.add(days: -ruleDaysFrom))
+        attributes.frame = CGRect(x: xPos, y: yPosition, width: cellItemWidth, height: cellItemHeight)
         return attributes
-    }
-    
-    private func xPosition(byInitDate initDate: Date) -> CGFloat {
-        let ruleInitialDate = Date.add(days: -ruleDaysFrom).timeIntervalSince1970
-        let eventInitialDate = initDate.timeIntervalSince1970
-        return CGFloat(eventInitialDate - ruleInitialDate)
     }
 }

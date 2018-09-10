@@ -60,6 +60,7 @@ open class GridTimerView: UIView {
             if let collectionViewLayout = collectionView.collectionViewLayout as? CustomCollectionViewLayout {
                 collectionViewLayout.ruleDaysFrom = configuration.ruleDaysFrom
                 collectionViewLayout.ruleDaysTo = configuration.ruleDaysTo
+                collectionViewLayout.cellSeparation = configuration.rowSeparation
             }
         }
     }

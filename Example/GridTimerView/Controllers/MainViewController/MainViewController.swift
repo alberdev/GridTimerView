@@ -68,7 +68,7 @@ extension MainViewController: GridTimerViewDataSource {
     }
     
     func heightForRow(inGridTimerView gridTimerView: GridTimerView) -> CGFloat {
-        return 66.0
+        return 54.0
     }
     
     func heightForTimelineRow(inGridTimerView gridTimerView: GridTimerView) -> CGFloat {

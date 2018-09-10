@@ -48,5 +48,8 @@ public struct GridTimerConfiguration {
     /// Unselected color on event
     public var unselectedItemColor = UIColor.lightGray
     
+    /// Row separation
+    public var rowSeparation: CGFloat = 10.0
+    
     public init() {}
 }

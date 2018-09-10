@@ -13,14 +13,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ChannelItemView" customModule="GridTimerView_Example" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="367" height="66"/>
+            <rect key="frame" x="0.0" y="0.0" width="367" height="54"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="367" height="66"/>
+                <rect key="frame" x="0.0" y="0.0" width="367" height="54"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ghe-Qw-bhP">
-                        <rect key="frame" x="0.0" y="0.0" width="367" height="53"/>
+                        <rect key="frame" x="0.0" y="0.0" width="367" height="41"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hey!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uft-hp-vHF">
                                 <rect key="frame" x="47" y="9" width="309" height="17"/>
@@ -60,34 +60,24 @@
                             <constraint firstItem="fH3-Ks-UhI" firstAttribute="leading" secondItem="Ghe-Qw-bhP" secondAttribute="leading" constant="5" id="vgB-6x-81u"/>
                         </constraints>
                     </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V8z-ha-Bgq">
-                        <rect key="frame" x="0.0" y="53" width="367" height="1"/>
-                        <color key="backgroundColor" red="0.78431372549019607" green="0.78431372549019607" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="1" id="H86-CL-JSY"/>
-                        </constraints>
-                    </view>
                 </subviews>
             </view>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="V8z-ha-Bgq" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="CJJ-Dl-B70"/>
                 <constraint firstItem="Ghe-Qw-bhP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Gd7-9q-ypk"/>
                 <constraint firstItem="Ghe-Qw-bhP" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ZRZ-3I-mdy"/>
-                <constraint firstItem="V8z-ha-Bgq" firstAttribute="top" secondItem="Ghe-Qw-bhP" secondAttribute="bottom" id="eh4-Kq-n5I"/>
                 <constraint firstAttribute="bottom" secondItem="Ghe-Qw-bhP" secondAttribute="bottom" constant="13" id="hUk-6Q-s8n"/>
-                <constraint firstAttribute="trailing" secondItem="V8z-ha-Bgq" secondAttribute="trailing" id="mvB-3F-ICR"/>
                 <constraint firstAttribute="trailing" secondItem="Ghe-Qw-bhP" secondAttribute="trailing" id="qtY-XR-9ug"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <size key="customSize" width="367" height="70"/>
+            <size key="customSize" width="367" height="58"/>
             <connections>
                 <outlet property="cellContentView" destination="Ghe-Qw-bhP" id="H8p-cz-whe"/>
                 <outlet property="channelImageView" destination="fH3-Ks-UhI" id="O7h-Nu-8p3"/>
                 <outlet property="subtitleLabel" destination="pfj-HJ-x8a" id="Tbp-3A-l4I"/>
                 <outlet property="titleLabel" destination="Uft-hp-vHF" id="GXk-R4-7HQ"/>
             </connections>
-            <point key="canvasLocation" x="192.5" y="64"/>
+            <point key="canvasLocation" x="192.5" y="58"/>
         </collectionViewCell>
     </objects>
     <resources>

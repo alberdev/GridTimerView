@@ -119,6 +119,9 @@ configuration.selectedItemColor = UIColor.blue
 
 // Unselected color on event
 configuration.unselectedItemColor = UIColor.lightGray
+
+// Row separation
+configuration. rowSeparation = 10.0
 ```
 
 Is important to finally assign configuration to `GridTimerView`

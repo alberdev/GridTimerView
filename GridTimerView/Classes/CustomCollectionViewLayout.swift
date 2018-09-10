@@ -20,7 +20,8 @@ class CustomCollectionViewLayout: UICollectionViewFlowLayout {
     weak var dataSource: CustomCollectionViewLayoutDataSource?
     
     var cellItemHeight: CGFloat = 8.0
-    var cellHeaderHeight: CGFloat = 66.0
+    var cellHeaderHeight: CGFloat = 54.0
+    var cellSeparation: CGFloat = 10.0
     var ruleDaysFrom = 1
     var ruleDaysTo = 2
     
@@ -44,7 +45,7 @@ class CustomCollectionViewLayout: UICollectionViewFlowLayout {
         
         let numberOfSections = collectionView.numberOfSections
         let contentWidth: Double = Double(ruleWidth) * 24 * Double(ruleDaysTo + ruleDaysFrom)
-        let contentHeight: Double = Double(numberOfSections) * Double(cellHeaderHeight + cellItemHeight)
+        let contentHeight: Double = Double(numberOfSections) * Double(cellHeaderHeight + cellSeparation + cellItemHeight)
         var yPos: CGFloat = 0
         
         contentSize = CGSize(width: contentWidth, height: contentHeight)
@@ -64,7 +65,7 @@ class CustomCollectionViewLayout: UICollectionViewFlowLayout {
                 let itemAttributes = self.itemAttributes(forIndexPath: itemIndexPath, yPosition: yPos)
                 cellItemsAttributes[itemIndexPath] = itemAttributes
             }
-            yPos += cellHeaderHeight + cellItemHeight
+            yPos += cellHeaderHeight + cellSeparation + cellItemHeight
         }
     }
     

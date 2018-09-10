@@ -41,14 +41,20 @@ open class GridItemView: UICollectionViewCell {
     }
     
     public func hideSubviews() {
-        for view in contentView.subviews[0].subviews {
+        for view in subviews {
             view.isHidden = true
         }
+//        for view in contentView.subviews[0].subviews {
+//            view.isHidden = true
+//        }
     }
     
     public func showSubviews() {
-        for view in contentView.subviews[0].subviews {
+        for view in subviews {
             view.isHidden = false
         }
+//        for view in contentView.subviews[0].subviews {
+//            view.isHidden = false
+//        }
     }
 }

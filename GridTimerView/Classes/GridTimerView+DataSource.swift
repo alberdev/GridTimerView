@@ -21,7 +21,7 @@ extension GridTimerView: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView,
                                cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EventCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GridTimeLineView.uniqueIdentifier, for: indexPath)
         cell.layer.borderColor = UIColor.white.cgColor
         cell.layer.borderWidth = 1
         return cell

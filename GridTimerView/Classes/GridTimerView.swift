@@ -99,7 +99,7 @@ open class GridTimerView: UIView {
         collectionView.dataSource = self
         collectionView.alwaysBounceVertical = true
         collectionView.contentInset = initialInset
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "EventCell")
+        collectionView.register(GridTimeLineView.self, forCellWithReuseIdentifier: GridTimeLineView.uniqueIdentifier)
         collectionView.register(GridItemView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: GridItemView.uniqueIdentifier)
     }
     

@@ -16,10 +16,12 @@ open class GridItemView: UICollectionViewCell {
     
     weak var delegate: GridItemViewDelegate?
     var indexPath: IndexPath?
+    var highlitedItems = 0
     
     open override func awakeFromNib() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         addGestureRecognizer(tap)
+        hideSubviews()
     }
     
     @objc func handleTap(gesture: UITapGestureRecognizer) {
@@ -36,5 +38,17 @@ open class GridItemView: UICollectionViewCell {
     
     open override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         isHighlighted = false
+    }
+    
+    public func hideSubviews() {
+        for view in contentView.subviews[0].subviews {
+            view.isHidden = true
+        }
+    }
+    
+    public func showSubviews() {
+        for view in contentView.subviews[0].subviews {
+            view.isHidden = false
+        }
     }
 }

@@ -5,8 +5,7 @@
 [![Version](https://img.shields.io/cocoapods/v/GridTimerView.svg?style=flat&colorB=ED3269)](https://cocoapods.org/pods/GridTimerView)
 [![License](https://img.shields.io/cocoapods/l/GridTimerView.svg?style=flat)](https://cocoapods.org/pods/GridTimerView)
 [![Platform](https://img.shields.io/cocoapods/p/GridTimerView.svg?style=flat)](https://cocoapods.org/pods/GridTimerView)
-![Swift](https://img.shields.io/badge/%20in-swift%204.0-orange.svg?style=flat&colorB=ED3269)
-![CocoaPods](https://img.shields.io/cocoapods/dt/GridTimerView.svg?style=flat&colorB=aaaaaa)
+![Swift](https://img.shields.io/badge/%20in-swift%204.2-orange.svg?style=flat&colorB=ED3269)
 
 
 ## Table of Contents
@@ -37,7 +36,9 @@ With `GridTimerView` you can show a schedule with timer controller. Each cell ca
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-![Photos](https://raw.githubusercontent.com/alberdev/GridTimerView/master/Images/video_1.gif)
+<p align="center" >
+<img src="https://raw.githubusercontent.com/alberdev/GridTimerView/master/Images/video_1.gif" alt="GridTimerView" title="GridTimerView demo">
+</p>
 
 ## Usage
 

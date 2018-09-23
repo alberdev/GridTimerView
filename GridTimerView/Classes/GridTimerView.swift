@@ -101,7 +101,7 @@ open class GridTimerView: UIView {
         collectionView.alwaysBounceVertical = true
         collectionView.contentInset = initialInset
         collectionView.register(GridTimeLineView.self, forCellWithReuseIdentifier: GridTimeLineView.uniqueIdentifier)
-        collectionView.register(GridItemView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: GridItemView.uniqueIdentifier)
+        collectionView.register(GridItemView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: GridItemView.uniqueIdentifier)
     }
     
     private func setupRuleView() {
@@ -141,7 +141,7 @@ open class GridTimerView: UIView {
     }
     
     public func dequeReusableView<T: UICollectionViewCell>(withType type: T.Type, forRowIndex rowIndex: Int) -> T? {
-        return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: type.uniqueIdentifier, for: IndexPath(item: 0, section: rowIndex)) as? T
+        return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: type.uniqueIdentifier, for: IndexPath(item: 0, section: rowIndex)) as? T
     }
 }
 
@@ -154,11 +154,11 @@ extension GridTimerView: GridTimerViewInterface {
     }
     
     open func viewForRowIndex(rowIndex: Int) -> GridItemView? {
-        return collectionView.supplementaryView(forElementKind: UICollectionElementKindSectionHeader, at: IndexPath(item: 0, section: rowIndex)) as? GridItemView
+        return collectionView.supplementaryView(forElementKind: UICollectionView.elementKindSectionHeader, at: IndexPath(item: 0, section: rowIndex)) as? GridItemView
     }
     
     open func register<T: UICollectionViewCell>(type: T.Type) {
-        collectionView.register(type.nib, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: type.uniqueIdentifier)
+        collectionView.register(type.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: type.uniqueIdentifier)
         customCellType = type as? GridItemView.Type
     }
     

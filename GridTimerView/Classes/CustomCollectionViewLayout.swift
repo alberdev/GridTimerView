@@ -101,7 +101,7 @@ class CustomCollectionViewLayout: UICollectionViewFlowLayout {
     private func headerAttributes(forIndexPath indexPath: IndexPath, position: CGPoint) -> UICollectionViewLayoutAttributes {
         
         let attributes = UICollectionViewLayoutAttributes(
-            forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
             with: indexPath)
         
         attributes.frame = CGRect(x: position.x, y: position.y + cellItemHeight, width: screenSize.width, height: cellHeaderHeight)

@@ -33,7 +33,7 @@ extension GridTimerView: UICollectionViewDataSource {
         
         guard
             let dataSource = dataSource,
-            kind == UICollectionElementKindSectionHeader,
+            kind == UICollectionView.elementKindSectionHeader,
             let customCellType = customCellType,
             let reusableCell = dequeReusableView(withType: customCellType.self, forRowIndex: indexPath.section)
             else {

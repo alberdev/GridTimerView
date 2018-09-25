@@ -11,7 +11,6 @@ import UIKit
 extension GridTimerView: UICollectionViewDataSource {
     
     public func numberOfSections(in collectionView: UICollectionView) -> Int {
-        print(dataSource?.numberOfRows(inGridTimerView: self))
         return dataSource?.numberOfRows(inGridTimerView: self) ?? 0
     }
     
@@ -21,11 +20,9 @@ extension GridTimerView: UICollectionViewDataSource {
     
     public func collectionView(_ collectionView: UICollectionView,
                                cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("cellforitem")
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GridTimeLineView.uniqueIdentifier, for: indexPath)
         cell.layer.borderColor = UIColor.white.cgColor
         cell.layer.borderWidth = 1
-        
         return cell
     }
     

@@ -29,7 +29,7 @@ class CustomCollectionViewLayout: UICollectionViewFlowLayout {
     private var cellHeadersAttributes = Dictionary<IndexPath, UICollectionViewLayoutAttributes>()
     private var contentSize = CGSize(width: 0, height: 0)
     private var screenSize = UIScreen.main.bounds.size
-    private var firstLoad = false
+    var firstLoaded = false
     
     override var collectionViewContentSize: CGSize {
         return contentSize
@@ -37,9 +37,9 @@ class CustomCollectionViewLayout: UICollectionViewFlowLayout {
     
     override func prepare() {
         
-        guard let collectionView = collectionView, !firstLoad else { return }
+        guard let collectionView = collectionView, !firstLoaded else { return }
         
-        firstLoad = true
+        firstLoaded = true
         cellItemHeight = dataSource?.cellItemHeight() ?? cellItemHeight
         cellHeaderHeight = dataSource?.cellHeaderHeight() ?? cellHeaderHeight
         

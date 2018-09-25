@@ -13,7 +13,7 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var gridTimerView: GridTimerView!
     
-    public var channels = ChannelFactory.generateChannels()
+    public var channels = [Channel]()
     private var firstLoad = false
     
     override func viewDidLoad() {
@@ -22,10 +22,17 @@ class MainViewController: UIViewController {
         setupGridTimerView()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        channels = ChannelFactory.generateChannels()
+        gridTimerView.reloadGridData()
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if !firstLoad {
-            gridTimerView?.scrollToDate(date: Date())
+            let date = Date.add(days: -1).addingTimeInterval(60*60*3)
+            gridTimerView?.scrollToDate(date: date)
             firstLoad = true
         }
     }
@@ -54,6 +61,7 @@ class MainViewController: UIViewController {
         configuration.timerColor = Colors.Fucsia
         configuration.lineColor = Colors.Fucsia
         configuration.selectedItemColor = Colors.Fucsia
+        
         gridTimerView.configuration = configuration
         gridTimerView.register(type: ChannelItemView.self)
         gridTimerView.dataSource = self

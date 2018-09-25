@@ -167,6 +167,13 @@ extension GridTimerView: GridTimerViewInterface {
             self.collectionView.contentInset = self.initialInset
         }
     }
+    
+    open func reloadGridData() {
+        if let collectionViewLayout = collectionView.collectionViewLayout as? CustomCollectionViewLayout {
+            collectionViewLayout.firstLoaded = false
+            collectionView.reloadData()
+        }
+    }
 }
 
 

@@ -149,16 +149,16 @@ func heightForTimelineRow(inGridTimerView gridTimerView: GridTimerView) -> CGFlo
 func gridTimerView(gridTimerView: GridTimerView, numberOfItemsAtRowIndex rowIndex: Int) -> Int 
 
 // Needed for drawing your custom row with item index and row index
-func gridTimerView(gridTimerView: GridTimerView, viewForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> GridViewCell? {
+func gridTimerView(gridTimerView: GridTimerView, setupView itemView: GridItemView, forItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> GridItemView {
            
-    let sectionData = channels[cellIndex]
-    let cell = gridTimerView.dequeReusableCell(withType: ChannelCollectionViewCell.self, forCellIndex: cellIndex)
-    cell?.source = ChannelCollectionViewCellItem(
-        title: sectionData.events[eventIndex].title,
-        subtitle: sectionData.events[eventIndex].subtitle,
-        image: sectionData.channelImage)
-    
-    return cell == nil ? ChannelCollectionViewCell() : cell!
+       let sectionData = channels[rowIndex]
+       let cell = itemView as! ChannelItemView
+       cell.source = ChannelItemViewSource(
+           title: sectionData.events[itemIndex].title,
+           subtitle: sectionData.events[itemIndex].subtitle,
+           image: sectionData.channelImage)
+       
+       return cell
 }
 
 // Needed for drawing item in the timeline row
@@ -202,6 +202,9 @@ func dequeReusableView<T: UICollectionViewCell>(withType type: T.Type, forRowInd
 
 // End refreshing table. Used when finish loading data
 func endRefresh() 
+
+// Reload collection view data
+func reloadGridData() 
 ```
 
 

@@ -21,7 +21,7 @@ open class GridItemView: UICollectionViewCell {
     open override func awakeFromNib() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         addGestureRecognizer(tap)
-        hideSubviews()
+        // hideSubviews()
     }
     
     @objc func handleTap(gesture: UITapGestureRecognizer) {

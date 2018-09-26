@@ -13,7 +13,7 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var gridTimerView: GridTimerView!
     
-    public var channels = [Channel]()
+    public var channels = ChannelFactory.generateChannels(14, withShows: 0)
     private var firstLoad = false
     
     override func viewDidLoad() {
@@ -24,8 +24,8 @@ class MainViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        channels = ChannelFactory.generateChannels()
-        gridTimerView.reloadGridData()
+//        channels = ChannelFactory.generateChannels()
+//        gridTimerView.reloadGridData()
     }
     
     override func viewDidLayoutSubviews() {
@@ -67,6 +67,13 @@ class MainViewController: UIViewController {
         gridTimerView.dataSource = self
         gridTimerView.delegate = self
     }
+    
+    func simulateEventsRequest(forRow rowIndex: Int) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.channels[rowIndex].events = ChannelFactory.generateEvents(5, inRow: rowIndex)
+            self.gridTimerView.reloadGridRowIndex(rowIndex)
+        }
+    }
 }
 
 extension MainViewController: GridTimerViewDataSource {
@@ -91,10 +98,19 @@ extension MainViewController: GridTimerViewDataSource {
         
         let sectionData = channels[rowIndex]
         let cell = itemView as! ChannelItemView
-        cell.source = ChannelItemViewSource(
-            title: sectionData.events[itemIndex].title,
-            subtitle: sectionData.events[itemIndex].subtitle,
-            image: sectionData.channelImage)
+        
+        if sectionData.events.count > 0 {
+            cell.source = ChannelItemViewSource(
+                title: sectionData.events[itemIndex].title,
+                subtitle: sectionData.events[itemIndex].subtitle,
+                image: sectionData.channelImage)
+        } else {
+            cell.source = ChannelItemViewSource(
+                title: "Loading",
+                subtitle: "",
+                image: nil)
+            simulateEventsRequest(forRow: rowIndex)
+        }
         
         return cell
     }

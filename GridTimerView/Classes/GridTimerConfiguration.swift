@@ -51,5 +51,8 @@ public struct GridTimerConfiguration {
     /// Row separation
     public var rowSeparation: CGFloat = 10.0
     
+    /// Enable refresh
+    public var enableRefresh: Bool = false
+    
     public init() {}
 }

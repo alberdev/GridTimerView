@@ -56,6 +56,7 @@ open class GridTimerView: UIView {
             ruleView.timerTextColor = configuration.timerTextColor
             timeLineColor = configuration.timeLineColor
             timerLineView.backgroundColor = configuration.lineColor
+            backScrollView.isHidden = !configuration.enableRefresh
             
             if let collectionViewLayout = collectionView.collectionViewLayout as? CustomCollectionViewLayout {
                 collectionViewLayout.ruleDaysFrom = configuration.ruleDaysFrom
@@ -130,18 +131,59 @@ open class GridTimerView: UIView {
         refresher?.tintColor = UIColor.lightGray
         refresher?.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
         refresher?.backgroundColor = .clear
+        backScrollView.isHidden = !configuration.enableRefresh
         backScrollView.addSubview(refresher!)
     }
     
     @objc private func didPullToRefresh() {
-        UIView.animate(withDuration: 0.3) {
-            self.collectionView.contentInset = self.loadingInset
+        if configuration.enableRefresh {
+            UIView.animate(withDuration: 0.3) {
+                self.collectionView.contentInset = self.loadingInset
+            }
+            delegate?.didPullToRefresh(inGridTimerView: self)
         }
-        delegate?.didPullToRefresh(inGridTimerView: self)
     }
     
-    public func dequeReusableView<T: UICollectionViewCell>(withType type: T.Type, forRowIndex rowIndex: Int) -> T? {
+    internal func dequeReusableView<T: UICollectionViewCell>(withType type: T.Type, forRowIndex rowIndex: Int) -> T? {
         return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: type.uniqueIdentifier, for: IndexPath(item: 0, section: rowIndex)) as? T
+    }
+    
+    internal func updateHighlightedItems() {
+        
+        for cell in collectionView.visibleCells as! [GridTimeLineView] {
+            
+            let initPoint = cell.frame.origin.x
+            let endPoint = cell.frame.origin.x + cell.frame.size.width
+            let timerLinePoint = convert(timerLineView.frame.origin, to: collectionView)
+            if initPoint-1 < timerLinePoint.x && endPoint+1 >= timerLinePoint.x {
+                
+                cell.backgroundColor = configuration.selectedItemColor
+                if
+                    let indexPath = collectionView.indexPath(for: cell),
+                    let header = viewForRowIndex(rowIndex: indexPath.section),
+                    cell.isVisible == false {
+                    cell.isVisible = true
+                    header.highlitedItems += 1
+                    header.showSubviews()
+                    let _ = dataSource?.gridTimerView(gridTimerView: self, setupView: header, forItemIndex: indexPath.item, inRowIndex: indexPath.section)
+                    delegate?.gridTimerView(gridTimerView: self, didHighlightAtItemIndex: indexPath.item, inRowIndex: indexPath.section)
+                }
+                
+            } else {
+                
+                cell.backgroundColor = configuration.unselectedItemColor
+                if
+                    let indexPath = collectionView.indexPath(for: cell),
+                    let header = viewForRowIndex(rowIndex: indexPath.section),
+                    cell.isVisible == true {
+                    cell.isVisible = false
+                    header.highlitedItems -= 1
+                    if header.highlitedItems == 0 {
+                        // header.hideSubviews()
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -169,9 +211,21 @@ extension GridTimerView: GridTimerViewInterface {
     }
     
     open func reloadGridData() {
-        if let collectionViewLayout = collectionView.collectionViewLayout as? CustomCollectionViewLayout {
-            collectionViewLayout.firstLoaded = false
-            collectionView.reloadData()
+        guard let collectionViewLayout = collectionView.collectionViewLayout as? CustomCollectionViewLayout else { return }
+        collectionViewLayout.reloadAttributes = true
+        collectionView.reloadData()
+        collectionView.performBatchUpdates(nil, completion: {
+            (result) in
+            self.updateHighlightedItems()
+        })
+    }
+    
+    open func reloadGridRowIndex(_ rowIndex: Int) {
+        guard let collectionViewLayout = collectionView.collectionViewLayout as? CustomCollectionViewLayout else { return }
+        collectionViewLayout.reloadAttributes = true
+        UIView.performWithoutAnimation {
+            self.collectionView.reloadSections(IndexSet(integer: rowIndex))
+            self.updateHighlightedItems()
         }
     }
 }

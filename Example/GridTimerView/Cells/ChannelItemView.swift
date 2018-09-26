@@ -25,9 +25,9 @@ class ChannelItemView: GridItemView {
     override var isHighlighted: Bool {
         didSet {
             if isHighlighted {
-                cellContentView.backgroundColor = Colors.White2
+                backgroundColor = Colors.White2
             } else {
-                cellContentView.backgroundColor = .white
+                backgroundColor = .white
             }
         }
     }

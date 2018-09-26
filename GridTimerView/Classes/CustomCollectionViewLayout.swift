@@ -29,7 +29,7 @@ class CustomCollectionViewLayout: UICollectionViewFlowLayout {
     private var cellHeadersAttributes = Dictionary<IndexPath, UICollectionViewLayoutAttributes>()
     private var contentSize = CGSize(width: 0, height: 0)
     private var screenSize = UIScreen.main.bounds.size
-    var firstLoaded = false
+    var reloadAttributes = true
     
     override var collectionViewContentSize: CGSize {
         return contentSize
@@ -37,9 +37,15 @@ class CustomCollectionViewLayout: UICollectionViewFlowLayout {
     
     override func prepare() {
         
-        guard let collectionView = collectionView, !firstLoaded else { return }
+        guard reloadAttributes else { return }
+        guard let collectionView = collectionView else { return }
         
-        firstLoaded = true
+        reloadAttributes = false
+        
+        // Clear cache
+        cellItemsAttributes = Dictionary<IndexPath, UICollectionViewLayoutAttributes>()
+        cellHeadersAttributes = Dictionary<IndexPath, UICollectionViewLayoutAttributes>()
+        
         cellItemHeight = dataSource?.cellItemHeight() ?? cellItemHeight
         cellHeaderHeight = dataSource?.cellHeaderHeight() ?? cellHeaderHeight
         
@@ -58,12 +64,12 @@ class CustomCollectionViewLayout: UICollectionViewFlowLayout {
             cellHeadersAttributes[headerIndexPath] = headerAttributes
             
             let numberOfItems = collectionView.numberOfItems(inSection: s)
-            guard numberOfItems > 0 else { return }
-            for i in 0 ..< numberOfItems {
-                
-                let itemIndexPath = IndexPath(item: i, section: s)
-                let itemAttributes = self.itemAttributes(forIndexPath: itemIndexPath, yPosition: yPos)
-                cellItemsAttributes[itemIndexPath] = itemAttributes
+            if numberOfItems > 0 {
+                for i in 0 ..< numberOfItems {
+                    let itemIndexPath = IndexPath(item: i, section: s)
+                    let itemAttributes = self.itemAttributes(forIndexPath: itemIndexPath, yPosition: yPos)
+                    cellItemsAttributes[itemIndexPath] = itemAttributes
+                }
             }
             yPos += cellHeaderHeight + cellSeparation + cellItemHeight
         }

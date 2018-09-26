@@ -50,42 +50,7 @@ extension GridTimerView: UIScrollViewDelegate {
         }
         
         ruleView.updateContentOffset(x: scrollView.contentOffset.x)
-        
-        for cell in collectionView.visibleCells as! [GridTimeLineView] {
-            
-            let initPoint = cell.frame.origin.x
-            let endPoint = cell.frame.origin.x + cell.frame.size.width
-            let timerLinePoint = convert(timerLineView.frame.origin, to: collectionView)
-            if initPoint-1 < timerLinePoint.x && endPoint+1 >= timerLinePoint.x {
-                
-                cell.backgroundColor = configuration.selectedItemColor
-                if
-                    let indexPath = collectionView.indexPath(for: cell),
-                    let header = viewForRowIndex(rowIndex: indexPath.section),
-                    cell.isVisible == false {
-                    cell.isVisible = true
-                    header.highlitedItems += 1
-                    header.showSubviews()
-                    let _ = dataSource?.gridTimerView(gridTimerView: self, setupView: header, forItemIndex: indexPath.item, inRowIndex: indexPath.section)
-                    delegate?.gridTimerView(gridTimerView: self, didHighlightAtItemIndex: indexPath.item, inRowIndex: indexPath.section)
-                }
-                
-            } else {
-                
-                cell.backgroundColor = configuration.unselectedItemColor
-                if
-                    let indexPath = collectionView.indexPath(for: cell),
-                    let header = viewForRowIndex(rowIndex: indexPath.section),
-                    cell.isVisible == true {
-                    cell.isVisible = false
-                    header.highlitedItems -= 1
-                    if header.highlitedItems == 0 {
-                        header.hideSubviews()
-                    }
-                }
-                
-            }
-        }
+        updateHighlightedItems()
     }
 }
 

@@ -110,10 +110,10 @@ configuration.timerColor = UIColor.blue
 configuration.timerTextColor = UIColor.white
 
 // Selected date line color
-public var lineColor = UIColor.blue
+configuration.lineColor = UIColor.blue
     
 // Current date line color
-public var timeLineColor = UIColor.blue
+configuration.timeLineColor = UIColor.blue
 
 // Selected highlight color on event
 configuration.selectedItemColor = UIColor.blue
@@ -122,7 +122,10 @@ configuration.selectedItemColor = UIColor.blue
 configuration.unselectedItemColor = UIColor.lightGray
 
 // Row separation
-configuration. rowSeparation = 10.0
+configuration.rowSeparation = 10.0
+
+/// Enable refresh control when dragged down
+configuration.enableRefresh = false
 ```
 
 Is important to finally assign configuration to `GridTimerView`
@@ -150,15 +153,26 @@ func gridTimerView(gridTimerView: GridTimerView, numberOfItemsAtRowIndex rowInde
 
 // Needed for drawing your custom row with item index and row index
 func gridTimerView(gridTimerView: GridTimerView, setupView itemView: GridItemView, forItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> GridItemView {
-           
-       let sectionData = channels[rowIndex]
-       let cell = itemView as! ChannelItemView
-       cell.source = ChannelItemViewSource(
-           title: sectionData.events[itemIndex].title,
-           subtitle: sectionData.events[itemIndex].subtitle,
-           image: sectionData.channelImage)
-       
-       return cell
+    let sectionData = channels[rowIndex]
+    let cell = itemView as! ChannelItemView
+    
+    if sectionData.events.count > 0 {
+    
+        cell.source = ChannelItemViewSource(
+            title: sectionData.events[itemIndex].title,
+            subtitle: sectionData.events[itemIndex].subtitle,
+            image: sectionData.channelImage)
+            
+    } else {
+    
+        // It's important to put attention when there's no events
+        cell.source = ChannelItemViewSource(
+            title: "Loading",
+            subtitle: "",
+            image: nil)
+            
+    }
+    return cell
 }
 
 // Needed for drawing item in the timeline row
@@ -205,6 +219,9 @@ func endRefresh()
 
 // Reload collection view data
 func reloadGridData() 
+
+// Reload collection view data for row index
+func reloadGridRowIndex(_ rowIndex: Int)
 ```
 
 

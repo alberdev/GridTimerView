@@ -10,5 +10,5 @@ import UIKit
 
 open class GridTimeLineView: UICollectionViewCell {
     
-    var isVisible = false 
+    var isOn = false 
 }

@@ -44,8 +44,8 @@ public class RuleView: UIView {
     }
     var ruleColor = UIColor.white {
         didSet {
-            guard let patternImage = UIImage(named: "PatternRule")?.maskWithColor(color: ruleColor) else { return }
-            scrollView.backgroundColor = UIColor(patternImage: patternImage)
+//            guard let patternImage = UIImage(named: "PatternRule")?.maskWithColor(color: ruleColor) else { return }
+//            scrollView.backgroundColor = UIColor(patternImage: patternImage)
         }
     }
     var timerFont = UIFont.systemFont(ofSize: 12, weight: .semibold) {
@@ -85,16 +85,24 @@ public class RuleView: UIView {
     
     private func setupScroll() {
         
-        let podBundle = Bundle(for: self.classForCoder)
-        let image = UIImage(named: "PatternRule", in: podBundle, compatibleWith: nil)
-        guard let patternImage = image?.maskWithColor(color: ruleColor) else { return }
-        
-        scrollView.contentSize = CGSize(width: ruleWidth*24*CGFloat(ruleDaysTo), height: scrollView.frame.size.height)
-        scrollView.backgroundColor = UIColor(patternImage: patternImage)
-        
         backgroundColor = ruleBackgroundColor
         
         var initialDate = Date.add(days: -ruleDaysFrom).timeIntervalSince1970
+        
+        var j = 0
+        for i in 0 ..< 20 * 24 * (ruleDaysFrom + ruleDaysTo) + 1 {
+            let timeXPos = CGFloat(i)*(ruleWidth/20)
+            let timeTick = UIView(frame: CGRect(x: timeXPos, y: 0, width: 0.5, height: j == 10 ? 15 : 10))
+            timeTick.backgroundColor = ruleColor
+            scrollView.addSubview(timeTick)
+            
+            if j == 10 {
+                j = 1
+            } else {
+                j += 1
+            }
+        }
+        
         for i in 0 ..< 24 * (ruleDaysFrom + ruleDaysTo) + 1 {
             let timeXPos = CGFloat(i)*ruleWidth 
             let timeLabel = UILabel(frame: CGRect(x: timeXPos - 25, y: 7, width: 50, height: 40))
@@ -103,6 +111,11 @@ public class RuleView: UIView {
             timeLabel.textColor = ruleTextColor
             timeLabel.textAlignment = .center
             scrollView.addSubview(timeLabel)
+            
+            let timeTick = UIView(frame: CGRect(x: timeXPos, y: 0, width: 0.5, height: 20))
+            timeTick.backgroundColor = ruleColor
+            scrollView.addSubview(timeTick)
+            
             initialDate += ruleTimeInterval
         }
     }

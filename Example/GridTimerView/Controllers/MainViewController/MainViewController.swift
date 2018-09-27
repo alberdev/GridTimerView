@@ -13,7 +13,7 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var gridTimerView: GridTimerView!
     
-    public var channels = ChannelFactory.generateChannels(14, withShows: 0)
+    public var channels = ChannelFactory.generateChannels(40, withShows: 0)
     private var firstLoad = false
     
     override func viewDidLoad() {
@@ -69,9 +69,15 @@ class MainViewController: UIViewController {
     }
     
     func simulateEventsRequest(forRow rowIndex: Int) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.channels[rowIndex].events = ChannelFactory.generateEvents(5, inRow: rowIndex)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.channels[rowIndex].events = ChannelFactory.generateEvents(1, inRow: rowIndex)
+            
             self.gridTimerView.reloadGridRowIndex(rowIndex)
+//            DispatchQueue.main.async( execute: {
+//                self.gridTimerView.reloadGridRowIndex(rowIndex)
+//            })
+            
+            //self.gridTimerView.reloadGridData()
         }
     }
 }

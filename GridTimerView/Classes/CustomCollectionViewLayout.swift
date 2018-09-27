@@ -87,7 +87,9 @@ class CustomCollectionViewLayout: UICollectionViewFlowLayout {
         for attributes in cellHeadersAttributes.values {
             if let collectionView = collectionView {
                 attributes.frame.origin.x = collectionView.contentOffset.x
-                attributesInRect.append(attributes)
+                if rect.intersects(attributes.frame) {
+                    attributesInRect.append(attributes)
+                }
             }
         }
         

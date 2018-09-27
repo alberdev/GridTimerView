@@ -16,7 +16,6 @@ open class GridItemView: UICollectionViewCell {
     
     weak var delegate: GridItemViewDelegate?
     var indexPath: IndexPath?
-    var highlitedItems = 0
     
     open override func awakeFromNib() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
@@ -44,17 +43,11 @@ open class GridItemView: UICollectionViewCell {
         for view in subviews {
             view.isHidden = true
         }
-//        for view in contentView.subviews[0].subviews {
-//            view.isHidden = true
-//        }
     }
     
     public func showSubviews() {
         for view in subviews {
             view.isHidden = false
         }
-//        for view in contentView.subviews[0].subviews {
-//            view.isHidden = false
-//        }
     }
 }

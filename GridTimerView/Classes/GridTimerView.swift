@@ -161,10 +161,10 @@ open class GridTimerView: UIView {
                 if
                     let indexPath = collectionView.indexPath(for: cell),
                     let header = viewForRowIndex(rowIndex: indexPath.section),
-                    cell.isVisible == false {
-                    cell.isVisible = true
-                    header.highlitedItems += 1
-                    header.showSubviews()
+                    cell.isOn == false {
+                    cell.isOn = true
+                    
+                    // Update cell with highlighted item
                     let _ = dataSource?.gridTimerView(gridTimerView: self, setupView: header, forItemIndex: indexPath.item, inRowIndex: indexPath.section)
                     delegate?.gridTimerView(gridTimerView: self, didHighlightAtItemIndex: indexPath.item, inRowIndex: indexPath.section)
                 }
@@ -173,14 +173,8 @@ open class GridTimerView: UIView {
                 
                 cell.backgroundColor = configuration.unselectedItemColor
                 if
-                    let indexPath = collectionView.indexPath(for: cell),
-                    let header = viewForRowIndex(rowIndex: indexPath.section),
-                    cell.isVisible == true {
-                    cell.isVisible = false
-                    header.highlitedItems -= 1
-                    if header.highlitedItems == 0 {
-                        // header.hideSubviews()
-                    }
+                    cell.isOn == true {
+                    cell.isOn = false
                 }
             }
         }
@@ -225,7 +219,7 @@ extension GridTimerView: GridTimerViewInterface {
         collectionViewLayout.reloadAttributes = true
         UIView.performWithoutAnimation {
             self.collectionView.reloadSections(IndexSet(integer: rowIndex))
-            self.updateHighlightedItems()
+            // self.updateHighlightedItems()
         }
     }
 }

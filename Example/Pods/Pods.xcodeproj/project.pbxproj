@@ -27,7 +27,6 @@
 		73C51D31E5DD14B235C1FF39E340C7B1 /* GridItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D812E45988DA410605B0F9B70EBACC2 /* GridItemView.swift */; };
 		8B40C554063AE92AC2528C6B6B1064E2 /* Pods-GridTimerView_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0022B644D516AD33C465C3C378F660F3 /* Pods-GridTimerView_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8EDCA737DDFBF698EF6DCCC9B92E7473 /* UIImage+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5122A7D3E3CEF2BBC30495E03469FA2C /* UIImage+Tools.swift */; };
-		9DE6882CBFDDD3E0E982AA238AA238EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE6198FE6D82C2ED32EA960AC2BF37D1 /* Assets.xcassets */; };
 		AAB4F469EE7BBC19706491B1AB721A1A /* Date+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26329D298B17B1C06B1A13BD23FEF8CC /* Date+Tools.swift */; };
 		C4DEB0AC87915B50B38AE20E316D02E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 908E902E026C5C22904CF9014A5604AD /* Foundation.framework */; };
 		CB9A3DC0FB36766E22A2406C7F4B24AF /* GridTimerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7662E80F892290BD62A16211C7600F53 /* GridTimerView.xib */; };
@@ -101,7 +100,6 @@
 		C6BF3E8EB65E3C53E3EB7E8C11A5249C /* UIView+Tools.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+Tools.swift"; sourceTree = "<group>"; };
 		D244E17FFF5FC5C9F45CA5CBE3937CD4 /* Pods-GridTimerView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GridTimerView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		D638A1152DB7AF7A6A5BCDCD89A99A36 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		DE6198FE6D82C2ED32EA960AC2BF37D1 /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E37811BC2145B2F9006B009D /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Globals.swift; path = GridTimerView/Classes/Globals.swift; sourceTree = "<group>"; };
 		E37811BE2145E4B5006B009D /* GridTimeLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GridTimeLineView.swift; path = GridTimerView/Classes/GridTimeLineView.swift; sourceTree = "<group>"; };
 		E93274910861AD189384B0C7B32A09A9 /* Pods-GridTimerView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GridTimerView_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -230,7 +228,6 @@
 		55C68EF68650D32AD3DBADCE61FC7CE1 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				DE6198FE6D82C2ED32EA960AC2BF37D1 /* Assets.xcassets */,
 			);
 			name = Assets;
 			path = GridTimerView/Assets;
@@ -450,7 +447,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9DE6882CBFDDD3E0E982AA238AA238EA /* Assets.xcassets in Resources */,
 				CB9A3DC0FB36766E22A2406C7F4B24AF /* GridTimerView.xib in Resources */,
 				07529D6F8887EDC59B133A4B0FA457BB /* RuleView.xib in Resources */,
 			);

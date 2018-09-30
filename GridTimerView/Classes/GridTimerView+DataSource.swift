@@ -11,56 +11,77 @@ import UIKit
 extension GridTimerView: UICollectionViewDataSource {
     
     public func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return dataSource?.numberOfRows(inGridTimerView: self) ?? 0
+        return 1
     }
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSource?.gridTimerView(gridTimerView: self, numberOfItemsAtRowIndex: section) ?? 0
+        return dataSource?.numberOfRows(inGridTimerView: self) ?? 0
     }
     
     public func collectionView(_ collectionView: UICollectionView,
                                cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GridTimeLineView.uniqueIdentifier, for: indexPath)
-        cell.layer.borderColor = UIColor.white.cgColor
-        cell.layer.borderWidth = 1
-        return cell
-    }
-    
-    public func collectionView(_ collectionView: UICollectionView,
-                               viewForSupplementaryElementOfKind kind: String,
-                               at indexPath: IndexPath) -> UICollectionReusableView {
+        
         guard
             let dataSource = dataSource,
-            kind == UICollectionView.elementKindSectionHeader,
-            let customCellType = customCellType,
-            let reusableCell = dequeReusableView(withType: customCellType.self, forRowIndex: indexPath.section)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GridItemViewCell.uniqueIdentifier, for: indexPath) as? GridItemViewCell
             else {
                 fatalError("Custom item view register is needed! Register your custom item view once GridTimerView is initializated\n")
         }
         
-        let cell = dataSource.gridTimerView(gridTimerView: self, setupView: reusableCell, forItemIndex: indexPath.item, inRowIndex: indexPath.section)
-        cell.indexPath = indexPath
+        // TODO: Increase performance
+        let view = dataSource.gridTimerView(gridTimerView: self, viewForItemIndex: 0, inRowIndex: indexPath.item)
+        cell.removeCustomUserView()
+        cell.addCustomUserView(view: view)
+        
+        let viewModel = GridItemViewCell.ViewModel(
+            selectedCellColor: configuration.selectedColorOnTouch,
+            selectedItemColor: configuration.selectedItemColor,
+            unselectedItemColor: configuration.unselectedItemColor,
+            containerViewHeight: dataSource.heightForRow(inGridTimerView: self),
+            collectionViewHeight: dataSource.heightForTimelineRow(inGridTimerView: self),
+            item: 0,
+            row: indexPath.item)
+        
+        cell.viewModel = viewModel
+        cell.dataSource = self
         cell.delegate = self
+        
+        // TODO: Increase performance
+        cell.collectionView.reloadData()
+        
         return cell
     }
-    
 }
 
 extension GridTimerView: CustomCollectionViewLayoutDataSource {
     
-    func initDateForIndexPath(indexPath: IndexPath) -> Date? {
-        return dataSource?.gridTimerView(gridTimerView: self, startTimeForItemIndex: indexPath.item, inRowIndex: indexPath.section)
-    }
-    
-    func endDateForIndexPath(indexPath: IndexPath) -> Date? {
-        return dataSource?.gridTimerView(gridTimerView: self, endTimeForItemIndex: indexPath.item, inRowIndex: indexPath.section)
-    }
-    
-    func cellHeaderHeight() -> CGFloat? {
-        return dataSource?.heightForRow(inGridTimerView: self)
-    }
-    
     func cellItemHeight() -> CGFloat? {
-        return dataSource?.heightForTimelineRow(inGridTimerView: self)
+        let heightForRow = dataSource?.heightForRow(inGridTimerView: self) ?? 0
+        let heightForTimelineRow = dataSource?.heightForTimelineRow(inGridTimerView: self) ?? 0
+        let heightForSeparation = configuration.rowSeparation
+        return heightForRow + heightForTimelineRow + heightForSeparation
+    }
+}
+
+extension GridTimerView: GridItemViewCellDataSource {
+    
+    func gridItemViewCell(_ gridItemViewCell: GridItemViewCell, numberOfItemsInRowIndex rowIndex: Int) -> Int {
+        return dataSource?.gridTimerView(gridTimerView: self, numberOfItemsAtRowIndex: rowIndex) ?? 0
+    }
+    
+    func gridItemViewCell(_ gridItemViewCell: GridItemViewCell, colorForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> UIColor? {
+        return dataSource?.gridTimerView(gridTimerView: self, colorForItemIndex: itemIndex, inRowIndex: rowIndex)
+    }
+    
+    func gridItemViewCell(_ gridItemViewCell: GridItemViewCell, containerViewForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> UIView? {
+        return dataSource?.gridTimerView(gridTimerView: self, viewForItemIndex: itemIndex, inRowIndex: rowIndex)
+    }
+    
+    func gridItemViewCell(_ gridItemViewCell: GridItemViewCell, initDateForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> Date? {
+        return dataSource?.gridTimerView(gridTimerView: self, startTimeForItemIndex: itemIndex, inRowIndex: rowIndex)
+    }
+    
+    func gridItemViewCell(_ gridItemViewCell: GridItemViewCell, endDateForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> Date? {
+        return dataSource?.gridTimerView(gridTimerView: self, endTimeForItemIndex: itemIndex, inRowIndex: rowIndex)
     }
 }

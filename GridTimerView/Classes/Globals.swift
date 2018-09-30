@@ -20,3 +20,7 @@ func floatForTime(seconds: Int) -> CGFloat {
     let pointsPerSecond: CGFloat = CGFloat(ruleWidth)/3600
     return CGFloat(seconds) * pointsPerSecond
 }
+
+func printLayoutTrace(view: UIView) {
+    print(view.value(forKey: "_autolayoutTrace") ?? "No layout trace")
+}

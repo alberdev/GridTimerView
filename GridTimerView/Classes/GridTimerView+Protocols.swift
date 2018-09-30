@@ -55,7 +55,7 @@ public protocol GridTimerViewDataSource: class {
      - parameter rowIndex: row index
      - returns: row view
      */
-    func gridTimerView(gridTimerView: GridTimerView, setupView itemView: GridItemView, forItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> GridItemView
+    func gridTimerView(gridTimerView: GridTimerView, viewForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> UIView
     
     /**
      ------------------------------------------------------------------------------------------
@@ -78,6 +78,18 @@ public protocol GridTimerViewDataSource: class {
      - returns: end date
      */
     func gridTimerView(gridTimerView: GridTimerView, startTimeForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> Date
+    
+    /**
+     ------------------------------------------------------------------------------------------
+     Returns color by event in row.
+     If returns nil, `selectedItemColor` in configuration will be the selected color
+     ------------------------------------------------------------------------------------------
+     - parameter gridTimerView: current gridTimerView
+     - parameter itemIndex: item index
+     - parameter rowIndex: row index
+     - returns: event color
+     */
+    func gridTimerView(gridTimerView: GridTimerView, colorForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> UIColor?
 }
 
 public extension GridTimerViewDataSource {
@@ -112,7 +124,7 @@ public protocol GridTimerViewDelegate: class {
      - parameter gridTimerView: gridTimerView is using
      - parameter rowIndex: row index
      */
-    func gridTimerView(gridTimerView: GridTimerView, didSelectRowAtIndex rowIndex: Int)
+    func gridTimerView(gridTimerView: GridTimerView, didSelectRowAtItemIndex itemIndex: Int, inRowIndex rowIndex: Int)
     
     /**
      ------------------------------------------------------------------------------------------
@@ -155,15 +167,12 @@ public protocol GridTimerViewInterface {
      ------------------------------------------------------------------------------------------
      - parameter rowIndex: row index
      */
-    func viewForRowIndex(rowIndex: Int) -> GridItemView?
+    func viewForRowIndex(rowIndex: Int) -> UIView?
     
-    /**
-     ------------------------------------------------------------------------------------------
-     Register your own row is needed for reuse in table
-     ------------------------------------------------------------------------------------------
-     - parameter type: class name you want to register
-     */
-    func register<T: UICollectionViewCell>(type: T.Type)
+    // Register your own view for row is needed for reuse in table
+    // func register<T: UICollectionViewCell>(type: T.Type) 
+    // Deque reusable custom view
+    // func dequeReusableView<T: UICollectionViewCell>(withType type: T.Type, forRowIndex rowIndex: Int) -> T?
     
     /**
      ------------------------------------------------------------------------------------------

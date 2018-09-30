@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChannelView" customModule="GridTimerView_Example" customModuleProvider="target">
+            <connections>
+                <outlet property="channelImageView" destination="VtU-Y3-PdQ" id="qSA-ne-ysQ"/>
+                <outlet property="contentView" destination="eId-Sy-1oX" id="97q-1u-iNk"/>
+                <outlet property="subtitleLabel" destination="7Nl-6O-T7e" id="MRL-FN-Aq6"/>
+                <outlet property="titleLabel" destination="mi1-PM-afh" id="ME7-2l-VmU"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clipsSubviews="YES" contentMode="scaleToFill" id="eId-Sy-1oX">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="52"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hey!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mi1-PM-afh">
+                    <rect key="frame" x="47" y="9" width="317" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="17" id="qxc-24-mw1"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="VtU-Y3-PdQ">
+                    <rect key="frame" x="5" y="9" width="34" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="34" id="Ldk-Td-DuI"/>
+                        <constraint firstAttribute="width" constant="34" id="rO8-eY-x1G"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Nl-6O-T7e">
+                    <rect key="frame" x="47" y="27" width="320" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="gbH-VU-TKg"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="aMn-Zt-0T5">
+                    <rect key="frame" x="314" y="9" width="53" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="53" id="I2c-5k-nVh"/>
+                        <constraint firstAttribute="height" constant="34" id="ckv-Ks-uU6"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="7Nl-6O-T7e" firstAttribute="top" secondItem="mi1-PM-afh" secondAttribute="bottom" constant="1" id="05F-up-Il0"/>
+                <constraint firstItem="aMn-Zt-0T5" firstAttribute="centerY" secondItem="eId-Sy-1oX" secondAttribute="centerY" id="1Cm-t6-Q1j"/>
+                <constraint firstItem="mi1-PM-afh" firstAttribute="leading" secondItem="VtU-Y3-PdQ" secondAttribute="trailing" constant="8" id="Eki-rh-Bmd"/>
+                <constraint firstItem="VtU-Y3-PdQ" firstAttribute="leading" secondItem="eId-Sy-1oX" secondAttribute="leading" constant="5" id="N8R-B0-mAr"/>
+                <constraint firstAttribute="trailing" secondItem="7Nl-6O-T7e" secondAttribute="trailing" constant="8" id="TJv-BF-7l1"/>
+                <constraint firstAttribute="trailing" secondItem="aMn-Zt-0T5" secondAttribute="trailing" constant="8" id="dVE-Np-Uel"/>
+                <constraint firstItem="mi1-PM-afh" firstAttribute="top" secondItem="eId-Sy-1oX" secondAttribute="top" constant="9" id="fBN-uK-ONk"/>
+                <constraint firstAttribute="trailing" secondItem="mi1-PM-afh" secondAttribute="trailing" constant="11" id="kKR-AG-vVb"/>
+                <constraint firstItem="7Nl-6O-T7e" firstAttribute="leading" secondItem="VtU-Y3-PdQ" secondAttribute="trailing" constant="8" id="wGL-Ku-fKj"/>
+                <constraint firstItem="VtU-Y3-PdQ" firstAttribute="centerY" secondItem="eId-Sy-1oX" secondAttribute="centerY" id="x4C-UL-jlc"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="45Z-vJ-7ZJ"/>
+            <point key="canvasLocation" x="128.80000000000001" y="-538.83058470764627"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Placeholder" width="240" height="155"/>
+    </resources>
+</document>

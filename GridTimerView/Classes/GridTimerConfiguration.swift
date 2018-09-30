@@ -21,11 +21,11 @@ public struct GridTimerConfiguration {
     /// Days after today for end time
     public var ruleDaysTo = 2
     
-    /// Rule image color
+    /// Rule background color
     public var ruleBackgroundColor = UIColor.darkGray
     
-    /// Rule background color
-    public var ruleColor = UIColor.white
+    /// Rule ticks color
+    public var ruleTicksColor = UIColor.white
     
     /// Font used in current time
     public var timerFont = UIFont.systemFont(ofSize: 12, weight: .semibold)
@@ -40,13 +40,19 @@ public struct GridTimerConfiguration {
     public var lineColor = UIColor.blue
     
     /// Current date line color
-    public var timeLineColor = UIColor.blue
+    public var currentTimeLineColor = UIColor.blue
+    
+    /// Current date line color
+    public var currentTimeLineDashed = false
     
     /// Selected highlight color on event
     public var selectedItemColor = UIColor.blue
     
     /// Unselected color on event
     public var unselectedItemColor = UIColor.lightGray
+    
+    /// Selected highlight color when row cell touched
+    public var selectedColorOnTouch = UIColor.init(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
     
     /// Row separation
     public var rowSeparation: CGFloat = 10.0

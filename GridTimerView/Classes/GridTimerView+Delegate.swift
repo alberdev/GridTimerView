@@ -10,55 +10,53 @@ import UIKit
 
 extension GridTimerView: UICollectionViewDelegateFlowLayout {
     
-    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets.zero
-    }
-    
-    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 2.0
-    }
-    
-    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0.0
-    }
-    
-    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: 54.0)
-    }
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // TODO: Select event
+        
+        guard
+            let cell = collectionView.cellForItem(at: indexPath) as? GridItemViewCell,
+            let viewModel = cell.viewModel
+            else { return }
+        
+        delegate?.gridTimerView(gridTimerView: self, didSelectRowAtItemIndex: viewModel.item, inRowIndex: viewModel.row)
     }
-}
-
-extension GridTimerView: UIScrollViewDelegate {
+    
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        if scrollView == self.collectionView {
+            
+            backScrollView.setContentOffset(CGPoint(x: 0, y: scrollView.contentOffset.y), animated: false)
+            
+            // Init grid refresh action
+            if
+                let isRefreshing = refresher?.isRefreshing,
+                scrollView.contentOffset.y < scrollRefreshLimitY,
+                !isRefreshing && firstScroll {
+                refresher?.beginRefreshing()
+                refresher?.sendActions(for: .valueChanged)
+            } else if scrollView.contentOffset.y > -50 {
+                refresher?.endRefreshing()
+            }
+            
+            // Update rule offset
+            ruleView.updateContentOffset(x: scrollView.contentOffset.x)
+            
+            // Update visible cells with offset
+            for cell in collectionView.visibleCells as! [GridItemViewCell] {
+                cell.collectionView.contentOffset.x = scrollView.contentOffset.x
+                cell.updateHighlightedItems()
+            }
+        }
+    }
     
     public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         firstScroll = true
     }
-    
-    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        backScrollView.setContentOffset(CGPoint(x: 0, y: scrollView.contentOffset.y), animated: false)
-        if
-            let isRefreshing = refresher?.isRefreshing,
-            scrollView.contentOffset.y < scrollRefreshLimitY,
-            !isRefreshing && firstScroll {
-            refresher?.beginRefreshing()
-            refresher?.sendActions(for: .valueChanged)
-        } else if scrollView.contentOffset.y > -50 {
-            refresher?.endRefreshing()
-        }
-        
-        ruleView.updateContentOffset(x: scrollView.contentOffset.x)
-        updateHighlightedItems()
-    }
 }
 
-extension GridTimerView: GridItemViewDelegate {
+extension GridTimerView: GridItemViewCellDelegate {
     
-    func gridItemView(gridItemView: GridItemView, didSelect selected: Bool) {
-        if let indexPath = gridItemView.indexPath {
-            delegate?.gridTimerView(gridTimerView: self, didSelectRowAtIndex: indexPath.section)
-        }
+    func gridItemViewCell(_ gridItemViewCell: GridItemViewCell, didHighlightAtItemIndex itemIndex: Int, inRowIndex rowIndex: Int) {
+        delegate?.gridTimerView(gridTimerView: self, didHighlightAtItemIndex: itemIndex, inRowIndex: rowIndex)
     }
 }

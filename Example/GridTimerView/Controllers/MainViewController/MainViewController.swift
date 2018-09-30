@@ -24,8 +24,6 @@ class MainViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        channels = ChannelFactory.generateChannels()
-//        gridTimerView.reloadGridData()
     }
     
     override func viewDidLayoutSubviews() {
@@ -56,28 +54,22 @@ class MainViewController: UIViewController {
     private func setupGridTimerView() {
         
         var configuration = GridTimerConfiguration()
-        configuration.ruleColor = Colors.White
+        configuration.ruleTicksColor = Colors.White
         configuration.ruleBackgroundColor = Colors.Black
         configuration.timerColor = Colors.Fucsia
         configuration.lineColor = Colors.Fucsia
         configuration.selectedItemColor = Colors.Fucsia
         
         gridTimerView.configuration = configuration
-        gridTimerView.register(type: ChannelItemView.self)
         gridTimerView.dataSource = self
         gridTimerView.delegate = self
     }
     
     func simulateEventsRequest(forRow rowIndex: Int) {
+        channels[rowIndex].loaded = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.channels[rowIndex].events = ChannelFactory.generateEvents(1, inRow: rowIndex)
-            
+            self.channels[rowIndex].events = ChannelFactory.generateEvents(200, inRow: rowIndex)
             self.gridTimerView.reloadGridRowIndex(rowIndex)
-//            DispatchQueue.main.async( execute: {
-//                self.gridTimerView.reloadGridRowIndex(rowIndex)
-//            })
-            
-            //self.gridTimerView.reloadGridData()
         }
     }
 }
@@ -100,25 +92,24 @@ extension MainViewController: GridTimerViewDataSource {
         return channelAt(rowIndex)?.events.count ?? 0
     }
     
-    func gridTimerView(gridTimerView: GridTimerView, setupView itemView: GridItemView, forItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> GridItemView {
+    func gridTimerView(gridTimerView: GridTimerView, viewForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> UIView {
         
-        let sectionData = channels[rowIndex]
-        let cell = itemView as! ChannelItemView
-        
-        if sectionData.events.count > 0 {
-            cell.source = ChannelItemViewSource(
-                title: sectionData.events[itemIndex].title,
-                subtitle: sectionData.events[itemIndex].subtitle,
-                image: sectionData.channelImage)
-        } else {
-            cell.source = ChannelItemViewSource(
-                title: "Loading",
-                subtitle: "",
-                image: nil)
+        if !channels[rowIndex].loaded {
             simulateEventsRequest(forRow: rowIndex)
         }
         
-        return cell
+        let channelView = ChannelView()
+        let channel = channels[rowIndex]
+        var viewModel = ChannelView.ViewModel()
+        
+        if channel.events.count > 0 {
+            viewModel.title = channel.events[itemIndex].title
+            viewModel.subtitle = channel.events[itemIndex].subtitle
+            viewModel.image = channel.channelImage
+        }
+        
+        channelView.viewModel = viewModel
+        return channelView
     }
     
     func gridTimerView(gridTimerView: GridTimerView, startTimeForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> Date {
@@ -130,19 +121,23 @@ extension MainViewController: GridTimerViewDataSource {
         let event = eventAt(IndexPath(item: itemIndex, section: rowIndex))
         return event?.endTime ?? Date()
     }
+    
+    func gridTimerView(gridTimerView: GridTimerView, colorForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> UIColor? {
+        return itemIndex == 5 ? .green : nil
+    }
 }
 
 extension MainViewController: GridTimerViewDelegate {
-    
+
     func gridTimerView(gridTimerView: GridTimerView, didHighlightAtItemIndex itemIndex: Int, inRowIndex rowIndex: Int) {
         
     }
     
-    func gridTimerView(gridTimerView: GridTimerView, didSelectRowAtIndex rowIndex: Int) {
+    func gridTimerView(gridTimerView: GridTimerView, didSelectRowAtItemIndex itemIndex: Int, inRowIndex rowIndex: Int) {
         
-        let sectionCell = gridTimerView.viewForRowIndex(rowIndex: rowIndex) as? ChannelItemView
+        let event = channels[rowIndex].events[itemIndex]
         let vc = DetailViewController()
-        vc.source = DetailViewSource(title: sectionCell?.source?.title, subtitle: sectionCell?.source?.subtitle)
+        vc.source = DetailViewSource(title: event.title, subtitle: event.subtitle)
         navigationController?.pushViewController(vc, animated: true)
     }
     

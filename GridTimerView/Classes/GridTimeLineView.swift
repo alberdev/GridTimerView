@@ -7,8 +7,16 @@
 
 import UIKit
 
-
-open class GridTimeLineView: UICollectionViewCell {
+public class GridTimeLineView: UICollectionViewCell {
     
-    var isOn = false 
+    var selectedItemColor: UIColor?
+    var unselectedItemColor: UIColor?
+    
+    /// Is true when cell is highlighted
+    /// Used only to save the current state
+    var isOn = false {
+        didSet {
+            backgroundColor = isOn ? selectedItemColor : unselectedItemColor
+        }
+    }
 }

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="XEc-lc-DIz" customClass="GridItemViewCell" customModule="GridTimerView" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="367" height="76"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="367" height="76"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="fTH-Q1-Qzn">
+                        <rect key="frame" x="0.0" y="0.0" width="367" height="8"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="8" id="bQI-RZ-izH"/>
+                        </constraints>
+                        <collectionViewLayout key="collectionViewLayout" id="vg7-z5-0a0" customClass="GridItemCollectionViewLayout" customModule="GridTimerView" customModuleProvider="target"/>
+                    </collectionView>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dbV-S0-Ddc">
+                        <rect key="frame" x="0.0" y="8" width="367" height="55"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="55" id="l6k-by-qSE"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="dbV-S0-Ddc" secondAttribute="trailing" id="9e6-dK-tTD"/>
+                <constraint firstItem="dbV-S0-Ddc" firstAttribute="leading" secondItem="XEc-lc-DIz" secondAttribute="leading" id="DNz-ei-uD3"/>
+                <constraint firstItem="fTH-Q1-Qzn" firstAttribute="top" secondItem="XEc-lc-DIz" secondAttribute="top" id="LT3-V4-CBh"/>
+                <constraint firstItem="dbV-S0-Ddc" firstAttribute="top" secondItem="fTH-Q1-Qzn" secondAttribute="bottom" id="ODU-mv-DX8"/>
+                <constraint firstItem="fTH-Q1-Qzn" firstAttribute="leading" secondItem="XEc-lc-DIz" secondAttribute="leading" id="Xge-mn-3BJ"/>
+                <constraint firstAttribute="trailing" secondItem="fTH-Q1-Qzn" secondAttribute="trailing" id="dxs-YM-NTM"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Mus-g3-SjO"/>
+            <size key="customSize" width="367" height="80"/>
+            <connections>
+                <outlet property="collectionView" destination="fTH-Q1-Qzn" id="uji-LC-KAa"/>
+                <outlet property="collectionViewHeightConstraint" destination="bQI-RZ-izH" id="SLM-Nz-tJ1"/>
+                <outlet property="containerView" destination="dbV-S0-Ddc" id="MKK-lI-5iX"/>
+                <outlet property="containerViewHeightConstraint" destination="l6k-by-qSE" id="NUW-iR-Zar"/>
+            </connections>
+            <point key="canvasLocation" x="191.19999999999999" y="61.169415292353825"/>
+        </collectionViewCell>
+    </objects>
+</document>

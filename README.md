@@ -60,11 +60,7 @@ Then, connect the IBOutlet in your UIViewController
 
 ### Make your custom item row (required)
 
-Make your own custom item subclassing `GridItemView` and register to use it
-
-```swift
-gridTimerView.register(type: ChannelItemView.self)
-```
+Make your own custom item subclassing `UIView`. Then you can use it in DataSource protocol.
 
 ### Implement datasource and delegate
 
@@ -94,8 +90,8 @@ configuration.ruleDaysFrom = 1
 // Days after today for end time
 configuration.ruleDaysTo = 2
 
-// Rule image color
-configuration.ruleColor = UIColor.white
+// Rule ticks color
+configuration.ruleTicksColor = UIColor.white
 
 // Rule background color
 configuration.ruleBackgroundColor = UIColor.darkGray
@@ -113,13 +109,19 @@ configuration.timerTextColor = UIColor.white
 configuration.lineColor = UIColor.blue
     
 // Current date line color
-configuration.timeLineColor = UIColor.blue
+configuration.currentTimeLineColor = UIColor.blue
+
+/// Current date line dashed
+configuration.currentTimeLineDashed = false
 
 // Selected highlight color on event
 configuration.selectedItemColor = UIColor.blue
 
 // Unselected color on event
 configuration.unselectedItemColor = UIColor.lightGray
+
+/// Selected highlight color when row cell touched
+configuration.selectedColorOnTouch = UIColor.init(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
 
 // Row separation
 configuration.rowSeparation = 10.0
@@ -152,27 +154,20 @@ func heightForTimelineRow(inGridTimerView gridTimerView: GridTimerView) -> CGFlo
 func gridTimerView(gridTimerView: GridTimerView, numberOfItemsAtRowIndex rowIndex: Int) -> Int 
 
 // Needed for drawing your custom row with item index and row index
-func gridTimerView(gridTimerView: GridTimerView, setupView itemView: GridItemView, forItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> GridItemView {
-    let sectionData = channels[rowIndex]
-    let cell = itemView as! ChannelItemView
+func gridTimerView(gridTimerView: GridTimerView, viewForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> UIView {
     
-    if sectionData.events.count > 0 {
+    let channelView = ChannelView()
+    let channel = channels[rowIndex]
+    var viewModel = ChannelView.ViewModel()
     
-        cell.source = ChannelItemViewSource(
-            title: sectionData.events[itemIndex].title,
-            subtitle: sectionData.events[itemIndex].subtitle,
-            image: sectionData.channelImage)
-            
-    } else {
-    
-        // It's important to put attention when there's no events
-        cell.source = ChannelItemViewSource(
-            title: "Loading",
-            subtitle: "",
-            image: nil)
-            
+    if channel.events.count > 0 {
+        viewModel.title = channel.events[itemIndex].title
+        viewModel.subtitle = channel.events[itemIndex].subtitle
+        viewModel.image = channel.channelImage
     }
-    return cell
+    
+    channelView.viewModel = viewModel
+    return channelView
 }
 
 // Needed for drawing item in the timeline row
@@ -180,6 +175,10 @@ func gridTimerView(gridTimerView: GridTimerView, startTimeForItemIndex itemIndex
 
 // Needed for drawing item in the timeline row
 func gridTimerView(gridTimerView: GridTimerView, endTimeForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> Date
+
+// Returns color by item in row.
+// If returns nil, `selectedItemColor` in configuration will be the selected color
+func gridTimerView(gridTimerView: GridTimerView, colorForItemIndex itemIndex: Int, inRowIndex rowIndex: Int) -> UIColor?
 ```
 
 ### Delegates
@@ -206,13 +205,7 @@ You can also use next methods for scrolling timer, registering and reuse your cu
 func scrollToDate(date: Date)
 
 // Obtain your custom view
-func viewForRowIndex(rowIndex: Int) -> GridItemView?
-
-// Register your own view for row is needed for reuse in table
-func register<T: UICollectionViewCell>(type: T.Type) 
-
-// Deque reusable custom view
-func dequeReusableView<T: UICollectionViewCell>(withType type: T.Type, forRowIndex rowIndex: Int) -> T? 
+func viewForRowIndex(rowIndex: Int) -> UIView?
 
 // End refreshing table. Used when finish loading data
 func endRefresh() 

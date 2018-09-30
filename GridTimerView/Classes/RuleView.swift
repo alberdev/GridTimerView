@@ -14,11 +14,39 @@ public class RuleView: UIView {
     @IBOutlet weak var scrollView: UIScrollView!
     
     private var currentTimeLabel: UILabel?
+    private var currentTimeLine: UIView?
     private let ruleTimeInterval: TimeInterval = 60*60 // 60 min
     private let screenSize = UIScreen.main.bounds.size
     
-    var ruleDaysFrom = 1
-    var ruleDaysTo = 2
+    var ruleDaysFrom = 1 {
+        didSet {
+            scrollView.subviews.forEach { $0.removeFromSuperview() }
+            setupScroll()
+            setupCurrentTimeLine()
+        }
+    }
+    
+    var ruleDaysTo = 2 {
+        didSet {
+            scrollView.subviews.forEach { $0.removeFromSuperview() }
+            setupScroll()
+            setupCurrentTimeLine()
+        }
+    }
+    
+    var currentTimeLineDashed = false {
+        didSet {
+            currentTimeLine?.removeFromSuperview()
+            setupCurrentTimeLine()
+        }
+    }
+    var currentTimeLineColor = UIColor.blue {
+        didSet {
+            currentTimeLine?.removeFromSuperview()
+            setupCurrentTimeLine()
+        }
+    }
+    
     var ruleFont = UIFont.systemFont(ofSize: 10, weight: .semibold) {
         didSet {
             for view in scrollView.subviews {
@@ -42,10 +70,11 @@ public class RuleView: UIView {
             backgroundColor = ruleBackgroundColor
         }
     }
-    var ruleColor = UIColor.white {
+    var ruleTicksColor = UIColor.white {
         didSet {
-//            guard let patternImage = UIImage(named: "PatternRule")?.maskWithColor(color: ruleColor) else { return }
-//            scrollView.backgroundColor = UIColor(patternImage: patternImage)
+            scrollView.subviews.forEach { $0.removeFromSuperview() }
+            setupScroll()
+            setupCurrentTimeLine()
         }
     }
     var timerFont = UIFont.systemFont(ofSize: 12, weight: .semibold) {
@@ -70,6 +99,7 @@ public class RuleView: UIView {
         commonInit()
         setupScroll()
         setupCurrentTimeLabel()
+        setupCurrentTimeLine()
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -77,6 +107,7 @@ public class RuleView: UIView {
         commonInit()
         setupScroll()
         setupCurrentTimeLabel()
+        setupCurrentTimeLine()
     }
     
     private func commonInit() {
@@ -93,7 +124,7 @@ public class RuleView: UIView {
         for i in 0 ..< 20 * 24 * (ruleDaysFrom + ruleDaysTo) + 1 {
             let timeXPos = CGFloat(i)*(ruleWidth/20)
             let timeTick = UIView(frame: CGRect(x: timeXPos, y: 0, width: 0.5, height: j == 10 ? 15 : 10))
-            timeTick.backgroundColor = ruleColor
+            timeTick.backgroundColor = ruleTicksColor
             scrollView.addSubview(timeTick)
             
             if j == 10 {
@@ -113,7 +144,7 @@ public class RuleView: UIView {
             scrollView.addSubview(timeLabel)
             
             let timeTick = UIView(frame: CGRect(x: timeXPos, y: 0, width: 0.5, height: 20))
-            timeTick.backgroundColor = ruleColor
+            timeTick.backgroundColor = ruleTicksColor
             scrollView.addSubview(timeTick)
             
             initialDate += ruleTimeInterval
@@ -131,6 +162,17 @@ public class RuleView: UIView {
         currentTimeLabel?.layer.cornerRadius = 5
         currentTimeLabel?.clipsToBounds = true
         addSubview(currentTimeLabel!)
+    }
+    
+    private func setupCurrentTimeLine() {
+        let xPos = xPosition(byDate: Date(), fromInitDate: Date.add(days: -ruleDaysFrom))
+        currentTimeLine = UIView(frame: CGRect(x: xPos, y: frame.size.height, width: 1, height: screenSize.height))
+        if currentTimeLineDashed {
+            currentTimeLine?.addDashedBorder(width: nil, height: nil, lineWidth: 0.25, lineDashPattern:  [6,3], strokeColor: currentTimeLineColor, fillColor: .clear)
+        } else {
+            currentTimeLine?.backgroundColor = currentTimeLineColor
+        }
+        scrollView.addSubview(currentTimeLine!)
     }
     
     func updateContentOffset(x: CGFloat) {

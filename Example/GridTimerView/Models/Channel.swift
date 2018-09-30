@@ -11,4 +11,5 @@ import UIKit
 struct Channel {
     var events = [Event]()
     var channelImage = UIImage(named: "Placeholder")
+    var loaded = false
 }

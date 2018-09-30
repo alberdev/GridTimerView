@@ -34,9 +34,9 @@
 		DF06D73C615927AE0E6541D63A91F85C /* GridTimerView+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB0A56C5E0DB6766C625DC74B3BCDE1 /* GridTimerView+DataSource.swift */; };
 		E3490984215E1AF100354BDE /* GridItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3490983215E1AF100354BDE /* GridItemViewCell.xib */; };
 		E349098C215E35E600354BDE /* UICollectionView+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = E349098B215E35E600354BDE /* UICollectionView+Tools.swift */; };
-		E3490994215E840100354BDE /* GridItemCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3490993215E840100354BDE /* GridItemCollectionViewLayout.swift */; };
 		E37811BD2145B2F9006B009D /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37811BC2145B2F9006B009D /* Globals.swift */; };
 		E37811BF2145E4B5006B009D /* GridTimeLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37811BE2145E4B5006B009D /* GridTimeLineView.swift */; };
+		E37C20B521618ABD00C56697 /* GridItemCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37C20B421618ABD00C56697 /* GridItemCollectionViewLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,9 +105,9 @@
 		D638A1152DB7AF7A6A5BCDCD89A99A36 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E3490983215E1AF100354BDE /* GridItemViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GridItemViewCell.xib; sourceTree = "<group>"; };
 		E349098B215E35E600354BDE /* UICollectionView+Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Tools.swift"; sourceTree = "<group>"; };
-		E3490993215E840100354BDE /* GridItemCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridItemCollectionViewLayout.swift; sourceTree = "<group>"; };
 		E37811BC2145B2F9006B009D /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Globals.swift; path = GridTimerView/Classes/Globals.swift; sourceTree = "<group>"; };
 		E37811BE2145E4B5006B009D /* GridTimeLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GridTimeLineView.swift; path = GridTimerView/Classes/GridTimeLineView.swift; sourceTree = "<group>"; };
+		E37C20B421618ABD00C56697 /* GridItemCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GridItemCollectionViewLayout.swift; path = GridTimerView/Classes/GridItemCollectionViewLayout.swift; sourceTree = "<group>"; };
 		E93274910861AD189384B0C7B32A09A9 /* Pods-GridTimerView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GridTimerView_Example.release.xcconfig"; sourceTree = "<group>"; };
 		F323F2BFA26B97DFDCBD270DFB4F257F /* Pods-GridTimerView_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-GridTimerView_Tests-dummy.m"; sourceTree = "<group>"; };
 		FEE8A0F7BC655ADCFAB554E5FDC492F5 /* Pods-GridTimerView_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-GridTimerView_Tests.modulemap"; sourceTree = "<group>"; };
@@ -192,6 +192,7 @@
 		3B9119531F02F59B3E181CA0EC3FA2B9 /* GridTimerView */ = {
 			isa = PBXGroup;
 			children = (
+				E37C20B421618ABD00C56697 /* GridItemCollectionViewLayout.swift */,
 				6B7326B227B3E612665C30A416FCC9F1 /* CustomCollectionViewLayout.swift */,
 				B0B88614B140AA85ADFFCA4C36BD836D /* GridTimerConfiguration.swift */,
 				80D019095E22932A77DB399507CA3138 /* GridTimerView.swift */,
@@ -199,7 +200,6 @@
 				BB60B4CF0904CE9AF876E8548AA68529 /* GridTimerView+Delegate.swift */,
 				A1B8AA0FAD05BE6D81F59A6669D0764C /* GridTimerView+Protocols.swift */,
 				8D812E45988DA410605B0F9B70EBACC2 /* GridItemViewCell.swift */,
-				E3490993215E840100354BDE /* GridItemCollectionViewLayout.swift */,
 				E37811BE2145E4B5006B009D /* GridTimeLineView.swift */,
 				2D310CB8AF260AB4311B00658A775AC9 /* RuleView.swift */,
 				E37811BC2145B2F9006B009D /* Globals.swift */,
@@ -490,7 +490,7 @@
 				D1A4CDD400B459D144D118FCB3FBA61A /* GridTimerConfiguration.swift in Sources */,
 				DF06D73C615927AE0E6541D63A91F85C /* GridTimerView+DataSource.swift in Sources */,
 				565191579FDE22C491C7BE346080B507 /* GridTimerView+Delegate.swift in Sources */,
-				E3490994215E840100354BDE /* GridItemCollectionViewLayout.swift in Sources */,
+				E37C20B521618ABD00C56697 /* GridItemCollectionViewLayout.swift in Sources */,
 				255F55C5C5C511B86983B73158FF1C4F /* GridTimerView+Protocols.swift in Sources */,
 				15369D826ACF4AD4F597417EB374F535 /* GridTimerView-dummy.m in Sources */,
 				51B4E90A5CA914774982C4A4816B557D /* GridTimerView.swift in Sources */,

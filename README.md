@@ -1,17 +1,59 @@
-![GridTimerView logo](https://raw.githubusercontent.com/alberdev/GridTimerView/master/Images/header_GridTimerView.png)
+<p align="center">
+   <img width="500" src="https://raw.githubusercontent.com/alberdev/GridTimerView/master/Images/header_GridTimerView.png" alt="GridTimerView  Logo">
+</p>
+
+<p align="center">
+   <a href="https://cocoapods.org/pods/GridTimerView">
+      <img src="https://img.shields.io/cocoapods/v/GridTimerView.svg?style=flat&colorB=7f47dd" alt="Version">
+   </a>
+   <!--
+   <a href="https://github.com/Carthage/Carthage">
+      <img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage Compatible">
+   </a>
+   -->
+   <a href="https://cocoapods.org/pods/GridTimerView">
+      <img src="https://img.shields.io/cocoapods/l/GridTimerView.svg?style=flat)" alt="License">
+   </a>
+   <a href="https://developer.apple.com/swift/">
+      <img src="https://img.shields.io/badge/Swift-5.0-blue.svg?style=flat&colorB=7f47dd" alt="Swift 5.0">
+   </a>
+   <a href="https://cocoapods.org/pods/GridTimerView">
+      <img src="https://img.shields.io/cocoapods/p/GridTimerView.svg?style=flat&colorB=7f47dd" alt="Platform">
+   </a>
+   <!--
+   <a href="https://alberdev.github.io/GridTimerView">
+      <img src="https://github.com/alberdev/GridTimerView/blob/gh-pages/badge.svg" alt="Documentation">
+   </a>
+   -->
+   <a href="https://twitter.com/alberdev/">
+      <img src="https://img.shields.io/badge/Twitter-@alberdev-blue.svg?style=flat&colorB=30CEF2" alt="Twitter">
+   </a>
+   
+</p>
+
+<br/>
+
+<p align="center">
+   With <b>GridTimerView</b> you can show a schedule with timer controller. Each cell can manage multiple events with different durations. It's perfect for listing TV programs shows in a simulated table. And the good news is that you can customise most of these features with your own fonts, colors, sizes... and many more.
+</p>
+
+<br/>
+
+<p align="center" >
+<img src="https://raw.githubusercontent.com/alberdev/GridTimerView/master/Images/video_1.gif" alt="GridTimerView" title="GridTimerView demo">
+</p>
 
 # GridTimerView
 
-[![Version](https://img.shields.io/cocoapods/v/GridTimerView.svg?style=flat&colorB=ED3269)](https://cocoapods.org/pods/GridTimerView)
-[![License](https://img.shields.io/cocoapods/l/GridTimerView.svg?style=flat)](https://cocoapods.org/pods/GridTimerView)
-[![Platform](https://img.shields.io/cocoapods/p/GridTimerView.svg?style=flat)](https://cocoapods.org/pods/GridTimerView)
-![Swift](https://img.shields.io/badge/%20in-swift%204.2-orange.svg?style=flat&colorB=ED3269)
+- [x] Show multiple events for each cell
+- [x] Totally customizable
+- [x] Smooth scrolling experience
+- [x] Easy usage
+- [x] Supports iOS, developed in Swift 4
 
 
 ## Table of Contents
 
-- [Description](#description)
-- [Example](#example)
 - [Usage](#usage)
   - [UIView in your xib / storyboard](#uiviewinyourxib/storyboard)
   - [Configuration](#configuration)
@@ -21,24 +63,6 @@
 - [Installation](#installation)
 - [Author](#author)
 - [License](#license)
-
-## Description
-
-With `GridTimerView` you can show a schedule with timer controller. Each cell can manage multiple events with different durations. It's perfect for listing TV programs shows in a simulated table. And the good news is that you can customise most of these features with your own fonts, colors, sizes... and many more.
-
-- [x] Show multiple events for each cell
-- [x] Totally customizable
-- [x] Smooth scrolling experience
-- [x] Easy usage
-- [x] Supports iOS, developed in Swift 4
-
-## Example
-
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
-<p align="center" >
-<img src="https://raw.githubusercontent.com/alberdev/GridTimerView/master/Images/video_1.gif" alt="GridTimerView" title="GridTimerView demo">
-</p>
 
 ## Usage
 
